@@ -25,6 +25,8 @@ RUN apk add --no-cache \
     qemu-img \
     qemu
 
+RUN pip3 install --no-cache-dir msgpack==0.5.6 requests>=1.0.0 distro pycryptodomex MarkupSafe Jinja2 pyzmq PyYAML urllib3 chardet certifi
+
 RUN echo "listen_tls = 0"     >> /etc/libvirt/libvirtd.conf; \
     echo 'listen_tcp = 1'     >> /etc/libvirt/libvirtd.conf; \
     echo 'tls_port = "16514"' >> /etc/libvirt/libvirtd.conf; \

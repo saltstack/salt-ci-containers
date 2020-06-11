@@ -19,5 +19,4 @@ run:
 			sh; \
 	fi
 clean:
-	docker rm virt-minion-0
 	docker rmi virt-minion
