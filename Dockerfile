@@ -22,7 +22,7 @@ RUN apk add --no-cache \
     libvirt-dev \
     libvirt-daemon \
     qemu-img \
-    qemu
+    qemu-system-x86_64
 
 RUN pip3 install --no-cache-dir \
 	    libvirt-python \
