@@ -18,14 +18,25 @@ RUN apk add --no-cache \
     parted \
     libssh \
     libxml2 \
-    py3-libvirt \
     libvirt \
     libvirt-dev \
     libvirt-daemon \
     qemu-img \
     qemu
 
-RUN pip3 install --no-cache-dir msgpack==0.5.6 requests>=1.0.0 distro pycryptodomex MarkupSafe Jinja2 pyzmq PyYAML urllib3 chardet certifi
+RUN pip3 install --no-cache-dir \
+	    libvirt-python \
+	    msgpack==0.5.6 \
+	    requests \
+	    distro \
+	    pycryptodomex \
+	    MarkupSafe \
+	    Jinja2 \
+	    pyzmq \
+	    PyYAML \
+	    urllib3 \
+	    chardet \
+	    certifi
 
 RUN echo "listen_tls = 0"     >> /etc/libvirt/libvirtd.conf; \
     echo 'listen_tcp = 1'     >> /etc/libvirt/libvirtd.conf; \
