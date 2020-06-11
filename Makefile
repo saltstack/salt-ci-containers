@@ -1,5 +1,23 @@
+SALT_PATH ?= $(shell python -c 'import os, salt; print(os.path.abspath(salt.__file__ + "../../.."))')
+
+all: build
+
 build:
 	docker build -t virt-minion .
 
 run:
-	docker run --privileged --device /dev/mem -it virt-salt-minion sh
+	if [ -d $(SALT_PATH) ]; then \
+		docker run \
+			--rm \
+			--privileged \
+			--device /dev/mem \
+			--network host \
+			--name virt-minion-0 \
+			-it \
+			--mount type=bind,source=$(SALT_PATH),target=/salt \
+			virt-minion \
+			sh; \
+	fi
+clean:
+	docker rm virt-minion-0
+	docker rmi virt-minion
