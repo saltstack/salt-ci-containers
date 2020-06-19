@@ -22,7 +22,8 @@ RUN apk add --no-cache \
     libvirt \
     libvirt-daemon \
     libvirt-dev \
-    libxml2 \
+    libxml2-dev \
+    libxslt-dev \
     make \
     netcat-openbsd \
     numactl \
@@ -32,7 +33,8 @@ RUN apk add --no-cache \
     polkit \
     qemu-img \
     qemu-system-x86_64 \
-    yajl
+    yajl \
+    yaml-dev
 
 RUN pip3 install --no-cache-dir \
 	    libvirt-python \
