@@ -4,6 +4,7 @@ RUN apk add --no-cache \
     gcc \
     g++ \
     autoconf \
+    bash \
     make \
     libffi-dev \
     openssl-dev \
@@ -16,6 +17,7 @@ RUN apk add --no-cache \
     fuse \
     libpciaccess \
     parted \
+    pciutils \
     libssh \
     libxml2 \
     libvirt \

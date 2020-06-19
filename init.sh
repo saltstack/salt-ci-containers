@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 pip install -e /salt
 dbus-uuidgen > /var/lib/dbus/machine-id
 mkdir -p /var/run/dbus
