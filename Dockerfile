@@ -55,9 +55,9 @@ RUN echo "listen_tls = 0"     >> /etc/libvirt/libvirtd.conf; \
     echo 'tls_port = "16514"' >> /etc/libvirt/libvirtd.conf; \
     echo 'tcp_port = "16509"' >> /etc/libvirt/libvirtd.conf; \
     echo 'auth_tcp = "none"'  >> /etc/libvirt/libvirtd.conf; \
-    mkdir -p /var/lib/libvirt/images/
+    mv /etc/libvirt/qemu/networks/autostart/default.xml /etc/libvirt/qemu/networks/autostart/default.xml.disabled; \
+    mkdir -p /var/lib/libvirt/images /salt
 
-RUN mkdir -p /salt /etc/pki /etc/salt/pki /etc/salt/minion.d/ /etc/salt/master.d /etc/salt/proxy.d /var/cache/salt /var/log/salt /var/run/salt
 WORKDIR /salt
 
 EXPOSE 4505 4506 8000 16509 16514 49152-49261
