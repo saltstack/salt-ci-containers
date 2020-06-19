@@ -62,5 +62,6 @@ WORKDIR /salt
 
 EXPOSE 4505 4506 8000 16509 16514 49152-49261
 
+COPY 50-libvirt-ssh-remote-access-policy.pkla /etc/polkit-1/localauthority/50-local.d/
 COPY init.sh /init.sh
 CMD ["/init.sh"]
