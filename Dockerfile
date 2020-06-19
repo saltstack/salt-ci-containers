@@ -1,5 +1,10 @@
 FROM python:3.7-alpine
 
+ENV CONTAINER docker
+ENV USER root
+ENV HOME /root
+ENV TERM xterm
+
 RUN apk add --no-cache \
     autoconf \
     bash \
