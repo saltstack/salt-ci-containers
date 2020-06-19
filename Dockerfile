@@ -11,6 +11,7 @@ RUN apk add --no-cache \
     dbus \
     dnsmasq \
     gnutls \
+    ethtool \
     polkit \
     numactl \
     yajl \
