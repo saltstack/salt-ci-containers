@@ -1,31 +1,33 @@
 FROM python:3.7-alpine
 
 RUN apk add --no-cache \
-    gcc \
-    g++ \
     autoconf \
     bash \
-    make \
-    libffi-dev \
-    openssl-dev \
     dbus \
+    dmidecode \
     dnsmasq \
-    gnutls \
     ethtool \
-    polkit \
-    numactl \
-    yajl \
     fuse \
+    g++ \
+    gcc \
+    gnutls \
+    libffi-dev \
     libpciaccess \
+    libssh \
+    libvirt \
+    libvirt-daemon \
+    libvirt-dev \
+    libxml2 \
+    make \
+    netcat-openbsd \
+    numactl \
+    openssl-dev \
     parted \
     pciutils \
-    libssh \
-    libxml2 \
-    libvirt \
-    libvirt-dev \
-    libvirt-daemon \
+    polkit \
     qemu-img \
-    qemu-system-x86_64
+    qemu-system-x86_64 \
+    yajl
 
 RUN pip3 install --no-cache-dir \
 	    libvirt-python \
