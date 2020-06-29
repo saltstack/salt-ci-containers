@@ -39,5 +39,7 @@ RUN echo 'listen_tls = 0'     >> /etc/libvirt/libvirtd.conf; \
 
 WORKDIR /salt
 
+ADD http://tinycorelinux.net/11.x/x86/release/Core-current.iso /var/lib/libvirt/images/
 COPY init.sh /init.sh
+COPY core-vm.xml /core-vm.xml
 CMD [ "/init.sh" ]
