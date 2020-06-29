@@ -12,6 +12,8 @@ RUN dnf update -y && \
       nftables \
       iptables \
       libgcrypt \
+      openssh-server \
+      openssh-clients \
       python3 \
       python3-pip \
       python3-libvirt && \
