@@ -31,21 +31,6 @@
       <target dev="hda" bus="ide"/>
       <readonly/>
     </disk>
-    <controller type="usb" index="0" model="ich9-ehci1"/>
-    <controller type="usb" index="0" model="ich9-uhci1">
-      <master startport="0"/>
-    </controller>
-    <controller type="usb" index="0" model="ich9-uhci2">
-      <master startport="2"/>
-    </controller>
-    <controller type="usb" index="0" model="ich9-uhci3">
-      <master startport="4"/>
-    </controller>
-    <interface type="network">
-      <source network="default"/>
-      <mac address="52:54:00:5b:3d:a0"/>
-      <model type="e1000"/>
-    </interface>
     <console type="pty"/>
   </devices>
 </domain>
