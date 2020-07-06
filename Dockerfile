@@ -53,4 +53,5 @@ COPY ssh/id_rsa.pub /etc/ssh/ssh_host_rsa_key.pub
 COPY ssh/id_rsa.pub /root/.ssh/id_rsa.pub
 COPY ssh/id_rsa.pub /root/.ssh/authorized_keys
 COPY ssh/known_hosts /root/.ssh/known_hosts
+RUN chmod 600 /etc/ssh/ssh_host_rsa_key /root/.ssh/id_rsa /root/.ssh/authorized_keys
 CMD [ "/init.sh" ]
