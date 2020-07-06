@@ -1,4 +1,4 @@
-<domain type="kvm">
+<domain type="qemu">
   <name>core-vm</name>
   <uuid>cdf20a0e-24ff-43f3-96ec-5c753673664f</uuid>
   <memory>262144</memory>
