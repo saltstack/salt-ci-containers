@@ -16,6 +16,7 @@ RUN dnf update -y && \
       openssh-clients \
       python3 \
       python3-pip \
+      python3-psutil \
       python3-libvirt && \
     dnf clean all && \
     pip3 install --no-cache-dir \
