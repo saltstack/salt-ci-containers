@@ -53,10 +53,13 @@ COPY ssh/id_rsa.pub /root/.ssh/id_rsa.pub
 COPY ssh/id_rsa.pub /root/.ssh/authorized_keys
 COPY ssh/known_hosts /root/.ssh/known_hosts
 COPY pki/servercert.pem /etc/pki/libvirt/
+COPY pki/clientcert.pem /etc/pki/libvirt/
 COPY pki/serverkey.pem /etc/pki/libvirt/private/
+COPY pki/clientkey.pem /etc/pki/libvirt/private/
 COPY pki/cacert.pem /etc/pki/CA/
 RUN chmod 400 /etc/ssh/ssh_host_rsa_key \
 	      /root/.ssh/id_rsa \
 	      /root/.ssh/authorized_keys \
-	      /etc/pki/libvirt/private/serverkey.pem
+	      /etc/pki/libvirt/private/serverkey.pem \
+	      /etc/pki/libvirt/private/clientkey.pem
 CMD [ "/init.sh" ]

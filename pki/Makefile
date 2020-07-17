@@ -1,4 +1,4 @@
-all: servercert.pem
+all: servercert.pem clientcert.pem
 
 cakey.pem:
 	(umask 277 && certtool --generate-privkey > $@)
@@ -19,3 +19,14 @@ servercert.pem: serverkey.pem cacert.pem cakey.pem
 		--load-ca-certificate $(word 2,$^) \
 		--load-ca-privkey $(word 3,$^) \
 		--outfile $@
+
+clientkey.pem:
+	(umask 277 && certtool --generate-privkey > $@)
+
+clientcert.pem: clientkey.pem cacert.pem cakey.pem
+	certtool --generate-certificate \
+                --template client_template.info \
+                --load-privkey $< \
+                --load-ca-certificate $(word 2,$^) \
+                --load-ca-privkey $(word 3,$^) \
+                --outfile $@

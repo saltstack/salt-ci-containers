@@ -1,6 +1,5 @@
 organization = libvirt.org
 cn = localhost
-ip_address = 127.0.0.1
-tls_www_server
+tls_www_client
 encryption_key
 signing_key
