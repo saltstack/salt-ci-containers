@@ -1,0 +1,5 @@
+organization = libvirt.org
+cn = localhost
+tls_www_server
+encryption_key
+signing_key

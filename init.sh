@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Set libvirt TCP port
+if [[ -z "${LIBVIRT_TCP_PORT}" ]]; then
+  LIBVIRT_TCP_PORT=16509
+fi
+echo "tcp_port = \"$LIBVIRT_TCP_PORT\"" >> /etc/libvirt/libvirtd.conf
+
+# Set libvirt TLS port
+if [[ -z "${LIBVIRT_TLS_PORT}" ]]; then
+  LIBVIRT_TLS_PORT=16514
+fi
+echo "tls_port = \"$LIBVIRT_TLS_PORT\"" >> /etc/libvirt/libvirtd.conf
+
 # Set SSH client port
 if [[ -z "${SSH_PORT}" ]]; then
   SSH_PORT=2222
@@ -21,5 +33,5 @@ echo "host_uuid = \"$HOST_UUID\"" >> /etc/libvirt/libvirtd.conf
 pip install -e /salt
 /usr/sbin/sshd
 virtlogd -d
-libvirtd -d
+libvirtd --listen -d
 salt-minion

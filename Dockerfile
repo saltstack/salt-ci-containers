@@ -32,16 +32,14 @@ RUN dnf update -y && \
       chardet \
       certifi
 
-RUN echo 'listen_tls = 0'     >> /etc/libvirt/libvirtd.conf; \
+RUN echo 'listen_tls = 1'     >> /etc/libvirt/libvirtd.conf; \
     echo 'listen_tcp = 1'     >> /etc/libvirt/libvirtd.conf; \
-    echo 'tls_port = "16514"' >> /etc/libvirt/libvirtd.conf; \
-    echo 'tcp_port = "16509"' >> /etc/libvirt/libvirtd.conf; \
     echo 'auth_tcp = "none"'  >> /etc/libvirt/libvirtd.conf; \
     # Disable default libvirt network \
     rm -f /etc/libvirt/qemu/networks/autostart/default.xml; \
     # SSH login fix. Otherwise user is kicked off after login \
     sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd; \
-    mkdir -p /var/lib/libvirt/images /salt /root/.ssh
+    mkdir -p /var/lib/libvirt/images /etc/pki/libvirt/private /etc/pki/CA /salt /root/.ssh
 
 WORKDIR /salt
 
@@ -54,5 +52,11 @@ COPY ssh/id_rsa.pub /etc/ssh/ssh_host_rsa_key.pub
 COPY ssh/id_rsa.pub /root/.ssh/id_rsa.pub
 COPY ssh/id_rsa.pub /root/.ssh/authorized_keys
 COPY ssh/known_hosts /root/.ssh/known_hosts
-RUN chmod 600 /etc/ssh/ssh_host_rsa_key /root/.ssh/id_rsa /root/.ssh/authorized_keys
+COPY pki/servercert.pem /etc/pki/libvirt/
+COPY pki/serverkey.pem /etc/pki/libvirt/private/
+COPY pki/cacert.pem /etc/pki/CA/
+RUN chmod 400 /etc/ssh/ssh_host_rsa_key \
+	      /root/.ssh/id_rsa \
+	      /root/.ssh/authorized_keys \
+	      /etc/pki/libvirt/private/serverkey.pem
 CMD [ "/init.sh" ]
