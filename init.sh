@@ -34,4 +34,7 @@ pip install -e /salt
 /usr/sbin/sshd
 virtlogd -d
 libvirtd --listen -d
-salt-minion
+
+if [[ -z "${NO_START_MINION}" ]]; then
+    salt-minion
+fi
