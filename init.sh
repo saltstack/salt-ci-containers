@@ -37,4 +37,7 @@ libvirtd --listen -d
 
 if [[ -z "${NO_START_MINION}" ]]; then
     salt-minion
+else
+    # We need something running in the foreground
+    tail -f /dev/null
 fi
