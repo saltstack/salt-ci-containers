@@ -33,11 +33,10 @@ echo "host_uuid = \"$HOST_UUID\"" >> /etc/libvirt/libvirtd.conf
 pip install -e /salt
 /usr/sbin/sshd
 virtlogd -d
-libvirtd --listen -d
 
 if [[ -z "${NO_START_MINION}" ]]; then
+    libvirtd --listen -d
     salt-minion
 else
-    # We need something running in the foreground
-    tail -f /dev/null
+    libvirtd --listen
 fi
