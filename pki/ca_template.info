@@ -1,4 +1,4 @@
 cn = localhost
 ca
 cert_signing_key
-expiration_days = 700
+expiration_days = -1
