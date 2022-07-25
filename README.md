@@ -7,14 +7,14 @@ These are containers used in the Salt Test Suite, either custom, or mirrors from
 ## Custom
 
 
-### Salt
+### [![Salt](https://github.com/saltstack/salt-ci-containers/actions/workflows/salt.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/salt.yml)
 
 - salt:3002 - `ghcr.io/saltstack/salt-ci-containers/salt:3002`
 - salt:3003 - `ghcr.io/saltstack/salt-ci-containers/salt:3003`
 - salt:3004 - `ghcr.io/saltstack/salt-ci-containers/salt:3004`
 
 
-### Virt Minion
+### [![Virt Minion](https://github.com/saltstack/salt-ci-containers/actions/workflows/virt-minion.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/virt-minion.yml)
 
 - virt-minion:latest - `ghcr.io/saltstack/salt-ci-containers/virt-minion:latest`
 
@@ -22,27 +22,27 @@ These are containers used in the Salt Test Suite, either custom, or mirrors from
 ## Mirrors
 
 
-### Apache ZooKeeper
+### [![Apache ZooKeeper](https://github.com/saltstack/salt-ci-containers/actions/workflows/zookeeper.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/zookeeper.yml)
 
 - [zookeeper:latest](https://hub.docker.com/r/_/zookeeper/tags?name=latest) - `ghcr.io/saltstack/salt-ci-containers/zookeeper:latest`
 
 
-### Consul
+### [![Consul](https://github.com/saltstack/salt-ci-containers/actions/workflows/consul.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/consul.yml)
 
 - [consul:latest](https://hub.docker.com/r/_/consul/tags?name=latest) - `ghcr.io/saltstack/salt-ci-containers/consul:latest`
 
 
-### Etcd v2
+### [![Etcd v2](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd.yml)
 
 - [elcolio/etcd:2](https://hub.docker.com/r/elcolio/etcd/tags?name=latest) - `ghcr.io/saltstack/salt-ci-containers/etcd:2`
 
 
-### Etcd v3
+### [![Etcd v3](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd.yml)
 
 - [bitnami/etcd:3](https://hub.docker.com/r/bitnami/etcd/tags?name=3) - `ghcr.io/saltstack/salt-ci-containers/etcd:3`
 
 
-### MariaDB
+### [![MariaDB](https://github.com/saltstack/salt-ci-containers/actions/workflows/mariadb.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/mariadb.yml)
 
 - [mariadb:10.1](https://hub.docker.com/r/_/mariadb/tags?name=10.1) - `ghcr.io/saltstack/salt-ci-containers/mariadb:10.1`
 - [mariadb:10.2](https://hub.docker.com/r/_/mariadb/tags?name=10.2) - `ghcr.io/saltstack/salt-ci-containers/mariadb:10.2`
@@ -51,7 +51,7 @@ These are containers used in the Salt Test Suite, either custom, or mirrors from
 - [mariadb:10.5](https://hub.docker.com/r/_/mariadb/tags?name=10.5) - `ghcr.io/saltstack/salt-ci-containers/mariadb:10.5`
 
 
-### MySQL Server
+### [![MySQL Server](https://github.com/saltstack/salt-ci-containers/actions/workflows/mysql-server.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/mysql-server.yml)
 
 - [mysql/mysql-server:5.5](https://hub.docker.com/r/mysql/mysql-server/tags?name=5.5) - `ghcr.io/saltstack/salt-ci-containers/mysql-server:5.5`
 - [mysql/mysql-server:5.6](https://hub.docker.com/r/mysql/mysql-server/tags?name=5.6) - `ghcr.io/saltstack/salt-ci-containers/mysql-server:5.6`
@@ -59,7 +59,7 @@ These are containers used in the Salt Test Suite, either custom, or mirrors from
 - [mysql/mysql-server:8.0](https://hub.docker.com/r/mysql/mysql-server/tags?name=8.0) - `ghcr.io/saltstack/salt-ci-containers/mysql-server:8.0`
 
 
-### Percona
+### [![Percona](https://github.com/saltstack/salt-ci-containers/actions/workflows/percona.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/percona.yml)
 
 - [percona:5.5](https://hub.docker.com/r/_/percona/tags?name=5.5) - `ghcr.io/saltstack/salt-ci-containers/percona:5.5`
 - [percona:5.6](https://hub.docker.com/r/_/percona/tags?name=5.6) - `ghcr.io/saltstack/salt-ci-containers/percona:5.6`
@@ -67,13 +67,13 @@ These are containers used in the Salt Test Suite, either custom, or mirrors from
 - [percona:8.0](https://hub.docker.com/r/_/percona/tags?name=8.0) - `ghcr.io/saltstack/salt-ci-containers/percona:8.0`
 
 
-### RabbitMQ
+### [![RabbitMQ](https://github.com/saltstack/salt-ci-containers/actions/workflows/rabbitmq.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/rabbitmq.yml)
 
 - [rabbitmq:3.8](https://hub.docker.com/r/_/rabbitmq/tags?name=3.8) - `ghcr.io/saltstack/salt-ci-containers/rabbitmq:3.8`
 - [rabbitmq:3.9](https://hub.docker.com/r/_/rabbitmq/tags?name=3.9) - `ghcr.io/saltstack/salt-ci-containers/rabbitmq:3.9`
 
 
-### Vault
+### [![Vault](https://github.com/saltstack/salt-ci-containers/actions/workflows/vault.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/vault.yml)
 
 - [vault:0.9.6](https://hub.docker.com/r/_/vault/tags?name=0.9.6) - `ghcr.io/saltstack/salt-ci-containers/vault:0.9.6`
 - [vault:1.3.1](https://hub.docker.com/r/_/vault/tags?name=1.3.1) - `ghcr.io/saltstack/salt-ci-containers/vault:1.3.1`

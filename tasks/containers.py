@@ -97,7 +97,11 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
                 )
 
         with readme.open("w") as wfh:
-            header = f"# {name}\n"
+            header = (
+                f"# [![{name}]"
+                f"(https://github.com/{ghcr_org}/actions/workflows/{container_name}.yml/badge.svg)]"
+                f"(https://github.com/{ghcr_org}/actions/workflows/{container_name}.yml)\n"
+            )
             main_readme_contents.append("\n")
             main_readme_contents.append(f"##{header}")
             main_readme_contents.extend(readme_contents)

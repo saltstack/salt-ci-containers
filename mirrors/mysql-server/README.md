@@ -1,4 +1,4 @@
-# MySQL Server
+# [![MySQL Server](https://github.com/saltstack/salt-ci-containers/actions/workflows/mysql-server.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/mysql-server.yml)
 
 - [mysql/mysql-server:5.5](https://hub.docker.com/r/mysql/mysql-server/tags?name=5.5) - `ghcr.io/saltstack/salt-ci-containers/mysql-server:5.5`
 - [mysql/mysql-server:5.6](https://hub.docker.com/r/mysql/mysql-server/tags?name=5.6) - `ghcr.io/saltstack/salt-ci-containers/mysql-server:5.6`
