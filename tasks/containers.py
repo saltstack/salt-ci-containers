@@ -10,14 +10,6 @@ from invoke import task
 from . import utils
 
 
-def _sort_containers(data):
-    name, details = data
-    print(1234, data)
-    if "name" in data:
-        return 1
-    return -1
-
-
 @task
 def generate(ctx, ghcr_org="s0undt3ch-salt-ci"):
     """
@@ -49,9 +41,15 @@ def generate(ctx, ghcr_org="s0undt3ch-salt-ci"):
         else:
             main_readme_contents.append(line)
 
-    for name, details in list(sorted(custom_containers.items())) + list(
-        sorted(mirror_containers.items())
-    ):
+    ctx.run("git rm -f mirrors/*/*.Dockerfile .github/workflows/*.yml", warn=True)
+    for path in utils.REPO_ROOT.joinpath("mirrors").glob("*"):
+        path_contents = list(path.glob("*"))
+        print(123, path_contents)
+        if list(path.glob("*")) == [path / "README.md"]:
+            ctx.run(f"git rm -rf {path}", warn=True)
+
+    containers = list(sorted(custom_containers.items())) + list(sorted(mirror_containers.items()))
+    for name, details in containers:
         if "name" in details:
             is_mirror = False
         else:
@@ -123,4 +121,5 @@ def generate(ctx, ghcr_org="s0undt3ch-salt-ci"):
         contents = "\n".join(main_readme_contents).rstrip()
         wfh.write(f"{contents}\n")
 
-    ctx.run("git add mirrors/ .github/workflows/*.yml")
+    ctx.run("git add mirrors/")
+    ctx.run("git add .github/workflows/*.yml")

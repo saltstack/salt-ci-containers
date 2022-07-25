@@ -8,20 +8,22 @@ on:
     branches:
       - '*'
     paths:
-      - 'mirrors/percona/*.Dockerfile'
+      - containers.yml
+      - '.github/workflows/*.yml'
+      - 'mirrors/percona/8.0.Dockerfile/*.Dockerfile'
 
 env:
   REPOSITORY_OWNER: s0undt3ch-salt-ci
-  MIRROR_IMAGE_PATH: percona
+  MIRROR_IMAGE_PATH: mirrors/percona
 
 jobs:
   matrix-generator:
-    name: "🐳 Mirror Matrix Generator"
+    name: "Mirror Matrix Generator"
     runs-on: ubuntu-latest
     outputs:
       dockerinfo: ${{ steps.set-matrix.outputs.dockerinfo }}
     steps:
-      - name: "📥  Fetching Repository Contents"
+      - name: "Fetching Repository Contents"
         uses: actions/checkout@v2
 
       - name: Setup Python
@@ -33,7 +35,7 @@ jobs:
         run: |
           python -m pip install -r requirements.txt
 
-      - name: "📥  Generate Matrix Data"
+      - name: "Generate Matrix Data"
         id: set-matrix
         run: |
           inv matrix.generate --from-workflow ${{ env.MIRROR_IMAGE_PATH }}
@@ -41,18 +43,31 @@ jobs:
   mirror-image:
     runs-on: ubuntu-latest
     needs: matrix-generator
-    name: "🚀  ${{ matrix.dockerinfo.name }}"
-    continue-on-error: true
+    name: "${{ matrix.dockerinfo.name }}"
     strategy:
       fail-fast: false
       max-parallel: 20
       matrix:
         dockerinfo: ${{ fromJson(needs.matrix-generator.outputs.dockerinfo) }}
+
+    permissions:
+      actions: read
+      checks: write
+      issues: read
+      packages: write
+      pull-requests: read
+      repository-projects: read
+      statuses: read
+
     steps:
-      - name: "📥  Fetching Repository Contents"
+      - name: "Fetching Repository Contents"
         uses: actions/checkout@v2
 
-      - name: "⚡ Setup DockerFile"
+      - name: "Throttle concurrent pushes"
+        run: |
+          t=$(shuf -i 5-30 -n 1); echo "Sleeping $t seconds"; sleep $t
+
+      - name: "Setup DockerFile"
         run: |
           echo " " >> ./${{matrix.dockerinfo.file}}
           echo "LABEL org.opencontainers.image.source=\"https://github.com/${GITHUB_REPOSITORY}/\"" >> ${{matrix.dockerinfo.file}}
@@ -61,10 +76,10 @@ jobs:
           echo "LABEL org.opencontainers.image.vendor=\"Unofficial Docker Hub Mirror\"" >> ${{matrix.dockerinfo.file}}
           cat ./${{matrix.dockerinfo.file}}
 
-      - name: "⚡ Docker QEMU"
+      - name: "Docker QEMU"
         uses: docker/setup-qemu-action@v2
 
-      - name: "⚡ Docker BuildX"
+      - name: "Docker BuildX"
         id: buildx
         uses: docker/setup-buildx-action@v2
 
@@ -76,21 +91,18 @@ jobs:
           echo "Flags:     ${{ steps.buildx.outputs.flags }}"
           echo "Platforms: ${{ steps.buildx.outputs.platforms }}"
 
-      - name: "🔒  Log into GitHub Container Registry"
+      - name: "Log into GitHub Container Registry"
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_REGISTRY_TOKEN }}
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: "🎉  Build &  🚀  Publish"
+      - name: "Build & Publish"
         uses: docker/build-push-action@v3
         with:
           file: ${{ matrix.dockerinfo.file }}
+          context: ${{ env.MIRROR_IMAGE_PATH }}
           push: true
-          secrets: |
-            "github_token=${{ secrets.GITHUB_TOKEN }}"
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
           tags: |
-            ghcr.io/${{ env.REPOSITORY_OWNER }}/${{ matrix.dockerinfo.name }}
+            ghcr.io/${{ github.repository }}/${{ matrix.dockerinfo.name }}

@@ -31,7 +31,7 @@ MariaDB:
     - "10.5"
 
 Percona:
-  container: percona/percona-server
+  container: percona
   versions:
     - "5.5"
     - "5.6"
