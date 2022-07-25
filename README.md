@@ -2,7 +2,9 @@
 
 These are containers used in the Salt Test Suite, either custom, or mirrors from other container registries.
 
-## Included Containers
+# Included Containers
+
+## Custom
 
 
 ### Salt containers
@@ -15,6 +17,9 @@ These are containers used in the Salt Test Suite, either custom, or mirrors from
 ### Virt-Minion containers
 
 - virt-minion:latest - `ghcr.io/saltstack/salt-ci-containers/virt-minion:latest`
+
+
+## Mirrors
 
 
 ### Apache-ZooKeeper mirrored containers

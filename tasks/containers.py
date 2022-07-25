@@ -38,8 +38,9 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
     main_readme_contents = []
 
     for line in main_readme.read_text().splitlines():
-        if line == "## Included Containers":
+        if line == "# Included Containers":
             main_readme_contents.append(line)
+            main_readme_contents.append("\n## Custom")
             break
         else:
             main_readme_contents.append(line)
@@ -50,6 +51,7 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
             ctx.run(f"git rm -rf {path}", warn=True, hide=True)
 
     containers = list(sorted(custom_containers.items())) + list(sorted(mirror_containers.items()))
+    mirrors_header_included = False
     for name, details in containers:
         if "name" in details:
             is_mirror = False
@@ -57,6 +59,10 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
             is_mirror = True
 
         if is_mirror:
+            if not mirrors_header_included:
+                main_readme_contents.append("\n\n## Mirrors")
+                mirrors_header_included = True
+
             utils.info(f"Generating {name} mirror...")
             container = details["container"]
             if "/" in container:
