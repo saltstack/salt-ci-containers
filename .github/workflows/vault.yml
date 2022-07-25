@@ -13,7 +13,6 @@ on:
       - 'mirrors/vault/*.Dockerfile'
 
 env:
-  REPOSITORY_OWNER: s0undt3ch-salt-ci
   MIRROR_IMAGE_PATH: mirrors/vault
 
 jobs:
@@ -38,7 +37,7 @@ jobs:
       - name: "Generate Matrix Data"
         id: set-matrix
         run: |
-          inv matrix.generate --from-workflow ${{ env.MIRROR_IMAGE_PATH }}
+          inv containers.matrix --from-workflow ${{ env.MIRROR_IMAGE_PATH }}
 
   mirror-image:
     runs-on: ubuntu-latest

@@ -13,7 +13,6 @@ on:
       - '{{ repository_path }}/*.Dockerfile'
 
 env:
-  REPOSITORY_OWNER: {{ repository_owner }}
   MIRROR_IMAGE_PATH: {{ repository_path }}
 
 {%- raw %}
@@ -40,7 +39,7 @@ jobs:
       - name: "Generate Matrix Data"
         id: set-matrix
         run: |
-          inv matrix.generate --from-workflow ${{ env.MIRROR_IMAGE_PATH }}
+          inv containers.matrix --from-workflow ${{ env.MIRROR_IMAGE_PATH }}
 
   mirror-image:
     runs-on: ubuntu-latest

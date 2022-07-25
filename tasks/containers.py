@@ -3,6 +3,9 @@ Generate the mirrors layout.
 """
 from __future__ import annotations
 
+import json
+import sys
+
 import jinja2.sandbox
 import yaml
 from invoke import task
@@ -11,7 +14,7 @@ from . import utils
 
 
 @task
-def generate(ctx, ghcr_org="s0undt3ch-salt-ci"):
+def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
     """
     Generate the container mirrors.
     """
@@ -103,7 +106,6 @@ def generate(ctx, ghcr_org="s0undt3ch-salt-ci"):
         template = env.from_string(workflow_tpl.read_text())
         jinja_context = {
             "name": name,
-            "repository_owner": ghcr_org,
             "repository_path": container_dir.relative_to(utils.REPO_ROOT),
             "is_mirror": is_mirror,
         }
@@ -120,3 +122,26 @@ def generate(ctx, ghcr_org="s0undt3ch-salt-ci"):
 
     ctx.run("git add mirrors/")
     ctx.run("git add .github/workflows/*.yml")
+
+
+@task
+def matrix(ctx, image, from_workflow=False):
+    """
+    Generate the container mirrors.
+    """
+    ctx.cd(utils.REPO_ROOT)
+    mirrors_path = utils.REPO_ROOT / image
+
+    output = []
+    for fpath in mirrors_path.glob("*.Dockerfile"):
+        output.append(
+            {
+                "name": f"{mirrors_path.name}:{fpath.stem}",
+                "file": str(fpath.relative_to(utils.REPO_ROOT)),
+            }
+        )
+
+    if from_workflow:
+        print(f"::set-output name=dockerinfo::{json.dumps(output)}", flush=True, file=sys.stdout)
+    else:
+        print(json.dumps(output), flush=True, file=sys.stdout)
