@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora:36
+FROM registry.fedoraproject.org/fedora:32
 
 RUN dnf update -y && \
     dnf install -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
