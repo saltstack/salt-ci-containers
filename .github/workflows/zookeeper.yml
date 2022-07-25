@@ -8,11 +8,11 @@ on:
     branches:
       - '*'
     paths:
-      - 'mirrors/zookeeper/*.Dockerfile'
+      - 'mirrors/zookeeper/latest.Dockerfile/*.Dockerfile'
 
 env:
   REPOSITORY_OWNER: s0undt3ch-salt-ci
-  MIRROR_IMAGE_PATH: zookeeper
+  MIRROR_IMAGE_PATH: mirrors/zookeeper
 
 jobs:
   matrix-generator:
@@ -42,7 +42,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: matrix-generator
     name: "${{ matrix.dockerinfo.name }}"
-    continue-on-error: true
     strategy:
       fail-fast: false
       max-parallel: 20
@@ -97,6 +96,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           file: ${{ matrix.dockerinfo.file }}
+          context: ${{ env.MIRROR_IMAGE_PATH }}
           push: true
           tags: |
             ghcr.io/${{ github.repository }}/${{ matrix.dockerinfo.name }}

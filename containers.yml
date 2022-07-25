@@ -1,3 +1,8 @@
+Virt-Minion:
+  name: virt-minion
+  versions:
+    - latest
+
 MySQL-Server:
   container: mysql/mysql-server
   versions:

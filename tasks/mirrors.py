@@ -10,18 +10,34 @@ from invoke import task
 from . import utils
 
 
+def _sort_containers(data):
+    name, details = data
+    print(1234, data)
+    if "name" in data:
+        return 1
+    return -1
+
+
 @task
 def generate(ctx, ghcr_org="s0undt3ch-salt-ci"):
     """
     Generate the container mirrors.
     """
     ctx.cd(utils.REPO_ROOT)
-    mirrors_path = utils.REPO_ROOT / "mirrors" / "containers.yml"
-    if mirrors_path.exists():
-        with mirrors_path.open("r") as rfh:
-            mirrors = yaml.safe_load(rfh.read())
+    containers_path = utils.REPO_ROOT / "containers.yml"
+    if containers_path.exists():
+        with containers_path.open("r") as rfh:
+            loaded_containers = yaml.safe_load(rfh.read())
     else:
-        mirrors = []
+        loaded_containers = {}
+
+    custom_containers = {}
+    mirror_containers = {}
+    for name, details in loaded_containers.items():
+        if "name" in details:
+            custom_containers[name] = details
+        else:
+            mirror_containers[name] = details
 
     main_readme = utils.REPO_ROOT / "README.md"
     main_readme_contents = []
@@ -33,51 +49,51 @@ def generate(ctx, ghcr_org="s0undt3ch-salt-ci"):
         else:
             main_readme_contents.append(line)
 
-    for container_path in sorted(utils.REPO_ROOT.joinpath("custom").glob("*")):
-        container_name = container_path.name
-        readme = container_path / "README.md"
-        readme_contents = []
-        for dockerfile in container_path.glob("*.Dockerfile"):
-            version = dockerfile.stem
-            readme_contents.append(
-                f"- {container_name} - `ghcr.io/{ghcr_org}/{container_name}:{version}`"
-            )
-
-        with readme.open("w") as wfh:
-            header = f"# {container_name} containers\n"
-            main_readme_contents.append("\n")
-            main_readme_contents.append(f"##{header}")
-            main_readme_contents.extend(readme_contents)
-            wfh.write(f"{header}\n")
-            wfh.write("\n".join(readme_contents))
-            wfh.write("\n")
-
-    for name in sorted(mirrors):
-        utils.info(f"Generating {name} mirror...")
-        container = mirrors[name]["container"]
-        if "/" in container:
-            org, container_name = container.rsplit("/", 1)
+    for name, details in list(sorted(custom_containers.items())) + list(
+        sorted(mirror_containers.items())
+    ):
+        if "name" in details:
+            is_mirror = False
         else:
-            org = "_"
-            container_name = container
+            is_mirror = True
 
-        source_tag = mirrors[name].get("source_tag")
-        mirror = utils.REPO_ROOT / "mirrors" / container_name
-        mirror.mkdir(parents=True, exist_ok=True)
-        readme = mirror / "README.md"
+        if is_mirror:
+            utils.info(f"Generating {name} mirror...")
+            container = details["container"]
+            if "/" in container:
+                org, container_name = container.rsplit("/", 1)
+            else:
+                org = "_"
+                container_name = container
+
+            source_tag = details.get("source_tag")
+            container_dir = utils.REPO_ROOT / "mirrors" / container_name
+            container_dir.mkdir(parents=True, exist_ok=True)
+        else:
+            org = ghcr_org
+            container_name = details["name"]
+            container_dir = utils.REPO_ROOT / "custom" / container_name
+
+        readme = container_dir / "README.md"
         readme_contents = []
-        for version in sorted(mirrors[name]["versions"]):
+        for version in sorted(details["versions"]):
             utils.info(f"  Generating docker file for version {version}...")
-            dockerfile = utils.REPO_ROOT / "mirrors" / container_name / f"{version}.Dockerfile"
-            readme_contents.append(
-                f"- [{container}](https://hub.docker.com/r/{org}/{container_name}"
-                f"/tags?name={source_tag or version}) - `ghcr.io/{ghcr_org}/{container_name}:{version}`"
-            )
-            with dockerfile.open("w") as wfh:
-                wfh.write(f"FROM {container}:{source_tag or version}\n")
+            dockerfile = container_dir / f"{version}.Dockerfile"
+            if is_mirror:
+                header = header = f"# {name} mirrored containers\n"
+                readme_contents.append(
+                    f"- [{container}](https://hub.docker.com/r/{org}/{container_name}"
+                    f"/tags?name={source_tag or version}) - `ghcr.io/{ghcr_org}/{container_name}:{version}`"
+                )
+                with dockerfile.open("w") as wfh:
+                    wfh.write(f"FROM {container}:{source_tag or version}\n")
+            else:
+                header = f"# {name} containers\n"
+                readme_contents.append(
+                    f"- {container_name} - `ghcr.io/{ghcr_org}/{container_name}:{version}`"
+                )
 
         with readme.open("w") as wfh:
-            header = f"# {name} mirrored containers\n"
             main_readme_contents.append("\n")
             main_readme_contents.append(f"##{header}")
             main_readme_contents.extend(readme_contents)
@@ -91,11 +107,13 @@ def generate(ctx, ghcr_org="s0undt3ch-salt-ci"):
         template = env.from_string(workflow_tpl.read_text())
         jinja_context = {
             "name": name,
-            "dockerfiles_path": mirror.relative_to(utils.REPO_ROOT),
+            "dockerfiles_path": dockerfile.relative_to(utils.REPO_ROOT),
             "repository_owner": ghcr_org,
-            "repository_path": container_name,
+            "repository_path": container_dir.relative_to(utils.REPO_ROOT),
+            "is_mirror": is_mirror,
         }
-        workflow_path = utils.REPO_ROOT / ".github" / "workflows" / f"{container_name}.yml"
+        workflows_dir = utils.REPO_ROOT / ".github" / "workflows"
+        workflow_path = workflows_dir / f"{container_name}.yml"
         workflow_path.write_text(template.render(**jinja_context).rstrip() + "\n")
 
     main_readme_contents[-1] = main_readme_contents[-1].rstrip()

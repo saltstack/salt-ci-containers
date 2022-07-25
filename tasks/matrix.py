@@ -17,7 +17,7 @@ def generate(ctx, image, from_workflow=False):
     Generate the container mirrors.
     """
     ctx.cd(utils.REPO_ROOT)
-    mirrors_path = utils.REPO_ROOT / "mirrors" / image
+    mirrors_path = utils.REPO_ROOT / image
 
     output = []
     for fpath in mirrors_path.glob("*.Dockerfile"):
