@@ -85,7 +85,6 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
             utils.info(f"  Generating docker file for version {version}...")
             dockerfile = container_dir / f"{version}.Dockerfile"
             if is_mirror:
-                header = header = f"# {name} mirrored containers\n"
                 readme_contents.append(
                     f"- [{container}:{version}](https://hub.docker.com/r/{org}/{container_name}"
                     f"/tags?name={source_tag or version}) - `ghcr.io/{ghcr_org}/{container_name}:{version}`"
@@ -93,12 +92,12 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
                 with dockerfile.open("w") as wfh:
                     wfh.write(f"FROM {container}:{source_tag or version}\n")
             else:
-                header = f"# {name} containers\n"
                 readme_contents.append(
                     f"- {container_name}:{version} - `ghcr.io/{ghcr_org}/{container_name}:{version}`"
                 )
 
         with readme.open("w") as wfh:
+            header = f"# {name}\n"
             main_readme_contents.append("\n")
             main_readme_contents.append(f"##{header}")
             main_readme_contents.extend(readme_contents)
