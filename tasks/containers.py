@@ -103,7 +103,7 @@ def generate(ctx, ghcr_org="s0undt3ch-salt-ci"):
 
         utils.info(f"  Generating Github workflow for {name} mirror...")
         env = jinja2.sandbox.SandboxedEnvironment()
-        workflow_tpl = utils.REPO_ROOT / ".github" / "workflows" / ".mirror.template.j2"
+        workflow_tpl = utils.REPO_ROOT / ".github" / "workflows" / ".container.template.j2"
         template = env.from_string(workflow_tpl.read_text())
         jinja_context = {
             "name": name,

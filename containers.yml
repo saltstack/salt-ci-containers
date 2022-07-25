@@ -1,3 +1,10 @@
+Salt:
+  name: salt
+  versions:
+    - 3002
+    - 3003
+    - 3004
+
 Virt-Minion:
   name: virt-minion
   versions:

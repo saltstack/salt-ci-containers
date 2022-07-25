@@ -5,6 +5,13 @@ These are containers used in the Salt Test Suite, either custom, or mirrors from
 ## Included Containers
 
 
+### Salt containers
+
+- salt - `ghcr.io/s0undt3ch-salt-ci/salt:3002`
+- salt - `ghcr.io/s0undt3ch-salt-ci/salt:3003`
+- salt - `ghcr.io/s0undt3ch-salt-ci/salt:3004`
+
+
 ### Virt-Minion containers
 
 - virt-minion - `ghcr.io/s0undt3ch-salt-ci/virt-minion:latest`
