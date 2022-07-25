@@ -7,14 +7,14 @@ These are containers used in the Salt Test Suite, either custom, or mirrors from
 
 ### Salt containers
 
-- salt - `ghcr.io/s0undt3ch-salt-ci/salt:3002`
-- salt - `ghcr.io/s0undt3ch-salt-ci/salt:3003`
-- salt - `ghcr.io/s0undt3ch-salt-ci/salt:3004`
+- salt:3002 - `ghcr.io/s0undt3ch-salt-ci/salt:3002`
+- salt:3003 - `ghcr.io/s0undt3ch-salt-ci/salt:3003`
+- salt:3004 - `ghcr.io/s0undt3ch-salt-ci/salt:3004`
 
 
 ### Virt-Minion containers
 
-- virt-minion - `ghcr.io/s0undt3ch-salt-ci/virt-minion:latest`
+- virt-minion:latest - `ghcr.io/s0undt3ch-salt-ci/virt-minion:latest`
 
 
 ### Apache-ZooKeeper mirrored containers

@@ -86,7 +86,7 @@ def generate(ctx, ghcr_org="s0undt3ch-salt-ci"):
             else:
                 header = f"# {name} containers\n"
                 readme_contents.append(
-                    f"- {container_name} - `ghcr.io/{ghcr_org}/{container_name}:{version}`"
+                    f"- {container_name}:{version} - `ghcr.io/{ghcr_org}/{container_name}:{version}`"
                 )
 
         with readme.open("w") as wfh:
