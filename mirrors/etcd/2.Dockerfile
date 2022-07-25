@@ -1,0 +1,1 @@
+FROM elcolio/etcd:latest

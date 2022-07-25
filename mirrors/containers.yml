@@ -1,0 +1,62 @@
+MySQL-Server:
+  container: mysql/mysql-server
+  versions:
+    - "5.5"
+    - "5.6"
+    - "5.7"
+    - "8.0"
+
+MariaDB:
+  container: mariadb
+  platforms:
+    - linux/arm64
+    - linux/arm/v7
+  versions:
+    - "10.1"
+    - "10.2"
+    - "10.3"
+    - "10.4"
+    - "10.5"
+
+Percona:
+  container: percona/percona-server
+  versions:
+    - "5.5"
+    - "5.6"
+    - "5.7"
+    - "8.0"
+
+Consul:
+  container: consul
+
+  versions:
+    - latest
+
+RabbitMQ:
+  container: rabbitmq
+  versions:
+    - "3.8"
+    - "3.9"
+
+Apache-ZooKeeper:
+  container: zookeeper
+  versions:
+    - latest
+
+Vault:
+  container: vault
+  versions:
+    - "0.9.6"
+    - "1.3.1"
+    - "latest"
+
+Etcd-v2:
+  container: elcolio/etcd
+  source_tag: latest
+  versions:
+    - "2"
+
+Etcd-v3:
+  container: bitnami/etcd
+  versions:
+    - "3"
