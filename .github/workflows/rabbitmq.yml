@@ -10,7 +10,7 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/*.yml'
-      - 'mirrors/rabbitmq/3.9.Dockerfile/*.Dockerfile'
+      - 'mirrors/rabbitmq/*.Dockerfile'
 
 env:
   REPOSITORY_OWNER: s0undt3ch-salt-ci

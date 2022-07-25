@@ -10,7 +10,7 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/*.yml'
-      - '{{ dockerfiles_path }}/*.Dockerfile'
+      - '{{ repository_path }}/*.Dockerfile'
 
 env:
   REPOSITORY_OWNER: {{ repository_owner }}

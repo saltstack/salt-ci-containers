@@ -10,7 +10,7 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/*.yml'
-      - 'mirrors/mariadb/10.5.Dockerfile/*.Dockerfile'
+      - 'mirrors/mariadb/*.Dockerfile'
 
 env:
   REPOSITORY_OWNER: s0undt3ch-salt-ci

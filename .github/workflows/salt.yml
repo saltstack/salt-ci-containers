@@ -10,7 +10,7 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/*.yml'
-      - 'custom/salt/3004.Dockerfile/*.Dockerfile'
+      - 'custom/salt/*.Dockerfile'
 
 env:
   REPOSITORY_OWNER: s0undt3ch-salt-ci

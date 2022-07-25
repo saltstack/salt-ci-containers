@@ -10,7 +10,7 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/*.yml'
-      - 'mirrors/consul/latest.Dockerfile/*.Dockerfile'
+      - 'mirrors/consul/*.Dockerfile'
 
 env:
   REPOSITORY_OWNER: s0undt3ch-salt-ci

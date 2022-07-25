@@ -10,7 +10,7 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/*.yml'
-      - 'mirrors/zookeeper/latest.Dockerfile/*.Dockerfile'
+      - 'mirrors/zookeeper/*.Dockerfile'
 
 env:
   REPOSITORY_OWNER: s0undt3ch-salt-ci

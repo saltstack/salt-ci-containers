@@ -41,12 +41,10 @@ def generate(ctx, ghcr_org="s0undt3ch-salt-ci"):
         else:
             main_readme_contents.append(line)
 
-    ctx.run("git rm -f mirrors/*/*.Dockerfile .github/workflows/*.yml", warn=True)
+    ctx.run("git rm -f mirrors/*/*.Dockerfile .github/workflows/*.yml", warn=True, hide=True)
     for path in utils.REPO_ROOT.joinpath("mirrors").glob("*"):
-        path_contents = list(path.glob("*"))
-        print(123, path_contents)
         if list(path.glob("*")) == [path / "README.md"]:
-            ctx.run(f"git rm -rf {path}", warn=True)
+            ctx.run(f"git rm -rf {path}", warn=True, hide=True)
 
     containers = list(sorted(custom_containers.items())) + list(sorted(mirror_containers.items()))
     for name, details in containers:
@@ -105,7 +103,6 @@ def generate(ctx, ghcr_org="s0undt3ch-salt-ci"):
         template = env.from_string(workflow_tpl.read_text())
         jinja_context = {
             "name": name,
-            "dockerfiles_path": dockerfile.relative_to(utils.REPO_ROOT),
             "repository_owner": ghcr_org,
             "repository_path": container_dir.relative_to(utils.REPO_ROOT),
             "is_mirror": is_mirror,
