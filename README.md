@@ -1,6 +1,8 @@
+# Salt CI Containers
+
 These are containers used in the Salt Test Suite, either custom, or mirrors from other container registries.
 
-# Included Containers
+<!-- included-containers -->
 
 ## Custom
 

@@ -38,7 +38,7 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
     main_readme_contents = []
 
     for line in main_readme.read_text().splitlines():
-        if line == "# Included Containers":
+        if line == "<!-- included-containers -->":
             main_readme_contents.append(line)
             main_readme_contents.append("\n## Custom")
             break
