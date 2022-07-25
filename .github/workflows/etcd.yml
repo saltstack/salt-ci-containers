@@ -1,4 +1,4 @@
-name: "Etcd-v3 🐳 Mirror"
+name: "Etcd v3 🐳 Mirror"
 
 on:
   workflow_dispatch:

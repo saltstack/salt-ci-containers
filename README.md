@@ -14,7 +14,7 @@ These are containers used in the Salt Test Suite, either custom, or mirrors from
 - salt:3004 - `ghcr.io/saltstack/salt-ci-containers/salt:3004`
 
 
-### Virt-Minion
+### Virt Minion
 
 - virt-minion:latest - `ghcr.io/saltstack/salt-ci-containers/virt-minion:latest`
 
@@ -22,7 +22,7 @@ These are containers used in the Salt Test Suite, either custom, or mirrors from
 ## Mirrors
 
 
-### Apache-ZooKeeper
+### Apache ZooKeeper
 
 - [zookeeper:latest](https://hub.docker.com/r/_/zookeeper/tags?name=latest) - `ghcr.io/saltstack/salt-ci-containers/zookeeper:latest`
 
@@ -32,12 +32,12 @@ These are containers used in the Salt Test Suite, either custom, or mirrors from
 - [consul:latest](https://hub.docker.com/r/_/consul/tags?name=latest) - `ghcr.io/saltstack/salt-ci-containers/consul:latest`
 
 
-### Etcd-v2
+### Etcd v2
 
 - [elcolio/etcd:2](https://hub.docker.com/r/elcolio/etcd/tags?name=latest) - `ghcr.io/saltstack/salt-ci-containers/etcd:2`
 
 
-### Etcd-v3
+### Etcd v3
 
 - [bitnami/etcd:3](https://hub.docker.com/r/bitnami/etcd/tags?name=3) - `ghcr.io/saltstack/salt-ci-containers/etcd:3`
 
@@ -51,7 +51,7 @@ These are containers used in the Salt Test Suite, either custom, or mirrors from
 - [mariadb:10.5](https://hub.docker.com/r/_/mariadb/tags?name=10.5) - `ghcr.io/saltstack/salt-ci-containers/mariadb:10.5`
 
 
-### MySQL-Server
+### MySQL Server
 
 - [mysql/mysql-server:5.5](https://hub.docker.com/r/mysql/mysql-server/tags?name=5.5) - `ghcr.io/saltstack/salt-ci-containers/mysql-server:5.5`
 - [mysql/mysql-server:5.6](https://hub.docker.com/r/mysql/mysql-server/tags?name=5.6) - `ghcr.io/saltstack/salt-ci-containers/mysql-server:5.6`

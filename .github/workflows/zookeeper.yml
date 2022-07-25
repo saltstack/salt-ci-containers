@@ -1,4 +1,4 @@
-name: "Apache-ZooKeeper 🐳 Mirror"
+name: "Apache ZooKeeper 🐳 Mirror"
 
 on:
   workflow_dispatch:

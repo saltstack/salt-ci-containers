@@ -5,12 +5,12 @@ Salt:
     - 3003
     - 3004
 
-Virt-Minion:
+Virt Minion:
   name: virt-minion
   versions:
     - latest
 
-MySQL-Server:
+MySQL Server:
   container: mysql/mysql-server
   versions:
     - "5.5"
@@ -50,7 +50,7 @@ RabbitMQ:
     - "3.8"
     - "3.9"
 
-Apache-ZooKeeper:
+Apache ZooKeeper:
   container: zookeeper
   versions:
     - latest
@@ -62,13 +62,13 @@ Vault:
     - "1.3.1"
     - "latest"
 
-Etcd-v2:
+Etcd v2:
   container: elcolio/etcd
   source_tag: latest
   versions:
     - "2"
 
-Etcd-v3:
+Etcd v3:
   container: bitnami/etcd
   versions:
     - "3"

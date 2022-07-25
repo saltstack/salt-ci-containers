@@ -1,4 +1,4 @@
-name: "Virt-Minion 🐳 Container"
+name: "Virt Minion 🐳 Container"
 
 on:
   workflow_dispatch:

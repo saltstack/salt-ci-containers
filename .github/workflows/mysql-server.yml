@@ -1,4 +1,4 @@
-name: "MySQL-Server 🐳 Mirror"
+name: "MySQL Server 🐳 Mirror"
 
 on:
   workflow_dispatch:
