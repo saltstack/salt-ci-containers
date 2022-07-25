@@ -8,6 +8,8 @@ on:
     branches:
       - '*'
     paths:
+      - containers.yml
+      - '.github/workflows/*.yml'
       - 'mirrors/mariadb/10.5.Dockerfile/*.Dockerfile'
 
 env:

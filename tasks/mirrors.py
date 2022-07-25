@@ -82,7 +82,7 @@ def generate(ctx, ghcr_org="s0undt3ch-salt-ci"):
             if is_mirror:
                 header = header = f"# {name} mirrored containers\n"
                 readme_contents.append(
-                    f"- [{container}](https://hub.docker.com/r/{org}/{container_name}"
+                    f"- [{container}:{version}](https://hub.docker.com/r/{org}/{container_name}"
                     f"/tags?name={source_tag or version}) - `ghcr.io/{ghcr_org}/{container_name}:{version}`"
                 )
                 with dockerfile.open("w") as wfh:

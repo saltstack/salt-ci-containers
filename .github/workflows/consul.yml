@@ -8,6 +8,8 @@ on:
     branches:
       - '*'
     paths:
+      - containers.yml
+      - '.github/workflows/*.yml'
       - 'mirrors/consul/latest.Dockerfile/*.Dockerfile'
 
 env:

@@ -8,6 +8,8 @@ on:
     branches:
       - '*'
     paths:
+      - containers.yml
+      - '.github/workflows/*.yml'
       - 'mirrors/mysql-server/8.0.Dockerfile/*.Dockerfile'
 
 env:

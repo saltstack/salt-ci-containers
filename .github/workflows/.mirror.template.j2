@@ -8,6 +8,8 @@ on:
     branches:
       - '*'
     paths:
+      - containers.yml
+      - '.github/workflows/*.yml'
       - '{{ dockerfiles_path }}/*.Dockerfile'
 
 env:
