@@ -4,14 +4,16 @@ These are containers used in the Salt Test Suite, either custom, or mirrors from
 
 <!-- included-containers -->
 
-## Custom
+## Salt Releases
 
 
-### [![Salt](https://github.com/saltstack/salt-ci-containers/actions/workflows/salt.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/salt.yml)
+### [![Salt Releases](https://github.com/saltstack/salt-ci-containers/actions/workflows/salt.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/salt.yml)
 
 - salt:3002 - `ghcr.io/saltstack/salt-ci-containers/salt:3002`
 - salt:3003 - `ghcr.io/saltstack/salt-ci-containers/salt:3003`
 - salt:3004 - `ghcr.io/saltstack/salt-ci-containers/salt:3004`
+
+## Custom
 
 
 ### [![Virt Minion](https://github.com/saltstack/salt-ci-containers/actions/workflows/virt-minion.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/virt-minion.yml)

@@ -26,13 +26,9 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
     else:
         loaded_containers = {}
 
-    custom_containers = {}
-    mirror_containers = {}
-    for name, details in loaded_containers.items():
-        if "name" in details:
-            custom_containers[name] = details
-        else:
-            mirror_containers[name] = details
+    salt_containers = loaded_containers["salt"]
+    custom_containers = loaded_containers["custom"]
+    mirror_containers = loaded_containers["mirrors"]
 
     main_readme = utils.REPO_ROOT / "README.md"
     main_readme_contents = []
@@ -40,7 +36,7 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
     for line in main_readme.read_text().splitlines():
         if line == "<!-- included-containers -->":
             main_readme_contents.append(line)
-            main_readme_contents.append("\n## Custom")
+            main_readme_contents.append("\n## Salt Releases")
             break
         else:
             main_readme_contents.append(line)
@@ -50,7 +46,10 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
         if list(path.glob("*")) == [path / "README.md"]:
             ctx.run(f"git rm -rf {path}", warn=True, hide=True)
 
-    containers = list(sorted(custom_containers.items())) + list(sorted(mirror_containers.items()))
+    containers = list(sorted(salt_containers.items()) + sorted(custom_containers.items())) + list(
+        sorted(mirror_containers.items())
+    )
+    custom_headers_included = False
     mirrors_header_included = False
     for name, details in containers:
         if "name" in details:
@@ -77,7 +76,13 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
         else:
             org = ghcr_org
             container_name = details["name"]
-            container_dir = utils.REPO_ROOT / "custom" / container_name
+            if details["name"] == "salt":
+                container_dir = utils.REPO_ROOT / container_name
+            else:
+                if not custom_headers_included:
+                    main_readme_contents.append("\n## Custom")
+                    custom_headers_included = True
+                container_dir = utils.REPO_ROOT / "custom" / container_name
 
         readme = container_dir / "README.md"
         readme_contents = []

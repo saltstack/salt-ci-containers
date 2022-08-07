@@ -1,4 +1,4 @@
-name: "Salt 🐳 Container"
+name: "Salt Releases 🐳 Container"
 
 on:
   workflow_dispatch:
@@ -10,10 +10,10 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/*.yml'
-      - 'custom/salt/*.Dockerfile'
+      - 'salt/*.Dockerfile'
 
 env:
-  MIRROR_IMAGE_PATH: custom/salt
+  MIRROR_IMAGE_PATH: salt
 
 jobs:
   matrix-generator:
