@@ -21,8 +21,6 @@ except ImportError:
 
 REPO_ROOT = pathlib.Path(__file__).parent.parent
 
-print(REPO_ROOT)
-
 
 def exit_invoke(exitcode: int, message: str | None = None, *args: str, **kwargs: str) -> None:
     """
