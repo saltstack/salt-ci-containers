@@ -26,7 +26,7 @@ These are containers used in the Salt Test Suite, either custom, or mirrors from
 
 ### [![Apache ZooKeeper](https://github.com/saltstack/salt-ci-containers/actions/workflows/zookeeper.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/zookeeper.yml)
 
-- [zookeeper:latest](https://hub.docker.com/r/_/zookeeper/tags?name=latest) - `ghcr.io/saltstack/salt-ci-containers/zookeeper:latest`
+- [zookeeper:3.5.9](https://hub.docker.com/r/_/zookeeper/tags?name=3.5.9) - `ghcr.io/saltstack/salt-ci-containers/zookeeper:3.5.9`
 
 
 ### [![Consul](https://github.com/saltstack/salt-ci-containers/actions/workflows/consul.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/consul.yml)

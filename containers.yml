@@ -62,9 +62,10 @@ mirrors:
       - "3.9"
 
   Apache ZooKeeper:
+
     container: zookeeper
     versions:
-      - latest
+      - 3.5.9
 
   Vault:
     container: vault
