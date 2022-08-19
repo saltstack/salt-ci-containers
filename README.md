@@ -49,9 +49,19 @@ custom:
       #  - <repo-root>/custom/foo/2.2.Dockerfile
 ```
 
-<!-- included-containers -->
+### Commit Changes
+
+When you commit changes, pre-commit will generate the necessary workflows, and
+Dockerfile(s) if needed, and also update this `README.md` file.
+
+So, the first time you `git commit -a`, it will fail, because it updated files.
+The next time, if there are no errors reported by `pre-commit`, the changes
+will be commited.
 
 # Containers Listing
+
+<!-- included-containers -->
+
 
 ## Salt Releases
 
