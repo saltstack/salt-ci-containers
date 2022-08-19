@@ -62,7 +62,6 @@ will be commited.
 
 <!-- included-containers -->
 
-
 ## Salt Releases
 
 
@@ -86,6 +85,11 @@ will be commited.
 ### [![Apache ZooKeeper](https://github.com/saltstack/salt-ci-containers/actions/workflows/zookeeper.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/zookeeper.yml)
 
 - [zookeeper:3.5.9](https://hub.docker.com/r/_/zookeeper/tags?name=3.5.9) - `ghcr.io/saltstack/salt-ci-containers/zookeeper:3.5.9`
+
+
+### [![BusyBox](https://github.com/saltstack/salt-ci-containers/actions/workflows/busybox.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/busybox.yml)
+
+- [busybox:musl](https://hub.docker.com/r/_/busybox/tags?name=musl) - `ghcr.io/saltstack/salt-ci-containers/busybox:musl`
 
 
 ### [![Consul](https://github.com/saltstack/salt-ci-containers/actions/workflows/consul.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/consul.yml)
