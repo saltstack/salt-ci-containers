@@ -2,7 +2,56 @@
 
 These are containers used in the Salt Test Suite, either custom, or mirrors from other container registries.
 
+## Contributing
+
+### Initial Setup
+
+Install `pre-commit`
+
+```shell
+python -m pip install pre-commit
+pre-commit install --install-hooks
+```
+
+### Mirror Container
+
+Edit the `containers.yml` file found in the root of the repository, and, under the `mirrors`
+key add your new mirror:
+
+```yaml
+mirrors:
+  <container label - display name>:
+    container: <container image>
+    versions:
+      - "1.0"
+      - "2.2"
+```
+
+### Custom Container
+
+When adding a custom container, edit the `containers.yml` file found in the root of the
+repository, and, under the `custom` key, add the new container:
+
+```yaml
+custom:
+  <container label - display name>:
+    name: <the name the container will have>
+    # The name is also the path, on the root of the repo of where the Dockerfile(s)
+    # can be found, for example, a custom container named foo will have it's files
+    # in <repo-root>/custom/foo
+    versions:
+      - "1.0"
+      - "2.2"
+      # These versions will map to existing Dockerfile(s).
+      # Following the example from above, the versions declared here would map
+      # to the following files:
+      #  - <repo-root>/custom/foo/1.0.Dockerfile
+      #  - <repo-root>/custom/foo/2.2.Dockerfile
+```
+
 <!-- included-containers -->
+
+# Containers Listing
 
 ## Salt Releases
 
