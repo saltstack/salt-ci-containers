@@ -13,6 +13,10 @@ salt:
 # ----- Custom Containers -------------------------------------------------------------------------------->
 # Custom images used in the CI pipeline
 custom:
+  OpenLDAP Minion:
+    name: openldap-minion
+    versions:
+      - latest
   Virt Minion:
     name: virt-minion
     versions:
