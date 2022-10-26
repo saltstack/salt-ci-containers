@@ -3,7 +3,7 @@ SALT_PATH ?= $(shell python -c 'import os, salt; print(os.path.abspath(salt.__fi
 all: build
 
 build:
-	docker build -t virt-minion .
+	docker build -t virt-minion -f latest.Dockerfile .
 
 run:
 	if [ -d $(SALT_PATH) ]; then \
