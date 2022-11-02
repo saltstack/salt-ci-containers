@@ -21,6 +21,10 @@ custom:
     name: virt-minion
     versions:
       - latest
+  SSH Minion:
+    name: ssh-minion
+    versions:
+      - latest
 # <---- Custom Containers ---------------------------------------------------------------------------------
 
 # ----- Mirrored Containers ------------------------------------------------------------------------------>

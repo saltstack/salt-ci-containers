@@ -1,5 +1,3 @@
-SALT_PATH ?= $(shell python -c 'import os, salt; print(os.path.abspath(salt.__file__ + "../../.."))')
-
 all: build
 
 build:
@@ -14,9 +12,8 @@ run:
 			--network host \
 			--name ssh-minion \
 			-it \
-			--mount type=bind,source=$(SALT_PATH),target=/salt \
-			virt-minion \
+			ssh-minion \
 			sh; \
 	fi
 clean:
-	docker rmi virt-minion
+	docker rmi ssh-minion
