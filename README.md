@@ -70,6 +70,7 @@ will be commited.
 - salt:3002 - `ghcr.io/saltstack/salt-ci-containers/salt:3002`
 - salt:3003 - `ghcr.io/saltstack/salt-ci-containers/salt:3003`
 - salt:3004 - `ghcr.io/saltstack/salt-ci-containers/salt:3004`
+- salt:3005 - `ghcr.io/saltstack/salt-ci-containers/salt:3005`
 
 ## Custom
 
@@ -77,6 +78,11 @@ will be commited.
 ### [![OpenLDAP Minion](https://github.com/saltstack/salt-ci-containers/actions/workflows/openldap-minion.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/openldap-minion.yml)
 
 - openldap-minion:latest - `ghcr.io/saltstack/salt-ci-containers/openldap-minion:latest`
+
+
+### [![SSH Minion](https://github.com/saltstack/salt-ci-containers/actions/workflows/ssh-minion.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/ssh-minion.yml)
+
+- ssh-minion:latest - `ghcr.io/saltstack/salt-ci-containers/ssh-minion:latest`
 
 
 ### [![Virt Minion](https://github.com/saltstack/salt-ci-containers/actions/workflows/virt-minion.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/virt-minion.yml)
