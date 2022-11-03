@@ -41,7 +41,9 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
         else:
             main_readme_contents.append(line)
 
-    ctx.run("git rm -f mirrors/*/*.Dockerfile .github/workflows/*.yml", warn=True, hide=True)
+    ctx.run(
+        "git rm -f mirrors/*/*.Dockerfile .github/workflows/*-containers.yml", warn=True, hide=True
+    )
     for path in utils.REPO_ROOT.joinpath("mirrors").glob("*"):
         if list(path.glob("*")) == [path / "README.md"]:
             ctx.run(f"git rm -rf {path}", warn=True, hide=True)
@@ -104,8 +106,8 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
         with readme.open("w") as wfh:
             header = (
                 f"# [![{name}]"
-                f"(https://github.com/{ghcr_org}/actions/workflows/{container_name}.yml/badge.svg)]"
-                f"(https://github.com/{ghcr_org}/actions/workflows/{container_name}.yml)\n"
+                f"(https://github.com/{ghcr_org}/actions/workflows/{container_name}-containers.yml/badge.svg)]"
+                f"(https://github.com/{ghcr_org}/actions/workflows/{container_name}-containers.yml)\n"
             )
             main_readme_contents.append("\n")
             main_readme_contents.append(f"##{header}")
@@ -124,7 +126,7 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
             "is_mirror": is_mirror,
         }
         workflows_dir = utils.REPO_ROOT / ".github" / "workflows"
-        workflow_path = workflows_dir / f"{container_name}.yml"
+        workflow_path = workflows_dir / f"{container_name}-containers.yml"
         workflow_path.write_text(template.render(**jinja_context).rstrip() + "\n")
 
     main_readme_contents[-1] = main_readme_contents[-1].rstrip()
@@ -135,7 +137,7 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
         wfh.write(f"{contents}\n")
 
     ctx.run("git add mirrors/")
-    ctx.run("git add .github/workflows/*.yml")
+    ctx.run("git add .github/workflows/*-containers.yml")
 
 
 @task

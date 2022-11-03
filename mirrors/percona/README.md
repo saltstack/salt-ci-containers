@@ -1,4 +1,4 @@
-# [![Percona](https://github.com/saltstack/salt-ci-containers/actions/workflows/percona.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/percona.yml)
+# [![Percona](https://github.com/saltstack/salt-ci-containers/actions/workflows/percona-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/percona-containers.yml)
 
 - [percona:5.5](https://hub.docker.com/r/_/percona/tags?name=5.5) - `ghcr.io/saltstack/salt-ci-containers/percona:5.5`
 - [percona:5.6](https://hub.docker.com/r/_/percona/tags?name=5.6) - `ghcr.io/saltstack/salt-ci-containers/percona:5.6`

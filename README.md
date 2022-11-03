@@ -65,7 +65,7 @@ will be commited.
 ## Salt Releases
 
 
-### [![Salt Releases](https://github.com/saltstack/salt-ci-containers/actions/workflows/salt.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/salt.yml)
+### [![Salt Releases](https://github.com/saltstack/salt-ci-containers/actions/workflows/salt-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/salt-containers.yml)
 
 - salt:3002 - `ghcr.io/saltstack/salt-ci-containers/salt:3002`
 - salt:3003 - `ghcr.io/saltstack/salt-ci-containers/salt:3003`
@@ -75,17 +75,17 @@ will be commited.
 ## Custom
 
 
-### [![OpenLDAP Minion](https://github.com/saltstack/salt-ci-containers/actions/workflows/openldap-minion.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/openldap-minion.yml)
+### [![OpenLDAP Minion](https://github.com/saltstack/salt-ci-containers/actions/workflows/openldap-minion-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/openldap-minion-containers.yml)
 
 - openldap-minion:latest - `ghcr.io/saltstack/salt-ci-containers/openldap-minion:latest`
 
 
-### [![SSH Minion](https://github.com/saltstack/salt-ci-containers/actions/workflows/ssh-minion.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/ssh-minion.yml)
+### [![SSH Minion](https://github.com/saltstack/salt-ci-containers/actions/workflows/ssh-minion-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/ssh-minion-containers.yml)
 
 - ssh-minion:latest - `ghcr.io/saltstack/salt-ci-containers/ssh-minion:latest`
 
 
-### [![Virt Minion](https://github.com/saltstack/salt-ci-containers/actions/workflows/virt-minion.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/virt-minion.yml)
+### [![Virt Minion](https://github.com/saltstack/salt-ci-containers/actions/workflows/virt-minion-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/virt-minion-containers.yml)
 
 - virt-minion:latest - `ghcr.io/saltstack/salt-ci-containers/virt-minion:latest`
 
@@ -93,32 +93,32 @@ will be commited.
 ## Mirrors
 
 
-### [![Apache ZooKeeper](https://github.com/saltstack/salt-ci-containers/actions/workflows/zookeeper.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/zookeeper.yml)
+### [![Apache ZooKeeper](https://github.com/saltstack/salt-ci-containers/actions/workflows/zookeeper-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/zookeeper-containers.yml)
 
 - [zookeeper:3.5.9](https://hub.docker.com/r/_/zookeeper/tags?name=3.5.9) - `ghcr.io/saltstack/salt-ci-containers/zookeeper:3.5.9`
 
 
-### [![BusyBox](https://github.com/saltstack/salt-ci-containers/actions/workflows/busybox.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/busybox.yml)
+### [![BusyBox](https://github.com/saltstack/salt-ci-containers/actions/workflows/busybox-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/busybox-containers.yml)
 
 - [busybox:musl](https://hub.docker.com/r/_/busybox/tags?name=musl) - `ghcr.io/saltstack/salt-ci-containers/busybox:musl`
 
 
-### [![Consul](https://github.com/saltstack/salt-ci-containers/actions/workflows/consul.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/consul.yml)
+### [![Consul](https://github.com/saltstack/salt-ci-containers/actions/workflows/consul-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/consul-containers.yml)
 
 - [consul:latest](https://hub.docker.com/r/_/consul/tags?name=latest) - `ghcr.io/saltstack/salt-ci-containers/consul:latest`
 
 
-### [![Etcd v2](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd.yml)
+### [![Etcd v2](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-containers.yml)
 
 - [elcolio/etcd:2](https://hub.docker.com/r/elcolio/etcd/tags?name=latest) - `ghcr.io/saltstack/salt-ci-containers/etcd:2`
 
 
-### [![Etcd v3](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd.yml)
+### [![Etcd v3](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-containers.yml)
 
 - [bitnami/etcd:3](https://hub.docker.com/r/bitnami/etcd/tags?name=3) - `ghcr.io/saltstack/salt-ci-containers/etcd:3`
 
 
-### [![MariaDB](https://github.com/saltstack/salt-ci-containers/actions/workflows/mariadb.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/mariadb.yml)
+### [![MariaDB](https://github.com/saltstack/salt-ci-containers/actions/workflows/mariadb-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/mariadb-containers.yml)
 
 - [mariadb:10.1](https://hub.docker.com/r/_/mariadb/tags?name=10.1) - `ghcr.io/saltstack/salt-ci-containers/mariadb:10.1`
 - [mariadb:10.2](https://hub.docker.com/r/_/mariadb/tags?name=10.2) - `ghcr.io/saltstack/salt-ci-containers/mariadb:10.2`
@@ -127,7 +127,7 @@ will be commited.
 - [mariadb:10.5](https://hub.docker.com/r/_/mariadb/tags?name=10.5) - `ghcr.io/saltstack/salt-ci-containers/mariadb:10.5`
 
 
-### [![MySQL Server](https://github.com/saltstack/salt-ci-containers/actions/workflows/mysql-server.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/mysql-server.yml)
+### [![MySQL Server](https://github.com/saltstack/salt-ci-containers/actions/workflows/mysql-server-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/mysql-server-containers.yml)
 
 - [mysql/mysql-server:5.5](https://hub.docker.com/r/mysql/mysql-server/tags?name=5.5) - `ghcr.io/saltstack/salt-ci-containers/mysql-server:5.5`
 - [mysql/mysql-server:5.6](https://hub.docker.com/r/mysql/mysql-server/tags?name=5.6) - `ghcr.io/saltstack/salt-ci-containers/mysql-server:5.6`
@@ -135,7 +135,7 @@ will be commited.
 - [mysql/mysql-server:8.0](https://hub.docker.com/r/mysql/mysql-server/tags?name=8.0) - `ghcr.io/saltstack/salt-ci-containers/mysql-server:8.0`
 
 
-### [![Percona](https://github.com/saltstack/salt-ci-containers/actions/workflows/percona.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/percona.yml)
+### [![Percona](https://github.com/saltstack/salt-ci-containers/actions/workflows/percona-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/percona-containers.yml)
 
 - [percona:5.5](https://hub.docker.com/r/_/percona/tags?name=5.5) - `ghcr.io/saltstack/salt-ci-containers/percona:5.5`
 - [percona:5.6](https://hub.docker.com/r/_/percona/tags?name=5.6) - `ghcr.io/saltstack/salt-ci-containers/percona:5.6`
@@ -143,7 +143,7 @@ will be commited.
 - [percona:8.0](https://hub.docker.com/r/_/percona/tags?name=8.0) - `ghcr.io/saltstack/salt-ci-containers/percona:8.0`
 
 
-### [![Python](https://github.com/saltstack/salt-ci-containers/actions/workflows/python.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/python.yml)
+### [![Python](https://github.com/saltstack/salt-ci-containers/actions/workflows/python-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/python-containers.yml)
 
 - [python:3](https://hub.docker.com/r/_/python/tags?name=3) - `ghcr.io/saltstack/salt-ci-containers/python:3`
 - [python:3.10](https://hub.docker.com/r/_/python/tags?name=3.10) - `ghcr.io/saltstack/salt-ci-containers/python:3.10`
@@ -153,13 +153,13 @@ will be commited.
 - [python:3.9](https://hub.docker.com/r/_/python/tags?name=3.9) - `ghcr.io/saltstack/salt-ci-containers/python:3.9`
 
 
-### [![RabbitMQ](https://github.com/saltstack/salt-ci-containers/actions/workflows/rabbitmq.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/rabbitmq.yml)
+### [![RabbitMQ](https://github.com/saltstack/salt-ci-containers/actions/workflows/rabbitmq-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/rabbitmq-containers.yml)
 
 - [rabbitmq:3.8](https://hub.docker.com/r/_/rabbitmq/tags?name=3.8) - `ghcr.io/saltstack/salt-ci-containers/rabbitmq:3.8`
 - [rabbitmq:3.9](https://hub.docker.com/r/_/rabbitmq/tags?name=3.9) - `ghcr.io/saltstack/salt-ci-containers/rabbitmq:3.9`
 
 
-### [![Vault](https://github.com/saltstack/salt-ci-containers/actions/workflows/vault.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/vault.yml)
+### [![Vault](https://github.com/saltstack/salt-ci-containers/actions/workflows/vault-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/vault-containers.yml)
 
 - [vault:0.9.6](https://hub.docker.com/r/_/vault/tags?name=0.9.6) - `ghcr.io/saltstack/salt-ci-containers/vault:0.9.6`
 - [vault:1.3.1](https://hub.docker.com/r/_/vault/tags?name=1.3.1) - `ghcr.io/saltstack/salt-ci-containers/vault:1.3.1`
