@@ -1,4 +1,4 @@
-name: "Virt Minion 🐳 Container"
+name: "Python 🐳 Mirror"
 
 on:
   workflow_dispatch:
@@ -10,10 +10,15 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/*.yml'
-      - 'custom/virt-minion/*.Dockerfile'
+      - 'mirrors/python/*.Dockerfile'
+  pull_request:
+    paths:
+      - containers.yml
+      - '.github/workflows/*.yml'
+      - 'mirrors/python/*.Dockerfile'
 
 env:
-  MIRROR_IMAGE_PATH: custom/virt-minion
+  MIRROR_IMAGE_PATH: mirrors/python
 
 jobs:
   matrix-generator:
@@ -102,6 +107,6 @@ jobs:
         with:
           file: ${{ matrix.dockerinfo.file }}
           context: ${{ env.MIRROR_IMAGE_PATH }}
-          push: true
+          push: ${{ github.event_name == 'push' }}
           tags: |
             ghcr.io/${{ github.repository }}/${{ matrix.dockerinfo.name }}

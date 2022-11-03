@@ -1,4 +1,4 @@
-name: "RabbitMQ 🐳 Mirror"
+name: "Etcd v3 🐳 Mirror"
 
 on:
   workflow_dispatch:
@@ -10,10 +10,15 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/*.yml'
-      - 'mirrors/rabbitmq/*.Dockerfile'
+      - 'mirrors/etcd/*.Dockerfile'
+  pull_request:
+    paths:
+      - containers.yml
+      - '.github/workflows/*.yml'
+      - 'mirrors/etcd/*.Dockerfile'
 
 env:
-  MIRROR_IMAGE_PATH: mirrors/rabbitmq
+  MIRROR_IMAGE_PATH: mirrors/etcd
 
 jobs:
   matrix-generator:
@@ -102,6 +107,6 @@ jobs:
         with:
           file: ${{ matrix.dockerinfo.file }}
           context: ${{ env.MIRROR_IMAGE_PATH }}
-          push: true
+          push: ${{ github.event_name == 'push' }}
           tags: |
             ghcr.io/${{ github.repository }}/${{ matrix.dockerinfo.name }}

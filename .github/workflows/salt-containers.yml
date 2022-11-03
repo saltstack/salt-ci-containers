@@ -1,4 +1,4 @@
-name: "Percona 🐳 Mirror"
+name: "Salt Releases 🐳 Container"
 
 on:
   workflow_dispatch:
@@ -10,10 +10,15 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/*.yml'
-      - 'mirrors/percona/*.Dockerfile'
+      - 'salt/*.Dockerfile'
+  pull_request:
+    paths:
+      - containers.yml
+      - '.github/workflows/*.yml'
+      - 'salt/*.Dockerfile'
 
 env:
-  MIRROR_IMAGE_PATH: mirrors/percona
+  MIRROR_IMAGE_PATH: salt
 
 jobs:
   matrix-generator:
@@ -102,6 +107,6 @@ jobs:
         with:
           file: ${{ matrix.dockerinfo.file }}
           context: ${{ env.MIRROR_IMAGE_PATH }}
-          push: true
+          push: ${{ github.event_name == 'push' }}
           tags: |
             ghcr.io/${{ github.repository }}/${{ matrix.dockerinfo.name }}

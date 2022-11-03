@@ -1,4 +1,4 @@
-name: "Consul 🐳 Mirror"
+name: "OpenLDAP Minion 🐳 Container"
 
 on:
   workflow_dispatch:
@@ -10,10 +10,15 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/*.yml'
-      - 'mirrors/consul/*.Dockerfile'
+      - 'custom/openldap-minion/*.Dockerfile'
+  pull_request:
+    paths:
+      - containers.yml
+      - '.github/workflows/*.yml'
+      - 'custom/openldap-minion/*.Dockerfile'
 
 env:
-  MIRROR_IMAGE_PATH: mirrors/consul
+  MIRROR_IMAGE_PATH: custom/openldap-minion
 
 jobs:
   matrix-generator:
@@ -102,6 +107,6 @@ jobs:
         with:
           file: ${{ matrix.dockerinfo.file }}
           context: ${{ env.MIRROR_IMAGE_PATH }}
-          push: true
+          push: ${{ github.event_name == 'push' }}
           tags: |
             ghcr.io/${{ github.repository }}/${{ matrix.dockerinfo.name }}

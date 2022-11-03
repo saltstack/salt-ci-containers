@@ -1,4 +1,4 @@
-name: "MariaDB 🐳 Mirror"
+name: "MySQL Server 🐳 Mirror"
 
 on:
   workflow_dispatch:
@@ -10,10 +10,15 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/*.yml'
-      - 'mirrors/mariadb/*.Dockerfile'
+      - 'mirrors/mysql-server/*.Dockerfile'
+  pull_request:
+    paths:
+      - containers.yml
+      - '.github/workflows/*.yml'
+      - 'mirrors/mysql-server/*.Dockerfile'
 
 env:
-  MIRROR_IMAGE_PATH: mirrors/mariadb
+  MIRROR_IMAGE_PATH: mirrors/mysql-server
 
 jobs:
   matrix-generator:
@@ -102,6 +107,6 @@ jobs:
         with:
           file: ${{ matrix.dockerinfo.file }}
           context: ${{ env.MIRROR_IMAGE_PATH }}
-          push: true
+          push: ${{ github.event_name == 'push' }}
           tags: |
             ghcr.io/${{ github.repository }}/${{ matrix.dockerinfo.name }}
