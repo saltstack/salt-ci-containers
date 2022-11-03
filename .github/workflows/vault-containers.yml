@@ -9,16 +9,16 @@ on:
       - '*'
     paths:
       - containers.yml
-      - '.github/workflows/*.yml'
-      - 'mirrors/vault/*.Dockerfile'
+      - '.github/workflows/vault-containers.yml'
+      - 'mirrors/vault/*'
   pull_request:
     paths:
       - containers.yml
-      - '.github/workflows/*.yml'
-      - 'mirrors/vault/*.Dockerfile'
+      - '.github/workflows/vault-containers.yml'
+      - 'mirrors/vault/*'
 
 env:
-  MIRROR_IMAGE_PATH: mirrors/vault
+  PATH_IN_REPO: mirrors/vault
 
 jobs:
   matrix-generator:
@@ -42,7 +42,7 @@ jobs:
       - name: "Generate Matrix Data"
         id: set-matrix
         run: |
-          inv containers.matrix --from-workflow ${{ env.MIRROR_IMAGE_PATH }}
+          inv containers.matrix --from-workflow ${{ env.PATH_IN_REPO }}
 
   mirror-image:
     runs-on: ubuntu-latest
@@ -106,7 +106,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           file: ${{ matrix.dockerinfo.file }}
-          context: ${{ env.MIRROR_IMAGE_PATH }}
-          push: ${{ github.event_name == 'push' }}
+          context: ${{ env.PATH_IN_REPO }}
+          push: ${{ github.repository == 'saltstack/salt-ci-containers' && github.event_name == 'push' }}
           tags: |
             ghcr.io/${{ github.repository }}/${{ matrix.dockerinfo.name }}

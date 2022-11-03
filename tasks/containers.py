@@ -120,13 +120,15 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
         env = jinja2.sandbox.SandboxedEnvironment()
         workflow_tpl = utils.REPO_ROOT / ".github" / "workflows" / ".container.template.j2"
         template = env.from_string(workflow_tpl.read_text())
+        workflow_file_name = f"{container_name}-containers.yml"
         jinja_context = {
             "name": name,
             "repository_path": container_dir.relative_to(utils.REPO_ROOT),
             "is_mirror": is_mirror,
+            "workflow_file_name": workflow_file_name,
         }
         workflows_dir = utils.REPO_ROOT / ".github" / "workflows"
-        workflow_path = workflows_dir / f"{container_name}-containers.yml"
+        workflow_path = workflows_dir / workflow_file_name
         workflow_path.write_text(template.render(**jinja_context).rstrip() + "\n")
 
     main_readme_contents[-1] = main_readme_contents[-1].rstrip()
