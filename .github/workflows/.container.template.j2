@@ -109,7 +109,7 @@ jobs:
         with:
           file: ${{ matrix.dockerinfo.file }}
           context: ${{ env.MIRROR_IMAGE_PATH }}
-          push: ${{ github.event_name == 'push' }}
+          push: ${{ github.repository == 'saltstack/salt-ci-containers' && github.event_name == 'push' }}
           tags: |
             ghcr.io/${{ github.repository }}/${{ matrix.dockerinfo.name }}
 {%- endraw %}
