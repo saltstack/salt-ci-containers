@@ -11,6 +11,11 @@ on:
       - containers.yml
       - '.github/workflows/*.yml'
       - 'mirrors/rabbitmq/*.Dockerfile'
+  pull_request:
+    paths:
+      - containers.yml
+      - '.github/workflows/*.yml'
+      - 'mirrors/rabbitmq/*.Dockerfile'
 
 env:
   MIRROR_IMAGE_PATH: mirrors/rabbitmq
@@ -102,6 +107,6 @@ jobs:
         with:
           file: ${{ matrix.dockerinfo.file }}
           context: ${{ env.MIRROR_IMAGE_PATH }}
-          push: true
+          push: ${{ github.event_name == 'push' }}
           tags: |
             ghcr.io/${{ github.repository }}/${{ matrix.dockerinfo.name }}

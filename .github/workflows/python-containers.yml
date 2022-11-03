@@ -11,6 +11,11 @@ on:
       - containers.yml
       - '.github/workflows/*.yml'
       - 'mirrors/python/*.Dockerfile'
+  pull_request:
+    paths:
+      - containers.yml
+      - '.github/workflows/*.yml'
+      - 'mirrors/python/*.Dockerfile'
 
 env:
   MIRROR_IMAGE_PATH: mirrors/python
@@ -102,6 +107,6 @@ jobs:
         with:
           file: ${{ matrix.dockerinfo.file }}
           context: ${{ env.MIRROR_IMAGE_PATH }}
-          push: true
+          push: ${{ github.event_name == 'push' }}
           tags: |
             ghcr.io/${{ github.repository }}/${{ matrix.dockerinfo.name }}
