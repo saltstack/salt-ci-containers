@@ -83,7 +83,6 @@ RUN ln -sf \
         && echo "NETWORKING=yes" \
                 > /etc/sysconfig/network \
         && sed -i \
-                -e 's~^PasswordAuthentication yes~PasswordAuthentication no~g' \
                 -e 's~^#PermitRootLogin yes~PermitRootLogin no~g' \
                 -e 's~^#UseDNS yes~UseDNS no~g' \
                 -e 's~^\(.*\)/usr/libexec/openssh/sftp-server$~\1internal-sftp~g' \
@@ -112,7 +111,7 @@ ENV \
         SSH_AUTHORIZED_KEYS="" \
         SSH_CHROOT_DIRECTORY="%h" \
         SSH_INHERIT_ENVIRONMENT="false" \
-        SSH_PASSWORD_AUTHENTICATION="false" \
+        SSH_PASSWORD_AUTHENTICATION="true" \
         SSH_SUDO="ALL=(ALL) ALL" \
         SSH_USER="app-admin" \
         SSH_USER_FORCE_SFTP="false" \
