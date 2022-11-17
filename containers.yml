@@ -25,6 +25,12 @@ custom:
     name: ssh-minion
     versions:
       - latest
+
+  SSH Password Minion:
+    name: ssh-password-minion
+    versions:
+      - latest
+
 # <---- Custom Containers ---------------------------------------------------------------------------------
 
 # ----- Mirrored Containers ------------------------------------------------------------------------------>

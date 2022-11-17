@@ -85,6 +85,11 @@ will be commited.
 - ssh-minion:latest - `ghcr.io/saltstack/salt-ci-containers/ssh-minion:latest`
 
 
+### [![SSH Password Minion](https://github.com/saltstack/salt-ci-containers/actions/workflows/ssh-password-minion-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/ssh-password-minion-containers.yml)
+
+- ssh-password-minion:latest - `ghcr.io/saltstack/salt-ci-containers/ssh-password-minion:latest`
+
+
 ### [![Virt Minion](https://github.com/saltstack/salt-ci-containers/actions/workflows/virt-minion-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/virt-minion-containers.yml)
 
 - virt-minion:latest - `ghcr.io/saltstack/salt-ci-containers/virt-minion:latest`
