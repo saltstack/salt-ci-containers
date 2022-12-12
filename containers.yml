@@ -67,8 +67,9 @@ mirrors:
   RabbitMQ:
     container: rabbitmq
     versions:
-      - "3.8"
       - "3.9"
+      - "3.10"
+      - "3.11"
 
   Apache ZooKeeper:
 
