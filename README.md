@@ -85,6 +85,11 @@ will be commited.
 - ssh-minion:latest - `ghcr.io/saltstack/salt-ci-containers/ssh-minion:latest`
 
 
+### [![Salt GitFS HTTP Server](https://github.com/saltstack/salt-ci-containers/actions/workflows/salt-gitfs-http-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/salt-gitfs-http-containers.yml)
+
+- salt-gitfs-http:latest - `ghcr.io/saltstack/salt-ci-containers/salt-gitfs-http:latest`
+
+
 ### [![Virt Minion](https://github.com/saltstack/salt-ci-containers/actions/workflows/virt-minion-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/virt-minion-containers.yml)
 
 - virt-minion:latest - `ghcr.io/saltstack/salt-ci-containers/virt-minion:latest`
