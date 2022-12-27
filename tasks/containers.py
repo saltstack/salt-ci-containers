@@ -4,6 +4,7 @@ Generate the mirrors layout.
 from __future__ import annotations
 
 import json
+import os
 import sys
 
 import jinja2.sandbox
@@ -160,6 +161,11 @@ def matrix(ctx, image, from_workflow=False):
         )
 
     if from_workflow:
-        print(f"::set-output name=dockerinfo::{json.dumps(output)}", flush=True, file=sys.stdout)
+        github_output = os.environ.get("GITHUB_OUTPUT")
+        if github_output is None:
+            ctx.warn("The 'GITHUB_OUTPUT' variable is not set.")
+            ctx.exit(1)
+        with open(github_output, "a", encoding="utf-8") as wfh:
+            wfh.write(f"name=dockerinfo::{json.dumps(output)}\n")
     else:
         print(json.dumps(output), flush=True, file=sys.stdout)
