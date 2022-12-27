@@ -30,7 +30,7 @@ jobs:
       dockerinfo: ${{ steps.set-matrix.outputs.dockerinfo }}
     steps:
       - name: "Fetching Repository Contents"
-        uses: actions3checkout@v3
+        uses: actions/checkout@v3
 
       - name: Setup Python
         uses: actions/setup-python@v4
