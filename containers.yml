@@ -25,6 +25,10 @@ custom:
     name: ssh-minion
     versions:
       - latest
+  Salt GitFS HTTP Server:
+    name: salt-gitfs-http
+    versions:
+      - latest
 # <---- Custom Containers ---------------------------------------------------------------------------------
 
 # ----- Mirrored Containers ------------------------------------------------------------------------------>
