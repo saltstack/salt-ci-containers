@@ -8,17 +8,11 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    container:
-      image: python:3.9-slim-buster
-
     steps:
-
-      - name: Install System Deps
-        run: |
-          apt-get update
-          apt-get install -y enchant git
-
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
 
       - name: Install Pre-Commit
         env:
