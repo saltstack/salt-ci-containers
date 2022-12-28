@@ -166,6 +166,6 @@ def matrix(ctx, image, from_workflow=False):
             ctx.warn("The 'GITHUB_OUTPUT' variable is not set.")
             ctx.exit(1)
         with open(github_output, "a", encoding="utf-8") as wfh:
-            wfh.write(f"name=dockerinfo::{json.dumps(output)}\n")
+            wfh.write(f"dockerinfo={json.dumps(output)}\n")
     else:
         print(json.dumps(output), flush=True, file=sys.stdout)
