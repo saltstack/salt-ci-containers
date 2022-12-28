@@ -15,8 +15,9 @@ RUN apk add --update nginx && \
     apk add --update spawn-fcgi && \
     rm -rf /var/cache/apk/*
 
-COPY conf/nginx.conf /etc/nginx/nginx.conf
 COPY conf/users /etc/nginx/auth-users
+RUN chown nginx:nginx /etc/nginx/auth-users
+COPY conf/nginx.conf /etc/nginx/nginx.conf
 COPY conf/supervisord.conf /etc/supervisord.conf
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
