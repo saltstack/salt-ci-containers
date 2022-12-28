@@ -9,13 +9,14 @@ VOLUME ["/repos"]
 
 RUN apk add --update nginx && \
     apk add --update git && \
+    apk add --update git-daemon && \
     apk add --update supervisor && \
-    apk add --update uwsgi && \
+    apk add --update fcgiwrap && \
+    apk add --update spawn-fcgi && \
     rm -rf /var/cache/apk/*
 
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 COPY conf/users /etc/nginx/auth-users
-COPY conf/uwsgi.yml /etc/uwsgi/gitfs.yml
 COPY conf/supervisord.conf /etc/supervisord.conf
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
