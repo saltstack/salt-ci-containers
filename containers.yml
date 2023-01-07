@@ -109,6 +109,12 @@ mirrors:
       - "3.9"
       - "3.10"
 
+  Redis:
+    container: redis
+    source_tag: alpine
+    versions:
+      - alpine
+
   BusyBox:
     container: busybox
     versions:
