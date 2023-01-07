@@ -30,7 +30,9 @@ RUN dnf update -y && \
       PyYAML \
       urllib3 \
       chardet \
-      certifi
+      certifi \
+      looseversion \
+      packaging
 
 RUN echo 'listen_tls = 1'     >> /etc/libvirt/libvirtd.conf; \
     echo 'listen_tcp = 1'     >> /etc/libvirt/libvirtd.conf; \
