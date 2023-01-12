@@ -1,3 +1,7 @@
+.target_platforms: &target_platforms
+  - linux/amd64
+  - linux/arm64
+  - linux/arm/v7
 # ----- Salt Releases ------------------------------------------------------------------------------------>
 # Builds the latest minor version of the defined versions
 salt:
@@ -15,18 +19,22 @@ salt:
 custom:
   OpenLDAP Minion:
     name: openldap-minion
+    platforms: *target_platforms
     versions:
       - latest
   Virt Minion:
     name: virt-minion
+    platforms: *target_platforms
     versions:
       - latest
   SSH Minion:
     name: ssh-minion
+    platforms: *target_platforms
     versions:
       - latest
   Salt GitFS HTTP Server:
     name: salt-gitfs-http
+    platforms: *target_platforms
     versions:
       - latest
 # <---- Custom Containers ---------------------------------------------------------------------------------
@@ -36,6 +44,7 @@ custom:
 mirrors:
   MySQL Server:
     container: mysql/mysql-server
+    platforms: *target_platforms
     versions:
       - "5.5"
       - "5.6"
@@ -44,9 +53,7 @@ mirrors:
 
   MariaDB:
     container: mariadb
-    platforms:
-      - linux/arm64
-      - linux/arm/v7
+    platforms: *target_platforms
     versions:
       - "10.1"
       - "10.2"
@@ -56,6 +63,7 @@ mirrors:
 
   Percona:
     container: percona
+    platforms: *target_platforms
     versions:
       - "5.5"
       - "5.6"
@@ -64,25 +72,27 @@ mirrors:
 
   Consul:
     container: consul
-
+    platforms: *target_platforms
     versions:
       - latest
 
   RabbitMQ:
     container: rabbitmq
+    platforms: *target_platforms
     versions:
       - "3.9"
       - "3.10"
       - "3.11"
 
   Apache ZooKeeper:
-
     container: zookeeper
+    platforms: *target_platforms
     versions:
       - 3.5.9
 
   Vault:
     container: vault
+    platforms: *target_platforms
     versions:
       - "0.9.6"
       - "1.3.1"
@@ -90,17 +100,20 @@ mirrors:
 
   Etcd v2:
     container: elcolio/etcd
+    platforms: *target_platforms
     source_tag: latest
     versions:
       - "2"
 
   Etcd v3:
     container: bitnami/etcd
+    platforms: *target_platforms
     versions:
       - "3"
 
   Python:
     container: python
+    platforms: *target_platforms
     versions:
       - "3"
       - "3.6"
@@ -112,11 +125,13 @@ mirrors:
   Redis:
     container: redis
     source_tag: alpine
+    platforms: *target_platforms
     versions:
       - alpine
 
   BusyBox:
     container: busybox
+    platforms: *target_platforms
     versions:
       - musl
 # <---- Mirrored Containers -------------------------------------------------------------------------------

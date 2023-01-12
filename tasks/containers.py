@@ -127,6 +127,7 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
             "repository_path": container_dir.relative_to(utils.REPO_ROOT),
             "is_mirror": is_mirror,
             "workflow_file_name": workflow_file_name,
+            "platforms": ",".join(details.get("platforms") or ()),
         }
         workflows_dir = utils.REPO_ROOT / ".github" / "workflows"
         workflow_path = workflows_dir / workflow_file_name
