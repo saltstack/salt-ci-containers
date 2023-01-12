@@ -109,6 +109,11 @@ jobs:
         with:
           file: ${{ matrix.dockerinfo.file }}
           context: ${{ env.PATH_IN_REPO }}
+{%- endraw %}
+          {%- if platforms %}
+          platforms: {{ platforms }}
+          {%- endif %}
+{%- raw %}
           push: ${{ github.repository == 'saltstack/salt-ci-containers' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
           tags: |
             ghcr.io/${{ github.repository }}/${{ matrix.dockerinfo.name }}
