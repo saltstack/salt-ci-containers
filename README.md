@@ -108,9 +108,19 @@ will be commited.
 - [busybox:musl](https://hub.docker.com/r/_/busybox/tags?name=musl) - `ghcr.io/saltstack/salt-ci-containers/busybox:musl`
 
 
+### [![CentOS Stream](https://github.com/saltstack/salt-ci-containers/actions/workflows/centos-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/centos-containers.yml)
+
+- [quay.io/centos/centos:stream9](https://hub.docker.com/r/quay.io/centos/centos/tags?name=stream9) - `ghcr.io/saltstack/salt-ci-containers/centos:stream9`
+
+
 ### [![Consul](https://github.com/saltstack/salt-ci-containers/actions/workflows/consul-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/consul-containers.yml)
 
 - [consul:latest](https://hub.docker.com/r/_/consul/tags?name=latest) - `ghcr.io/saltstack/salt-ci-containers/consul:latest`
+
+
+### [![Debian](https://github.com/saltstack/salt-ci-containers/actions/workflows/debian-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/debian-containers.yml)
+
+- [debian:11](https://hub.docker.com/r/_/debian/tags?name=11) - `ghcr.io/saltstack/salt-ci-containers/debian:11`
 
 
 ### [![Etcd v2](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-containers.yml)
@@ -168,6 +178,11 @@ will be commited.
 ### [![Redis](https://github.com/saltstack/salt-ci-containers/actions/workflows/redis-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/redis-containers.yml)
 
 - [redis:alpine](https://hub.docker.com/r/_/redis/tags?name=alpine) - `ghcr.io/saltstack/salt-ci-containers/redis:alpine`
+
+
+### [![Ubuntu](https://github.com/saltstack/salt-ci-containers/actions/workflows/ubuntu-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/ubuntu-containers.yml)
+
+- [ubuntu:22.04](https://hub.docker.com/r/_/ubuntu/tags?name=22.04) - `ghcr.io/saltstack/salt-ci-containers/ubuntu:22.04`
 
 
 ### [![Vault](https://github.com/saltstack/salt-ci-containers/actions/workflows/vault-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/vault-containers.yml)
