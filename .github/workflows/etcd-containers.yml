@@ -101,7 +101,13 @@ jobs:
 
       - name: Inspect Source Image
         run: |
-          docker buildx imagetools inspect bitnami/etcd:3
+          docker buildx imagetools inspect bitnami/etcd:3 | tee -a source-container-inspect.txt
+
+      - name: Define Build Platforms
+        id: define-platforms
+        run: |
+          PLATFORMS=$(cat source-container-inspect.txt | grep Platform: | awk '{ print $2 }' | tr '\n' ',' | sed 's/,$//g')
+          echo "platforms=$PLATFORMS" >> $GITHUB_OUTPUT
 
       - name: "Log into GitHub Container Registry"
         uses: docker/login-action@v2
@@ -115,7 +121,7 @@ jobs:
         with:
           file: ${{ matrix.dockerinfo.file }}
           context: ${{ env.PATH_IN_REPO }}
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          platforms: ${{ steps.define-platforms.outputs.platforms }}
           push: ${{ github.repository == 'saltstack/salt-ci-containers' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
           tags: |
             ghcr.io/${{ github.repository }}/${{ matrix.dockerinfo.name }}

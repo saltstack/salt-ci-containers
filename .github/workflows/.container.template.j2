@@ -101,12 +101,15 @@ jobs:
           echo "Flags:     ${{ steps.buildx.outputs.flags }}"
           echo "Platforms: ${{ steps.buildx.outputs.platforms }}"
 
-{%- endraw %}{%- if source_container %}
-
       - name: Inspect Source Image
         run: |
-          docker buildx imagetools inspect {{ source_container }}
-{%- endif %}{%- raw %}
+          docker buildx imagetools inspect {% endraw -%} {{ source_container }} {%- raw %} | tee -a source-container-inspect.txt
+
+      - name: Define Build Platforms
+        id: define-platforms
+        run: |
+          PLATFORMS=$(cat source-container-inspect.txt | grep Platform: | awk '{ print $2 }' | tr '\n' ',' | sed 's/,$//g')
+          echo "platforms=$PLATFORMS" >> $GITHUB_OUTPUT
 
       - name: "Log into GitHub Container Registry"
         uses: docker/login-action@v2
@@ -120,11 +123,7 @@ jobs:
         with:
           file: ${{ matrix.dockerinfo.file }}
           context: ${{ env.PATH_IN_REPO }}
-{%- endraw %}
-          {%- if platforms %}
-          platforms: {{ platforms }}
-          {%- endif %}
-{%- raw %}
+          platforms: ${{ steps.define-platforms.outputs.platforms }}
           push: ${{ github.repository == 'saltstack/salt-ci-containers' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
           tags: |
             ghcr.io/${{ github.repository }}/${{ matrix.dockerinfo.name }}

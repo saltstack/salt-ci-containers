@@ -101,7 +101,14 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
                 with dockerfile.open("w") as wfh:
                     wfh.write(f"FROM {source_container}\n")
             else:
-                source_container = None
+                with dockerfile.open("r") as rfh:
+                    for line in rfh:
+                        if line.startswith("FROM "):
+                            source_container = line.strip().split()[-1]
+                            break
+                    else:
+                        utils.error("Failed to find 'FROM ' line")
+                        ctx.exit(1)
                 readme_contents.append(
                     f"- {container_name}:{version} - `ghcr.io/{ghcr_org}/{container_name}:{version}`"
                 )
@@ -129,7 +136,6 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
             "repository_path": container_dir.relative_to(utils.REPO_ROOT),
             "is_mirror": is_mirror,
             "workflow_file_name": workflow_file_name,
-            "platforms": ",".join(details.get("platforms") or ()),
             "source_container": source_container,
         }
         workflows_dir = utils.REPO_ROOT / ".github" / "workflows"
