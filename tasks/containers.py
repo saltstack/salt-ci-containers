@@ -97,9 +97,11 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
                     f"- [{container}:{version}](https://hub.docker.com/r/{org}/{container_name}"
                     f"/tags?name={source_tag or version}) - `ghcr.io/{ghcr_org}/{container_name}:{version}`"
                 )
+                source_container = f"{container}:{source_tag or version}"
                 with dockerfile.open("w") as wfh:
-                    wfh.write(f"FROM {container}:{source_tag or version}\n")
+                    wfh.write(f"FROM {source_container}\n")
             else:
+                source_container = None
                 readme_contents.append(
                     f"- {container_name}:{version} - `ghcr.io/{ghcr_org}/{container_name}:{version}`"
                 )
@@ -128,6 +130,7 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
             "is_mirror": is_mirror,
             "workflow_file_name": workflow_file_name,
             "platforms": ",".join(details.get("platforms") or ()),
+            "source_container": source_container,
         }
         workflows_dir = utils.REPO_ROOT / ".github" / "workflows"
         workflow_path = workflows_dir / workflow_file_name

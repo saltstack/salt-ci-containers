@@ -95,6 +95,10 @@ jobs:
           echo "Flags:     ${{ steps.buildx.outputs.flags }}"
           echo "Platforms: ${{ steps.buildx.outputs.platforms }}"
 
+      - name: Inspect Source Image
+        run: |
+          docker buildx imagetools inspect consul:latest
+
       - name: "Log into GitHub Container Registry"
         uses: docker/login-action@v2
         with:
