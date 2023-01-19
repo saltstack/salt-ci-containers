@@ -115,4 +115,19 @@ mirrors:
     container: busybox
     versions:
       - musl
+
+  Debian:
+    container: debian
+    versions:
+      - "11"
+
+  CentOS Stream:
+    container: quay.io/centos/centos
+    versions:
+      - stream9
+
+  Ubuntu:
+    container: ubuntu
+    versions:
+      - "22.04"
 # <---- Mirrored Containers -------------------------------------------------------------------------------
