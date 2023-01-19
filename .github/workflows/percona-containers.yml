@@ -106,7 +106,7 @@ jobs:
       - name: Define Build Platforms
         id: define-platforms
         run: |
-          PLATFORMS=$(cat source-container-inspect.txt | grep Platform: | awk '{ print $2 }' | tr '\n' ',' | sed 's/,$//g')
+          PLATFORMS=$(cat source-container-inspect.txt | grep Platform: | awk '{ print $2 }' | grep -v 'linux/s390x' | tr '\n' ',' | sed 's/,$//g')
           echo "platforms=$PLATFORMS" >> $GITHUB_OUTPUT
 
       - name: "Log into GitHub Container Registry"
