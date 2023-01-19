@@ -29,6 +29,10 @@ jobs:
     outputs:
       dockerinfo: ${{ steps.set-matrix.outputs.dockerinfo }}
     steps:
+      - name: "Throttle Builds"
+        run: |
+          t=$(shuf -i 5-30 -n 1); echo "Sleeping $t seconds"; sleep $t
+
       - name: "Fetching Repository Contents"
         uses: actions/checkout@v3
 
