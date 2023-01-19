@@ -21,6 +21,7 @@ custom:
     name: virt-minion
     versions:
       - latest
+    multiarch: false
   SSH Minion:
     name: ssh-minion
     versions:
