@@ -131,6 +131,11 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
         workflow_tpl = utils.REPO_ROOT / ".github" / "workflows" / ".container.template.j2"
         template = env.from_string(workflow_tpl.read_text())
         workflow_file_name = f"{container_name}-containers.yml"
+        exclude_platforms = [
+            "linux/s390x",
+            "linux/mips64le",
+        ]
+        exclude_platforms.extend(details.get("exclude_platforms") or [])
         jinja_context = {
             "name": name,
             "repository_path": container_dir.relative_to(utils.REPO_ROOT),
@@ -138,6 +143,7 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
             "workflow_file_name": workflow_file_name,
             "source_container": source_container,
             "multiarch": details.get("multiarch", True),
+            "exclude_platforms": ",".join(exclude_platforms),
         }
         workflows_dir = utils.REPO_ROOT / ".github" / "workflows"
         workflow_path = workflows_dir / workflow_file_name
@@ -180,3 +186,29 @@ def matrix(ctx, image, from_workflow=False):
             wfh.write(f"dockerinfo={json.dumps(output)}\n")
     else:
         print(json.dumps(output), flush=True, file=sys.stdout)
+
+
+@task
+def platforms(ctx, supported_platforms_file, exclude=None):
+    """
+    Generate a platforms list.
+    """
+    if exclude is None:
+        excludes = []
+    else:
+        excludes = exclude.split(",")
+    platforms = []
+    with open(supported_platforms_file, encoding="utf-8") as rfh:
+        for line in rfh:
+            if "Platform:" in line:
+                _, platform = line.split()
+                if platform in excludes:
+                    utils.info("Excluding {}", platform)
+                    continue
+                utils.info("Inluding {}", platform)
+                platforms.append(platform)
+
+    contents = "platforms={}".format(",".join(platforms))
+    utils.info("Writing '{}' to $GITHUB_OUTPUT ...", contents)
+    with open(os.environ["GITHUB_OUTPUT"], "w", encoding="utf-8") as wfh:
+        wfh.write(f"{contents}\n")

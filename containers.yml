@@ -30,12 +30,17 @@ custom:
     name: salt-gitfs-http
     versions:
       - latest
+
   Salt Packaging:
     name: packaging
     versions:
-      - debian-11
       - centos-7
+      - debian-11
       - centosstream-9
+    exclude_platforms:
+      - linux/386
+      - linux/arm/v5
+      - linux/arm/v7
 # <---- Custom Containers ---------------------------------------------------------------------------------
 
 # ----- Mirrored Containers ------------------------------------------------------------------------------>

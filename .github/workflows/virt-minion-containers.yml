@@ -19,6 +19,13 @@ on:
 
 env:
   PATH_IN_REPO: custom/virt-minion
+concurrency:
+  # Concurrency is defined in a way that concurrent builds against branches do
+  # not cancel previous builds.
+  # However, for every new build against the same pull request source branch,
+  # all older builds against that same branch get canceled.
+  group: custom/virt-minion-${{ github.workflow }}-${{ github.event_name }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
 
 jobs:
   matrix-generator:
@@ -70,6 +77,15 @@ jobs:
     steps:
       - name: "Fetching Repository Contents"
         uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Requirements
+        run: |
+          python -m pip install -r requirements.txt
 
       - name: "Throttle concurrent pushes"
         run: |
