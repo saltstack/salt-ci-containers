@@ -97,14 +97,12 @@ mirrors:
       - "latest"
 
   Etcd v2:
-    name: etcd
     container: elcolio/etcd
     source_tag: latest
     versions:
       - "2"
 
   Etcd v3:
-    name: etcd
     container: bitnami/etcd
     versions:
       - "3"
@@ -130,6 +128,13 @@ mirrors:
     container: busybox
     versions:
       - musl
+
+  Amazon Linux:
+    container: amazonlinux
+    versions:
+      - "2"
+    commands:
+      - yum update -y
 
   Debian:
     container: debian

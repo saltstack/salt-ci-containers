@@ -9,16 +9,16 @@ on:
       - '*'
     paths:
       - containers.yml
-      - '.github/workflows/etcd-containers.yml'
-      - 'mirrors/etcd/*'
+      - '.github/workflows/etcd-v3-containers.yml'
+      - 'mirrors/etcd-v3/*'
   pull_request:
     paths:
       - containers.yml
-      - '.github/workflows/etcd-containers.yml'
-      - 'mirrors/etcd/*'
+      - '.github/workflows/etcd-v3-containers.yml'
+      - 'mirrors/etcd-v3/*'
 
 env:
-  PATH_IN_REPO: mirrors/etcd
+  PATH_IN_REPO: mirrors/etcd-v3
 
 
 concurrency:
@@ -26,7 +26,7 @@ concurrency:
   # not cancel previous builds.
   # However, for every new build against the same pull request source branch,
   # all older builds against that same branch get canceled.
-  group: mirrors/etcd-${{ github.workflow }}-${{ github.event_name }}-${{ github.head_ref || github.run_id }}
+  group: mirrors/etcd-v3-${{ github.workflow }}-${{ github.event_name }}-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
 jobs:

@@ -105,6 +105,11 @@ will be commited.
 ## Mirrors
 
 
+### [![Amazon Linux](https://github.com/saltstack/salt-ci-containers/actions/workflows/amazon-linux-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/amazon-linux-containers.yml)
+
+- [amazonlinux:2](https://hub.docker.com/r/_/amazonlinux/tags?name=2) - `ghcr.io/saltstack/salt-ci-containers/amazonlinux:2`
+
+
 ### [![Apache ZooKeeper](https://github.com/saltstack/salt-ci-containers/actions/workflows/zookeeper-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/zookeeper-containers.yml)
 
 - [zookeeper:3.5.9](https://hub.docker.com/r/_/zookeeper/tags?name=3.5.9) - `ghcr.io/saltstack/salt-ci-containers/zookeeper:3.5.9`
@@ -137,12 +142,12 @@ will be commited.
 - [debian:11](https://hub.docker.com/r/_/debian/tags?name=11) - `ghcr.io/saltstack/salt-ci-containers/debian:11`
 
 
-### [![Etcd v2](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-containers.yml)
+### [![Etcd v2](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-v2-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-v2-containers.yml)
 
 - [elcolio/etcd:2](https://hub.docker.com/r/elcolio/etcd/tags?name=latest) - `ghcr.io/saltstack/salt-ci-containers/etcd:2`
 
 
-### [![Etcd v3](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-containers.yml)
+### [![Etcd v3](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-v3-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-v3-containers.yml)
 
 - [bitnami/etcd:3](https://hub.docker.com/r/bitnami/etcd/tags?name=3) - `ghcr.io/saltstack/salt-ci-containers/etcd:3`
 
