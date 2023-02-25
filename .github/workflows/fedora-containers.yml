@@ -1,4 +1,4 @@
-name: "Debian 🐳 Mirror"
+name: "Fedora 🐳 Mirror"
 
 on:
   workflow_dispatch:
@@ -9,22 +9,22 @@ on:
       - '*'
     paths:
       - containers.yml
-      - '.github/workflows/debian-containers.yml'
-      - 'mirrors/debian/*'
+      - '.github/workflows/fedora-containers.yml'
+      - 'mirrors/fedora/*'
   pull_request:
     paths:
       - containers.yml
-      - '.github/workflows/debian-containers.yml'
-      - 'mirrors/debian/*'
+      - '.github/workflows/fedora-containers.yml'
+      - 'mirrors/fedora/*'
 
 env:
-  PATH_IN_REPO: mirrors/debian
+  PATH_IN_REPO: mirrors/fedora
 concurrency:
   # Concurrency is defined in a way that concurrent builds against branches do
   # not cancel previous builds.
   # However, for every new build against the same pull request source branch,
   # all older builds against that same branch get canceled.
-  group: mirrors/debian-${{ github.workflow }}-${{ github.event_name }}-${{ github.head_ref || github.run_id }}
+  group: mirrors/fedora-${{ github.workflow }}-${{ github.event_name }}-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
 jobs:
@@ -117,12 +117,12 @@ jobs:
 
       - name: Inspect Source Image
         run: |
-          docker buildx imagetools inspect debian:11 | tee -a source-container-inspect.txt
+          docker buildx imagetools inspect fedora:38 | tee -a source-container-inspect.txt
 
       - name: Define Build Platforms
         id: define-platforms
         run: |
-          inv containers.platforms --exclude=linux/s390x,linux/mips64le,linux/ppc64le,linux/arm/v5 source-container-inspect.txt
+          inv containers.platforms --exclude=linux/s390x,linux/mips64le source-container-inspect.txt
 
       - name: "Log into GitHub Container Registry"
         uses: docker/login-action@v2

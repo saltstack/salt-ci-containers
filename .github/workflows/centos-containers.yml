@@ -1,4 +1,4 @@
-name: "CentOS Stream 🐳 Mirror"
+name: "CentOS 🐳 Mirror"
 
 on:
   workflow_dispatch:
@@ -117,7 +117,7 @@ jobs:
 
       - name: Inspect Source Image
         run: |
-          docker buildx imagetools inspect quay.io/centos/centos:stream9 | tee -a source-container-inspect.txt
+          docker buildx imagetools inspect centos:7 | tee -a source-container-inspect.txt
 
       - name: Define Build Platforms
         id: define-platforms

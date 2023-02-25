@@ -115,8 +115,14 @@ will be commited.
 - [busybox:musl](https://hub.docker.com/r/_/busybox/tags?name=musl) - `ghcr.io/saltstack/salt-ci-containers/busybox:musl`
 
 
-### [![CentOS Stream](https://github.com/saltstack/salt-ci-containers/actions/workflows/centos-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/centos-containers.yml)
+### [![CentOS](https://github.com/saltstack/salt-ci-containers/actions/workflows/centos-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/centos-containers.yml)
 
+- [centos:7](https://hub.docker.com/r/_/centos/tags?name=7) - `ghcr.io/saltstack/salt-ci-containers/centos:7`
+
+
+### [![CentOS Stream](https://github.com/saltstack/salt-ci-containers/actions/workflows/centos-stream-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/centos-stream-containers.yml)
+
+- [quay.io/centos/centos:stream8](https://hub.docker.com/r/quay.io/centos/centos/tags?name=stream8) - `ghcr.io/saltstack/salt-ci-containers/centos:stream8`
 - [quay.io/centos/centos:stream9](https://hub.docker.com/r/quay.io/centos/centos/tags?name=stream9) - `ghcr.io/saltstack/salt-ci-containers/centos:stream9`
 
 
@@ -127,6 +133,7 @@ will be commited.
 
 ### [![Debian](https://github.com/saltstack/salt-ci-containers/actions/workflows/debian-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/debian-containers.yml)
 
+- [debian:10](https://hub.docker.com/r/_/debian/tags?name=10) - `ghcr.io/saltstack/salt-ci-containers/debian:10`
 - [debian:11](https://hub.docker.com/r/_/debian/tags?name=11) - `ghcr.io/saltstack/salt-ci-containers/debian:11`
 
 
@@ -138,6 +145,13 @@ will be commited.
 ### [![Etcd v3](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-containers.yml)
 
 - [bitnami/etcd:3](https://hub.docker.com/r/bitnami/etcd/tags?name=3) - `ghcr.io/saltstack/salt-ci-containers/etcd:3`
+
+
+### [![Fedora](https://github.com/saltstack/salt-ci-containers/actions/workflows/fedora-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/fedora-containers.yml)
+
+- [fedora:36](https://hub.docker.com/r/_/fedora/tags?name=36) - `ghcr.io/saltstack/salt-ci-containers/fedora:36`
+- [fedora:37](https://hub.docker.com/r/_/fedora/tags?name=37) - `ghcr.io/saltstack/salt-ci-containers/fedora:37`
+- [fedora:38](https://hub.docker.com/r/_/fedora/tags?name=38) - `ghcr.io/saltstack/salt-ci-containers/fedora:38`
 
 
 ### [![MariaDB](https://github.com/saltstack/salt-ci-containers/actions/workflows/mariadb-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/mariadb-containers.yml)
@@ -189,6 +203,7 @@ will be commited.
 
 ### [![Ubuntu](https://github.com/saltstack/salt-ci-containers/actions/workflows/ubuntu-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/ubuntu-containers.yml)
 
+- [ubuntu:20.04](https://hub.docker.com/r/_/ubuntu/tags?name=20.04) - `ghcr.io/saltstack/salt-ci-containers/ubuntu:20.04`
 - [ubuntu:22.04](https://hub.docker.com/r/_/ubuntu/tags?name=22.04) - `ghcr.io/saltstack/salt-ci-containers/ubuntu:22.04`
 
 
