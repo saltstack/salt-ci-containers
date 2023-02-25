@@ -30,6 +30,16 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
     salt_containers = loaded_containers["salt"]
     custom_containers = loaded_containers["custom"]
     mirror_containers = loaded_containers["mirrors"]
+    for containers_dict in (salt_containers, custom_containers):
+        for name, details in containers_dict.items():
+            details["is_mirror"] = False
+            containers_dict[name] = details
+
+    for name, details in mirror_containers.items():
+        details["is_mirror"] = True
+        if "name" not in details:
+            details["name"] = name.lower().replace(" ", "-")
+        mirror_containers[name] = details
 
     main_readme = utils.REPO_ROOT / "README.md"
     main_readme_contents = []
@@ -55,10 +65,7 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
     custom_headers_included = False
     mirrors_header_included = False
     for name, details in containers:
-        if "name" in details:
-            is_mirror = False
-        else:
-            is_mirror = True
+        is_mirror = details["is_mirror"]
 
         if is_mirror:
             if not mirrors_header_included:
@@ -74,7 +81,7 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
                 container_name = container
 
             source_tag = details.get("source_tag")
-            container_dir = utils.REPO_ROOT / "mirrors" / container_name
+            container_dir = utils.REPO_ROOT / "mirrors" / details["name"]
             container_dir.mkdir(parents=True, exist_ok=True)
         else:
             org = ghcr_org
@@ -100,6 +107,8 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
                 source_container = f"{container}:{source_tag or version}"
                 with dockerfile.open("w") as wfh:
                     wfh.write(f"FROM {source_container}\n")
+                    for command in details.get("commands", ()):
+                        wfh.write(f"RUN {command}\n")
             else:
                 with dockerfile.open("r") as rfh:
                     for line in rfh:
@@ -113,11 +122,12 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
                     f"- {container_name}:{version} - `ghcr.io/{ghcr_org}/{container_name}:{version}`"
                 )
 
+        readme_exists = readme.exists()
         with readme.open("w") as wfh:
             header = (
                 f"# [![{name}]"
-                f"(https://github.com/{ghcr_org}/actions/workflows/{container_name}-containers.yml/badge.svg)]"
-                f"(https://github.com/{ghcr_org}/actions/workflows/{container_name}-containers.yml)\n"
+                f"(https://github.com/{ghcr_org}/actions/workflows/{details['name']}-containers.yml/badge.svg)]"
+                f"(https://github.com/{ghcr_org}/actions/workflows/{details['name']}-containers.yml)\n"
             )
             main_readme_contents.append("\n")
             main_readme_contents.append(f"##{header}")
@@ -126,11 +136,14 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
             wfh.write("\n".join(readme_contents))
             wfh.write("\n")
 
+        if not readme_exists:
+            ctx.run(f"git add {readme.relative_to(utils.REPO_ROOT)}")
+
         utils.info(f"  Generating Github workflow for {name} mirror...")
         env = jinja2.sandbox.SandboxedEnvironment()
         workflow_tpl = utils.REPO_ROOT / ".github" / "workflows" / ".container.template.j2"
         template = env.from_string(workflow_tpl.read_text())
-        workflow_file_name = f"{container_name}-containers.yml"
+        workflow_file_name = f"{details['name']}-containers.yml"
         exclude_platforms = [
             "linux/s390x",
             "linux/mips64le",
@@ -138,6 +151,7 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
         exclude_platforms.extend(details.get("exclude_platforms") or [])
         jinja_context = {
             "name": name,
+            "slug": details["name"],
             "repository_path": container_dir.relative_to(utils.REPO_ROOT),
             "is_mirror": is_mirror,
             "workflow_file_name": workflow_file_name,
@@ -147,7 +161,11 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
         }
         workflows_dir = utils.REPO_ROOT / ".github" / "workflows"
         workflow_path = workflows_dir / workflow_file_name
+        workflow_path_exists = workflow_path.exists()
+        utils.info(f"  Writing {workflow_path.relative_to(utils.REPO_ROOT)} ...")
         workflow_path.write_text(template.render(**jinja_context).rstrip() + "\n")
+        if not workflow_path_exists:
+            ctx.run(f"git add {workflow_path.relative_to(utils.REPO_ROOT)}")
 
     main_readme_contents[-1] = main_readme_contents[-1].rstrip()
     main_readme_contents.append("\n")

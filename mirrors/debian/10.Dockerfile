@@ -1,3 +1,3 @@
-FROM ubuntu:22.04
+FROM debian:10
 RUN apt update
 RUN apt upgrade -y

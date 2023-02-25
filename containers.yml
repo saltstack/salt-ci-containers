@@ -84,6 +84,7 @@ mirrors:
       - "3.11"
 
   Apache ZooKeeper:
+    name: zookeeper
     container: zookeeper
     versions:
       - 3.5.9
@@ -96,12 +97,14 @@ mirrors:
       - "latest"
 
   Etcd v2:
+    name: etcd
     container: elcolio/etcd
     source_tag: latest
     versions:
       - "2"
 
   Etcd v3:
+    name: etcd
     container: bitnami/etcd
     versions:
       - "3"
@@ -130,15 +133,45 @@ mirrors:
   Debian:
     container: debian
     versions:
+      - "10"
       - "11"
+    commands:
+      - apt update
+      - apt upgrade -y
+    exclude_platforms:
+      - linux/ppc64le
+      - linux/arm/v5
+
+  CentOS:
+    container: centos
+    versions:
+      - "7"
+    commands:
+      - yum update -y
 
   CentOS Stream:
     container: quay.io/centos/centos
     versions:
+      - stream8
       - stream9
+    commands:
+      - dnf update -y
+
+  Fedora:
+    container: fedora
+    versions:
+      - "36"
+      - "37"
+      - "38"
+    commands:
+      - dnf update -y
 
   Ubuntu:
     container: ubuntu
     versions:
+      - "20.04"
       - "22.04"
+    commands:
+      - apt update
+      - apt upgrade -y
 # <---- Mirrored Containers -------------------------------------------------------------------------------
