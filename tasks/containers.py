@@ -100,6 +100,8 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
             utils.info(f"  Generating docker file for version {version}...")
             dockerfile = container_dir / f"{version}.Dockerfile"
             if is_mirror:
+                dockerfile_exists = dockerfile.exists()
+                print(123, dockerfile, dockerfile_exists)
                 readme_contents.append(
                     f"- [{container}:{version}](https://hub.docker.com/r/{org}/{container_name}"
                     f"/tags?name={source_tag or version}) - `ghcr.io/{ghcr_org}/{container_name}:{version}`"
@@ -109,6 +111,8 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
                     wfh.write(f"FROM {source_container}\n")
                     for command in details.get("commands", ()):
                         wfh.write(f"RUN {command}\n")
+                if not dockerfile_exists:
+                    ctx.run(f"git add {dockerfile.relative_to(utils.REPO_ROOT)}")
             else:
                 with dockerfile.open("r") as rfh:
                     for line in rfh:
@@ -182,7 +186,7 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
         contents = "\n".join(main_readme_contents).rstrip()
         wfh.write(f"{contents}\n")
 
-    ctx.run("git add mirrors/")
+    print(666, ctx.run("git add mirrors/"))
     ctx.run("git add .github/workflows/*-containers.yml")
 
 
