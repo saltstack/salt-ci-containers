@@ -140,7 +140,15 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
             ctx.run(f"git add {readme.relative_to(utils.REPO_ROOT)}")
 
         utils.info(f"  Generating Github workflow for {name} mirror...")
-        env = jinja2.sandbox.SandboxedEnvironment()
+        env = jinja2.sandbox.SandboxedEnvironment(
+            block_start_string="<%",
+            block_end_string="%>",
+            variable_start_string="<{",
+            variable_end_string="}>",
+            extensions=[
+                "jinja2.ext.do",
+            ],
+        )
         workflow_tpl = utils.REPO_ROOT / ".github" / "workflows" / ".container.template.j2"
         template = env.from_string(workflow_tpl.read_text())
         workflow_file_name = f"{details['name']}-containers.yml"
