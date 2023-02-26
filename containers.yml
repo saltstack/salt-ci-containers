@@ -152,8 +152,8 @@ mirrors:
     container: centos
     versions:
       - "7"
-    commands:
-      - yum update -y
+#    commands:
+#      - yum update -y
 
   CentOS Stream:
     container: quay.io/centos/centos
