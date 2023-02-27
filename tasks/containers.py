@@ -81,7 +81,7 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
                 container_name = container
 
             source_tag = details.get("source_tag")
-            container_dir = utils.REPO_ROOT / "mirrors" / details["name"]
+            container_dir = utils.REPO_ROOT / "mirrors" / (details.get("dest") or details["name"])
             container_dir.mkdir(parents=True, exist_ok=True)
         else:
             org = ghcr_org
@@ -100,12 +100,21 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
             utils.info(f"  Generating docker file for version {version}...")
             dockerfile = container_dir / f"{version}.Dockerfile"
             if is_mirror:
+                local_source_tag = source_tag
+                if local_source_tag is not None:
+                    local_source_tag = local_source_tag.format(version=version)
                 dockerfile_exists = dockerfile.exists()
+                if container.count("/") > 1:
+                    hosting = f"https://{org}/{container_name}"
+                    if "quay" in org:
+                        hosting += f"?tab=tags&tag={local_source_tag or version}"
+                else:
+                    hosting = f"https://hub.docker.com/r/{org}/{container_name}/tags?name={local_source_tag or version}"
                 readme_contents.append(
-                    f"- [{container}:{version}](https://hub.docker.com/r/{org}/{container_name}"
-                    f"/tags?name={source_tag or version}) - `ghcr.io/{ghcr_org}/{container_name}:{version}`"
+                    f"- [{org if org != '_' else 'dockerhub'}/{container_name}:{local_source_tag or version}]"
+                    f"({hosting}) - `ghcr.io/{ghcr_org}/{details['name']}:{version}`"
                 )
-                source_container = f"{container}:{source_tag or version}"
+                source_container = f"{container}:{local_source_tag or version}"
                 with dockerfile.open("w") as wfh:
                     wfh.write(f"FROM {source_container}\n")
                     for command in details.get("commands", ()):
@@ -126,11 +135,12 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
                 )
 
         readme_exists = readme.exists()
+        workflow_file_name = f"{details.get('dest') or details['name']}-containers.yml"
         with readme.open("w") as wfh:
             header = (
                 f"# [![{name}]"
-                f"(https://github.com/{ghcr_org}/actions/workflows/{details['name']}-containers.yml/badge.svg)]"
-                f"(https://github.com/{ghcr_org}/actions/workflows/{details['name']}-containers.yml)\n"
+                f"(https://github.com/{ghcr_org}/actions/workflows/{workflow_file_name}/badge.svg)]"
+                f"(https://github.com/{ghcr_org}/actions/workflows/{workflow_file_name})\n"
             )
             main_readme_contents.append("\n")
             main_readme_contents.append(f"##{header}")
@@ -154,7 +164,6 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
         )
         workflow_tpl = utils.REPO_ROOT / ".github" / "workflows" / ".container.template.j2"
         template = env.from_string(workflow_tpl.read_text())
-        workflow_file_name = f"{details['name']}-containers.yml"
         exclude_platforms = [
             "linux/s390x",
             "linux/mips64le",
