@@ -97,12 +97,16 @@ mirrors:
       - "latest"
 
   Etcd v2:
+    name: etcd
+    dest: etcd-v2
     container: elcolio/etcd
     source_tag: latest
     versions:
       - "2"
 
   Etcd v3:
+    name: etcd
+    dest: etcd-v3
     container: bitnami/etcd
     versions:
       - "3"
@@ -157,9 +161,10 @@ mirrors:
 
   CentOS Stream:
     container: quay.io/centos/centos
+    source_tag: stream{version}
     versions:
-      - stream8
-      - stream9
+      - "8"
+      - "9"
     commands:
       - dnf update -y
 
