@@ -34,7 +34,6 @@ custom:
   Salt Packaging:
     name: packaging
     versions:
-      - centos-7
       - debian-11
       - centosstream-9
     exclude_platforms:
