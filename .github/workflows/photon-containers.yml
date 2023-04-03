@@ -119,7 +119,7 @@ jobs:
 
       - name: Inspect Source Image
         run: |
-          docker buildx imagetools inspect photon:4 | tee -a source-container-inspect.txt
+          docker buildx imagetools inspect photon:5.0 | tee -a source-container-inspect.txt
 
       - name: Define Build Platforms
         id: define-platforms
