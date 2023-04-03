@@ -151,6 +151,19 @@ mirrors:
       - linux/ppc64le
       - linux/arm/v5
 
+  Photon:
+    container: photon
+    versions:
+      - "3"
+      - "4"
+      - "5"
+    commands:
+      - tdnf update
+      - tdnf upgrade -y
+    exclude_platforms:
+      - linux/ppc64le
+      - linux/arm/v5
+
   CentOS:
     container: centos
     versions:
