@@ -156,7 +156,6 @@ mirrors:
     versions:
       - "3.0"
       - "4.0"
-      - "5.0"
     commands:
       - tdnf update
       - tdnf upgrade -y
