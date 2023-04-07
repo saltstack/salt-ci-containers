@@ -158,7 +158,7 @@ mirrors:
       - "3.0"
       - "4.0"
     commands:
-      - tdnf update
+      - tdnf update -y
       - tdnf upgrade -y
     exclude_platforms:
       - linux/ppc64le
