@@ -154,12 +154,14 @@ mirrors:
 
   Photon:
     container: photon
+    source_tag: "{version}.0"
     versions:
-      - "3.0"
-      - "4.0"
+      - 3
+      - 4
     commands:
       - tdnf update -y
       - tdnf upgrade -y
+      - tdnf install -y rpm
     exclude_platforms:
       - linux/ppc64le
       - linux/arm/v5
