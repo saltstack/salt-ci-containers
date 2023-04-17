@@ -161,7 +161,7 @@ mirrors:
     commands:
       - tdnf update -y
       - tdnf upgrade -y
-      - tdnf install -y rpm
+      - tdnf install -y rpm shadow
     exclude_platforms:
       - linux/ppc64le
       - linux/arm/v5
