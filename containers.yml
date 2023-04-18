@@ -179,6 +179,7 @@ mirrors:
       - "9"
     commands:
       - dnf update -y
+      - dnf install -y util-linux
 
   Fedora:
     container: fedora
