@@ -32,6 +32,7 @@ RUN dnf update -y && \
       chardet \
       certifi \
       looseversion \
+      tornado \
       packaging
 
 RUN echo 'listen_tls = 1'     >> /etc/libvirt/libvirtd.conf; \
