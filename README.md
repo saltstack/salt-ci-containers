@@ -213,6 +213,11 @@ will be commited.
 - [dockerhub/redis:alpine](https://hub.docker.com/r/_/redis/tags?name=alpine) - `ghcr.io/saltstack/salt-ci-containers/redis:alpine`
 
 
+### [![Tinyproxy](https://github.com/saltstack/salt-ci-containers/actions/workflows/tinyproxy-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/tinyproxy-containers.yml)
+
+- [vimagick/tinyproxy:latest](https://hub.docker.com/r/vimagick/tinyproxy/tags?name=latest) - `ghcr.io/saltstack/salt-ci-containers/tinyproxy:latest`
+
+
 ### [![Ubuntu](https://github.com/saltstack/salt-ci-containers/actions/workflows/ubuntu-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/ubuntu-containers.yml)
 
 - [dockerhub/ubuntu:20.04](https://hub.docker.com/r/_/ubuntu/tags?name=20.04) - `ghcr.io/saltstack/salt-ci-containers/ubuntu:20.04`

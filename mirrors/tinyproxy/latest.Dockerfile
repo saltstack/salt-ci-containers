@@ -1,0 +1,1 @@
+FROM vimagick/tinyproxy:latest
