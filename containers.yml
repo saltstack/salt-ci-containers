@@ -54,6 +54,11 @@ mirrors:
       - "5.7"
       - "8.0"
 
+  Tinyproxy:
+    container: vimagick/tinyproxy
+    versions:
+      - latest
+
   MariaDB:
     container: mariadb
     versions:
