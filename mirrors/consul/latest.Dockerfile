@@ -1,1 +1,1 @@
-FROM consul:latest
+FROM hashicorp/consul:latest
