@@ -119,7 +119,7 @@ jobs:
 
       - name: Inspect Source Image
         run: |
-          docker buildx imagetools inspect consul:latest | tee -a source-container-inspect.txt
+          docker buildx imagetools inspect hashicorp/consul:latest | tee -a source-container-inspect.txt
 
       - name: Define Build Platforms
         id: define-platforms
