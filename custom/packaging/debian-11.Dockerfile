@@ -8,4 +8,5 @@ RUN apt update -y \
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path \
   && for fpath in $(ls /root/.cargo/bin/); do mv /root/.cargo/bin/$fpath /bin/$fpath; done \
+  && rustup default stable \
   && rustc --version
