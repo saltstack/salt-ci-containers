@@ -6,7 +6,7 @@ RUN apt update -y \
   && apt install -y apt-utils gnupg jq awscli python3 python3-venv python3-pip \
     build-essential devscripts debhelper bash-completion git patchelf curl
 
+ENV PATH="/root/.cargo/bin:$PATH"
+
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path \
-  && for fpath in $(ls /root/.cargo/bin/); do mv /root/.cargo/bin/$fpath /bin/$fpath; done \
-  && rustup default stable \
   && rustc --version

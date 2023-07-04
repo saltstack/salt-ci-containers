@@ -7,7 +7,7 @@ RUN yum update -y \
   && yum install -y --allowerasing curl \
   && python3 -m pip install awscli
 
+ENV PATH="/root/.cargo/bin:$PATH"
+
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path \
-  && for fpath in $(ls /root/.cargo/bin/); do mv /root/.cargo/bin/$fpath /bin/$fpath; done \
-  && rustup default stable \
   && rustc --version
