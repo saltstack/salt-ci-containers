@@ -119,7 +119,7 @@ jobs:
 
       - name: Inspect Source Image
         run: |
-          docker buildx imagetools inspect debian:11 | tee -a source-container-inspect.txt
+          docker buildx imagetools inspect debian:12 | tee -a source-container-inspect.txt
 
       - name: Define Build Platforms
         id: define-platforms
