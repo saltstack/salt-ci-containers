@@ -36,6 +36,7 @@ custom:
     name: packaging
     versions:
       - debian-11
+      - debian-12
       - centosstream-9
     exclude_platforms:
       - linux/386
