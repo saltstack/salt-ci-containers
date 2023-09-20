@@ -20,26 +20,7 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
     Generate the container mirrors.
     """
     ctx.cd(utils.REPO_ROOT)
-    containers_path = utils.REPO_ROOT / "containers.yml"
-    if containers_path.exists():
-        with containers_path.open("r") as rfh:
-            loaded_containers = yaml.safe_load(rfh.read())
-    else:
-        loaded_containers = {}
-
-    salt_containers = loaded_containers["salt"]
-    custom_containers = loaded_containers["custom"]
-    mirror_containers = loaded_containers["mirrors"]
-    for containers_dict in (salt_containers, custom_containers):
-        for name, details in containers_dict.items():
-            details["is_mirror"] = False
-            containers_dict[name] = details
-
-    for name, details in mirror_containers.items():
-        details["is_mirror"] = True
-        if "name" not in details:
-            details["name"] = name.lower().replace(" ", "-")
-        mirror_containers[name] = details
+    containers = _get_containers()
 
     main_readme = utils.REPO_ROOT / "README.md"
     main_readme_contents = []
@@ -59,9 +40,6 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
         if list(path.glob("*")) == [path / "README.md"]:
             ctx.run(f"git rm -rf {path}", warn=True, hide=True)
 
-    containers = list(sorted(salt_containers.items()) + sorted(custom_containers.items())) + list(
-        sorted(mirror_containers.items())
-    )
     custom_headers_included = False
     mirrors_header_included = False
     for name, details in containers:
@@ -205,11 +183,17 @@ def matrix(ctx, image, from_workflow=False):
     ctx.cd(utils.REPO_ROOT)
     mirrors_path = utils.REPO_ROOT / image
 
+    for name, details in _get_containers():
+        if details["path"] == image:
+            break
+    else:
+        utils.error(f"Failed to find a container matching path {image}")
+        ctx.exit(1)
     output = []
     for fpath in mirrors_path.glob("*.Dockerfile"):
         output.append(
             {
-                "name": f"{mirrors_path.name}:{fpath.stem}",
+                "name": f"{details['name']}:{fpath.stem}",
                 "file": str(fpath.relative_to(utils.REPO_ROOT)),
             }
         )
@@ -249,3 +233,40 @@ def platforms(ctx, supported_platforms_file, exclude=None):
     utils.info("Writing '{}' to $GITHUB_OUTPUT ...", contents)
     with open(os.environ["GITHUB_OUTPUT"], "w", encoding="utf-8") as wfh:
         wfh.write(f"{contents}\n")
+
+
+def _get_containers():
+    containers_path = utils.REPO_ROOT / "containers.yml"
+    if containers_path.exists():
+        with containers_path.open("r") as rfh:
+            loaded_containers = yaml.safe_load(rfh.read())
+    else:
+        loaded_containers = {
+            "salt": {},
+            "custom": {},
+            "mirrors": {},
+        }
+
+    salt_containers = loaded_containers["salt"]
+    custom_containers = loaded_containers["custom"]
+    mirror_containers = loaded_containers["mirrors"]
+    for name, details in salt_containers.items():
+        details["is_mirror"] = False
+        details["path"] = "salt"
+        salt_containers[name] = details
+
+    for name, details in custom_containers.items():
+        details["is_mirror"] = False
+        details["path"] = os.path.join("custom", details.get("dest") or details["name"])
+        custom_containers[name] = details
+
+    for name, details in mirror_containers.items():
+        details["is_mirror"] = True
+        if "name" not in details:
+            details["name"] = name.lower().replace(" ", "-")
+        details["path"] = os.path.join("mirrors", details.get("dest") or details["name"])
+        mirror_containers[name] = details
+
+    return list(sorted(salt_containers.items()) + sorted(custom_containers.items())) + list(
+        sorted(mirror_containers.items())
+    )
