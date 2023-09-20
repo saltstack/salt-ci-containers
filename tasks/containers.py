@@ -234,7 +234,7 @@ def platforms(ctx, supported_platforms_file, exclude=None):
         excludes = []
     else:
         excludes = exclude.split(",")
-    platforms = []
+    platforms = {"linux/amd64"}
     with open(supported_platforms_file, encoding="utf-8") as rfh:
         for line in rfh:
             if "Platform:" in line:
@@ -243,9 +243,9 @@ def platforms(ctx, supported_platforms_file, exclude=None):
                     utils.info("Excluding {}", platform)
                     continue
                 utils.info("Inluding {}", platform)
-                platforms.append(platform)
+                platforms.add(platform)
 
-    contents = "platforms={}".format(",".join(platforms))
+    contents = "platforms={}".format(",".join(sorted(platforms)))
     utils.info("Writing '{}' to $GITHUB_OUTPUT ...", contents)
     with open(os.environ["GITHUB_OUTPUT"], "w", encoding="utf-8") as wfh:
         wfh.write(f"{contents}\n")
