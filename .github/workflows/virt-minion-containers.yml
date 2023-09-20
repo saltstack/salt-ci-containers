@@ -41,7 +41,7 @@ jobs:
           t=$(shuf -i 5-30 -n 1); echo "Sleeping $t seconds"; sleep $t
 
       - name: "Fetching Repository Contents"
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -78,7 +78,7 @@ jobs:
 
     steps:
       - name: "Fetching Repository Contents"
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -125,7 +125,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "Build & Publish"
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v5
         with:
           file: ${{ matrix.dockerinfo.file }}
           context: ${{ env.PATH_IN_REPO }}
