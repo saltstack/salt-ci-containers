@@ -150,6 +150,7 @@ mirrors:
     container: amazonlinux
     versions:
       - "2"
+      - "2023"
     commands:
       - yum update -y
 
