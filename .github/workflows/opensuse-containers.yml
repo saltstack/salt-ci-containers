@@ -1,4 +1,4 @@
-name: "Amazon Linux 🐳 Mirror"
+name: "Opensuse 🐳 Mirror"
 
 on:
   workflow_dispatch:
@@ -9,16 +9,16 @@ on:
       - '*'
     paths:
       - containers.yml
-      - '.github/workflows/amazon-linux-containers.yml'
-      - 'mirrors/amazon-linux/*'
+      - '.github/workflows/opensuse-containers.yml'
+      - 'mirrors/opensuse/*'
   pull_request:
     paths:
       - containers.yml
-      - '.github/workflows/amazon-linux-containers.yml'
-      - 'mirrors/amazon-linux/*'
+      - '.github/workflows/opensuse-containers.yml'
+      - 'mirrors/opensuse/*'
 
 env:
-  PATH_IN_REPO: mirrors/amazon-linux
+  PATH_IN_REPO: mirrors/opensuse
 
 
 concurrency:
@@ -26,7 +26,7 @@ concurrency:
   # not cancel previous builds.
   # However, for every new build against the same pull request source branch,
   # all older builds against that same branch get canceled.
-  group: mirrors/amazon-linux-${{ github.workflow }}-${{ github.event_name }}-${{ github.head_ref || github.run_id }}
+  group: mirrors/opensuse-${{ github.workflow }}-${{ github.event_name }}-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
 jobs:
