@@ -203,6 +203,7 @@ mirrors:
       - "36"
       - "37"
       - "38"
+      - "39"
     commands:
       - dnf update -y
 
