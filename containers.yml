@@ -146,41 +146,27 @@ mirrors:
     versions:
       - musl
 
+  AlmaLinux:
+    container: almalinux
+    versions:
+      - "8"
+      - "9"
+    commands:
+      - yum update -y
+
+  ArchLinux:
+    container: archlinux/archlinux
+    versions:
+      - latest
+
   Amazon Linux:
+    name: amazonlinux
     container: amazonlinux
     versions:
       - "2"
       - "2023"
     commands:
       - yum update -y
-
-  Debian:
-    container: debian
-    versions:
-      - "10"
-      - "11"
-      - "12"
-    commands:
-      - apt update
-      - apt upgrade -y
-    exclude_platforms:
-      - linux/ppc64le
-      - linux/arm/v5
-
-  Photon:
-    container: photon
-    source_tag: "{version}.0"
-    versions:
-      - 3
-      - 4
-      - 5
-    commands:
-      - tdnf update -y
-      - tdnf upgrade -y
-      - tdnf install -y rpm shadow
-    exclude_platforms:
-      - linux/ppc64le
-      - linux/arm/v5
 
   CentOS:
     container: centos
@@ -199,6 +185,19 @@ mirrors:
       - dnf update -y
       - dnf install -y util-linux
 
+  Debian:
+    container: debian
+    versions:
+      - "10"
+      - "11"
+      - "12"
+    commands:
+      - apt update
+      - apt upgrade -y
+    exclude_platforms:
+      - linux/ppc64le
+      - linux/arm/v5
+
   Fedora:
     container: fedora
     versions:
@@ -208,6 +207,26 @@ mirrors:
       - "39"
     commands:
       - dnf update -y
+
+  Opensuse:
+    container: opensuse/leap
+    versions:
+      - "15"
+
+  Photon:
+    container: photon
+    source_tag: "{version}.0"
+    versions:
+      - 3
+      - 4
+      - 5
+    commands:
+      - tdnf update -y
+      - tdnf upgrade -y
+      - tdnf install -y rpm shadow
+    exclude_platforms:
+      - linux/ppc64le
+      - linux/arm/v5
 
   Ubuntu:
     container: ubuntu

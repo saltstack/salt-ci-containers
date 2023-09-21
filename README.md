@@ -106,10 +106,16 @@ will be commited.
 ## Mirrors
 
 
-### [![Amazon Linux](https://github.com/saltstack/salt-ci-containers/actions/workflows/amazon-linux-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/amazon-linux-containers.yml)
+### [![AlmaLinux](https://github.com/saltstack/salt-ci-containers/actions/workflows/almalinux-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/almalinux-containers.yml)
 
-- [dockerhub/amazonlinux:2](https://hub.docker.com/r/_/amazonlinux/tags?name=2) - `ghcr.io/saltstack/salt-ci-containers/amazon-linux:2`
-- [dockerhub/amazonlinux:2023](https://hub.docker.com/r/_/amazonlinux/tags?name=2023) - `ghcr.io/saltstack/salt-ci-containers/amazon-linux:2023`
+- [dockerhub/almalinux:8](https://hub.docker.com/r/_/almalinux/tags?name=8) - `ghcr.io/saltstack/salt-ci-containers/almalinux:8`
+- [dockerhub/almalinux:9](https://hub.docker.com/r/_/almalinux/tags?name=9) - `ghcr.io/saltstack/salt-ci-containers/almalinux:9`
+
+
+### [![Amazon Linux](https://github.com/saltstack/salt-ci-containers/actions/workflows/amazonlinux-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/amazonlinux-containers.yml)
+
+- [dockerhub/amazonlinux:2](https://hub.docker.com/r/_/amazonlinux/tags?name=2) - `ghcr.io/saltstack/salt-ci-containers/amazonlinux:2`
+- [dockerhub/amazonlinux:2023](https://hub.docker.com/r/_/amazonlinux/tags?name=2023) - `ghcr.io/saltstack/salt-ci-containers/amazonlinux:2023`
 
 
 ### [![Apache ZooKeeper](https://github.com/saltstack/salt-ci-containers/actions/workflows/zookeeper-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/zookeeper-containers.yml)
@@ -117,6 +123,11 @@ will be commited.
 - [dockerhub/zookeeper:3.8](https://hub.docker.com/r/_/zookeeper/tags?name=3.8) - `ghcr.io/saltstack/salt-ci-containers/zookeeper:3.8`
 - [dockerhub/zookeeper:3.9](https://hub.docker.com/r/_/zookeeper/tags?name=3.9) - `ghcr.io/saltstack/salt-ci-containers/zookeeper:3.9`
 - [dockerhub/zookeeper:latest](https://hub.docker.com/r/_/zookeeper/tags?name=latest) - `ghcr.io/saltstack/salt-ci-containers/zookeeper:latest`
+
+
+### [![ArchLinux](https://github.com/saltstack/salt-ci-containers/actions/workflows/archlinux-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/archlinux-containers.yml)
+
+- [archlinux/archlinux:latest](https://hub.docker.com/r/archlinux/archlinux/tags?name=latest) - `ghcr.io/saltstack/salt-ci-containers/archlinux:latest`
 
 
 ### [![BusyBox](https://github.com/saltstack/salt-ci-containers/actions/workflows/busybox-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/busybox-containers.yml)
@@ -184,6 +195,11 @@ will be commited.
 - [mysql/mysql-server:5.7](https://hub.docker.com/r/mysql/mysql-server/tags?name=5.7) - `ghcr.io/saltstack/salt-ci-containers/mysql-server:5.7`
 - [mysql/mysql-server:8.0](https://hub.docker.com/r/mysql/mysql-server/tags?name=8.0) - `ghcr.io/saltstack/salt-ci-containers/mysql-server:8.0`
 - [mysql/mysql-server:latest](https://hub.docker.com/r/mysql/mysql-server/tags?name=latest) - `ghcr.io/saltstack/salt-ci-containers/mysql-server:latest`
+
+
+### [![Opensuse](https://github.com/saltstack/salt-ci-containers/actions/workflows/opensuse-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/opensuse-containers.yml)
+
+- [opensuse/leap:15](https://hub.docker.com/r/opensuse/leap/tags?name=15) - `ghcr.io/saltstack/salt-ci-containers/opensuse:15`
 
 
 ### [![Percona](https://github.com/saltstack/salt-ci-containers/actions/workflows/percona-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/percona-containers.yml)
