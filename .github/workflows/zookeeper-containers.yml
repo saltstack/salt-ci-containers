@@ -119,6 +119,7 @@ jobs:
 
       - name: Inspect Source Image
         run: |
+          set -o pipefail
           docker buildx imagetools inspect zookeeper:3.5.9 | tee -a source-container-inspect.txt
 
       - name: Define Build Platforms
