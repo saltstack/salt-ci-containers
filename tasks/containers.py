@@ -6,7 +6,6 @@ from __future__ import annotations
 import json
 import os
 import pprint
-import sys
 
 import jinja2.sandbox
 import yaml
@@ -197,13 +196,13 @@ def matrix(ctx, image, from_workflow=False):
             }
         )
 
-    ctx.warn("Generated Matrix:")
-    print(pprint.pformat(output), flush=True, file=sys.stdout)
+    utils.info("Generated Matrix:")
+    utils.write_message(pprint.pformat(output))
 
     if from_workflow:
         github_output = os.environ.get("GITHUB_OUTPUT")
         if github_output is None:
-            ctx.warn("The 'GITHUB_OUTPUT' variable is not set.")
+            utils.warn("The 'GITHUB_OUTPUT' variable is not set.")
             utils.exit_invoke(1)
         with open(github_output, "a", encoding="utf-8") as wfh:
             wfh.write(f"dockerinfo={json.dumps(output)}\n")
