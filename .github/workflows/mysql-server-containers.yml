@@ -119,6 +119,7 @@ jobs:
 
       - name: Inspect Source Image
         run: |
+          set -o pipefail
           docker buildx imagetools inspect mysql/mysql-server:8.0 | tee -a source-container-inspect.txt
 
       - name: Define Build Platforms
