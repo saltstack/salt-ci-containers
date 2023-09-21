@@ -144,6 +144,7 @@ will be commited.
 
 - [dockerhub/debian:10](https://hub.docker.com/r/_/debian/tags?name=10) - `ghcr.io/saltstack/salt-ci-containers/debian:10`
 - [dockerhub/debian:11](https://hub.docker.com/r/_/debian/tags?name=11) - `ghcr.io/saltstack/salt-ci-containers/debian:11`
+- [dockerhub/debian:12](https://hub.docker.com/r/_/debian/tags?name=12) - `ghcr.io/saltstack/salt-ci-containers/debian:12`
 
 
 ### [![Etcd v2](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-v2-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-v2-containers.yml)
