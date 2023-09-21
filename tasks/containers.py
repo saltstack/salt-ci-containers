@@ -107,7 +107,7 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
                             break
                     else:
                         utils.error("Failed to find 'FROM ' line")
-                        ctx.exit(1)
+                        utils.exit_invoke(1)
                 readme_contents.append(
                     f"- {container_name}:{version} - `ghcr.io/{ghcr_org}/{container_name}:{version}`"
                 )
@@ -188,7 +188,7 @@ def matrix(ctx, image, from_workflow=False):
             break
     else:
         utils.error(f"Failed to find a container matching path {image}")
-        ctx.exit(1)
+        utils.exit_invoke(1)
     output = []
     for fpath in mirrors_path.glob("*.Dockerfile"):
         output.append(
@@ -202,7 +202,7 @@ def matrix(ctx, image, from_workflow=False):
         github_output = os.environ.get("GITHUB_OUTPUT")
         if github_output is None:
             ctx.warn("The 'GITHUB_OUTPUT' variable is not set.")
-            ctx.exit(1)
+            utils.exit_invoke(1)
         with open(github_output, "a", encoding="utf-8") as wfh:
             wfh.write(f"dockerinfo={json.dumps(output)}\n")
     else:
