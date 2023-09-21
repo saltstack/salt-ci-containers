@@ -1,1 +1,1 @@
-FROM percona:8.0
+FROM percona/percona-server:8.0
