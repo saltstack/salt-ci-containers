@@ -159,6 +159,7 @@ mirrors:
     versions:
       - "10"
       - "11"
+      - "12"
     commands:
       - apt update
       - apt upgrade -y
