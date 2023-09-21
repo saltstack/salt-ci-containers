@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import os
+import pprint
 import sys
 
 import jinja2.sandbox
@@ -196,6 +197,9 @@ def matrix(ctx, image, from_workflow=False):
             }
         )
 
+    ctx.warn("Generated Matrix:")
+    print(pprint.pformat(output), flush=True, file=sys.stdout)
+
     if from_workflow:
         github_output = os.environ.get("GITHUB_OUTPUT")
         if github_output is None:
@@ -203,8 +207,6 @@ def matrix(ctx, image, from_workflow=False):
             utils.exit_invoke(1)
         with open(github_output, "a", encoding="utf-8") as wfh:
             wfh.write(f"dockerinfo={json.dumps(output)}\n")
-    else:
-        print(json.dumps(output), flush=True, file=sys.stdout)
 
 
 @task
