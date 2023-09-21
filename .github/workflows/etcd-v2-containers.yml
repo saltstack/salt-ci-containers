@@ -120,7 +120,7 @@ jobs:
       - name: Inspect Source Image
         run: |
           set -o pipefail
-          docker buildx imagetools inspect elcolio/etcd:latest | tee -a source-container-inspect.txt
+          docker buildx imagetools inspect ${{ matrix.dockerinfo.source_container }} | tee -a source-container-inspect.txt
 
       - name: Define Build Platforms
         id: define-platforms

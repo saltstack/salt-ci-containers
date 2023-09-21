@@ -100,14 +100,7 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
                 if not dockerfile_exists:
                     ctx.run(f"git add {dockerfile.relative_to(utils.REPO_ROOT)}")
             else:
-                with dockerfile.open("r") as rfh:
-                    for line in rfh:
-                        if line.startswith("FROM "):
-                            source_container = line.strip().split()[-1]
-                            break
-                    else:
-                        utils.error("Failed to find 'FROM ' line")
-                        utils.exit_invoke(1)
+                source_container = _get_source_container(dockerfile)
                 readme_contents.append(
                     f"- {container_name}:{version} - `ghcr.io/{ghcr_org}/{container_name}:{version}`"
                 )
@@ -153,7 +146,6 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
             "repository_path": container_dir.relative_to(utils.REPO_ROOT),
             "is_mirror": is_mirror,
             "workflow_file_name": workflow_file_name,
-            "source_container": source_container,
             "multiarch": details.get("multiarch", True),
             "exclude_platforms": ",".join(exclude_platforms),
         }
@@ -191,10 +183,16 @@ def matrix(ctx, image, from_workflow=False):
         utils.exit_invoke(1)
     output = []
     for fpath in mirrors_path.glob("*.Dockerfile"):
+        if "container" in details:
+            source_tag = details.get("source_tag", "{version}").format(version=fpath.stem)
+            source_container = f"{details['container']}:{source_tag}"
+        else:
+            source_container = _get_source_container(fpath)
         output.append(
             {
                 "name": f"{details['name']}:{fpath.stem}",
                 "file": str(fpath.relative_to(utils.REPO_ROOT)),
+                "source_container": source_container,
             }
         )
 
@@ -270,3 +268,16 @@ def _get_containers():
     return list(sorted(salt_containers.items()) + sorted(custom_containers.items())) + list(
         sorted(mirror_containers.items())
     )
+
+
+def _get_source_container(dockerfile):
+    source_container = None
+    with dockerfile.open("r") as rfh:
+        for line in rfh:
+            if line.startswith("FROM "):
+                source_container = line.strip().split()[-1]
+                break
+        else:
+            utils.error("Failed to find 'FROM ' line")
+            utils.exit_invoke(1)
+    return source_container
