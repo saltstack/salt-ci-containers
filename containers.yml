@@ -212,6 +212,7 @@ mirrors:
     versions:
       - "20.04"
       - "22.04"
+      - "23.04"
     commands:
       - apt update
       - apt upgrade -y
