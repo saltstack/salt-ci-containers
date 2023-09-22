@@ -42,6 +42,7 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
 
     custom_headers_included = False
     mirrors_header_included = False
+    cron_hour_range = list(range(0, 24))
     for name, details in containers:
         is_mirror = details["is_mirror"]
 
@@ -140,6 +141,9 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
             "linux/mips64le",
         ]
         exclude_platforms.extend(details.get("exclude_platforms") or [])
+        cron_hour = cron_hour_range.pop()
+        if not cron_hour_range:
+            cron_hour_range = list(range(0, 24))
         jinja_context = {
             "name": name,
             "slug": details["name"],
@@ -148,6 +152,7 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
             "workflow_file_name": workflow_file_name,
             "multiarch": details.get("multiarch", True),
             "exclude_platforms": ",".join(exclude_platforms),
+            "cron_hour": cron_hour,
         }
         workflows_dir = utils.REPO_ROOT / ".github" / "workflows"
         workflow_path = workflows_dir / workflow_file_name

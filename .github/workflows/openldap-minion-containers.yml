@@ -3,7 +3,7 @@ name: "OpenLDAP Minion 🐳 Container"
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 22 * * *"
   push:
     branches:
       - '*'
