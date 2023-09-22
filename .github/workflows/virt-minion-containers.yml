@@ -117,6 +117,16 @@ jobs:
           echo "Flags:     ${{ steps.buildx.outputs.flags }}"
           echo "Platforms: ${{ steps.buildx.outputs.platforms }}"
 
+      - name: Inspect Source Image
+        run: |
+          set -o pipefail
+          docker buildx imagetools inspect ${{ matrix.dockerinfo.source_container }} | tee -a source-container-inspect.txt
+
+      - name: Define Build Platforms
+        id: define-platforms
+        run: |
+          inv containers.platforms --exclude=linux/s390x,linux/mips64le source-container-inspect.txt
+
       - name: "Log into GitHub Container Registry"
         uses: docker/login-action@v2
         with:
@@ -129,6 +139,7 @@ jobs:
         with:
           file: ${{ matrix.dockerinfo.file }}
           context: ${{ env.PATH_IN_REPO }}
+          platforms: ${{ steps.define-platforms.outputs.platforms }}
           push: ${{ github.repository == 'saltstack/salt-ci-containers' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' ) }}
           tags: |
             ghcr.io/${{ github.repository }}/${{ matrix.dockerinfo.name }}

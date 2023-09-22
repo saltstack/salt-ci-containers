@@ -1,4 +1,6 @@
-FROM registry.fedoraproject.org/fedora:32
+# Since 3006.x does not have Py3.11 linux requirements files, we need to stay on
+# Fedora 36 so that we install Salt under Py3.10
+FROM registry.fedoraproject.org/fedora:36
 
 RUN dnf update -y && \
     dnf install -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
@@ -14,26 +16,21 @@ RUN dnf update -y && \
       libgcrypt \
       openssh-server \
       openssh-clients \
+      make \
+      automake \
+      gcc \
+      gcc-c++ \
+      rustc \
+      cargo \
+      libffi-devel \
       python3 \
+      python3-devel \
       python3-pip \
       python3-psutil \
       python3-libvirt && \
-    dnf clean all && \
-    pip3 install --no-cache-dir \
-      msgpack==0.5.6 \
-      requests \
-      distro \
-      pycryptodomex \
-      MarkupSafe \
-      Jinja2 \
-      pyzmq \
-      PyYAML \
-      urllib3 \
-      chardet \
-      certifi \
-      looseversion \
-      tornado \
-      packaging
+    dnf clean all
+
+RUN env USE_STATIC_REQUIREMENTS=1 pip3 install --no-cache-dir salt
 
 RUN echo 'listen_tls = 1'     >> /etc/libvirt/libvirtd.conf; \
     echo 'listen_tcp = 1'     >> /etc/libvirt/libvirtd.conf; \
