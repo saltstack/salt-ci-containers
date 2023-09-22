@@ -3,7 +3,7 @@ name: "<{ name }> 🐳 <% if is_mirror -%> Mirror <%- else %>Container<% endif %
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 <{ cron_hour }> * * *"
   push:
     branches:
       - '*'
