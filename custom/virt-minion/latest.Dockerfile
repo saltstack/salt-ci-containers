@@ -14,6 +14,7 @@ RUN dnf update -y && \
       nftables \
       iptables \
       libgcrypt \
+      nc \
       openssh-server \
       openssh-clients \
       make \
