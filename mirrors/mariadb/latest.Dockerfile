@@ -1,1 +1,1 @@
-FROM mariadb/server:latest
+FROM mariadb:latest
