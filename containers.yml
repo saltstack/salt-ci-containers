@@ -61,7 +61,7 @@ mirrors:
       - latest
 
   MariaDB:
-    container: mariadb/server
+    container: mariadb
     versions:
       - "10.1"
       - "10.2"
