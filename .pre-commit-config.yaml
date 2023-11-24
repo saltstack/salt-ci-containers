@@ -29,6 +29,19 @@ repos:
           - msgpack==1.0.3
           - six==1.16.0
 
+  - repo: https://github.com/s0undt3ch/python-tools-scripts
+    rev: "0.18.4"
+    hooks:
+      - id: tools
+        alias: actionlint
+        name: Lint GitHub Actions Workflows
+        files: "^.github/workflows/"
+        types:
+          - yaml
+        args:
+          - pre-commit
+          - actionlint
+
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
     hooks:

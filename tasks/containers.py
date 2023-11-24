@@ -185,7 +185,9 @@ def matrix(ctx, image, from_workflow=False, build_platforms=None):
         utils.error(f"Failed to find a container matching path {image}")
         utils.exit_invoke(1)
     output = []
+    tags = []
     for fpath in mirrors_path.glob("*.Dockerfile"):
+        tags.append(fpath.stem)
         if "container" in details:
             source_tag = details.get("source_tag", "{version}").format(version=fpath.stem)
             source_container = f"{details['container']}:{source_tag}"
@@ -204,7 +206,8 @@ def matrix(ctx, image, from_workflow=False, build_platforms=None):
                 continue
             output.append(
                 {
-                    "name": f"{details['name']}:{fpath.stem}",
+                    "name": details["name"],
+                    "tag": fpath.stem,
                     "platform": platform,
                     "file": str(fpath.relative_to(utils.REPO_ROOT)),
                     "source_container": source_container,
@@ -215,7 +218,8 @@ def matrix(ctx, image, from_workflow=False, build_platforms=None):
             # This is because the buildx inspect did not return anything
             output.append(
                 {
-                    "name": f"{details['name']}:{fpath.stem}",
+                    "name": details["name"],
+                    "tag": fpath.stem,
                     "file": str(fpath.relative_to(utils.REPO_ROOT)),
                     "source_container": source_container,
                     "platform": "",
@@ -232,6 +236,8 @@ def matrix(ctx, image, from_workflow=False, build_platforms=None):
             utils.exit_invoke(1)
         with open(github_output, "a", encoding="utf-8") as wfh:
             wfh.write(f"dockerinfo={json.dumps(output)}\n")
+            wfh.write(f"tags={json.dumps(tags)}\n")
+            wfh.write(f"name={details['name']}")
 
 
 @task
