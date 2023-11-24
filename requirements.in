@@ -1,4 +1,3 @@
-invoke
-blessings
 pyyaml
 jinja2
+python-tools-scripts
