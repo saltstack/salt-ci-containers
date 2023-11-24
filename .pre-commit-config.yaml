@@ -2,11 +2,21 @@
 minimum_pre_commit_version: 2.4.0
 repos:
 
-  - repo: https://github.com/saltstack/invoke-pre-commit
-    rev: v1.9.0
+  - repo: https://github.com/s0undt3ch/python-tools-scripts
+    rev: "0.18.4"
     hooks:
-      - id: invoke
-        alias: generate-containers
+      - id: tools
+        alias: actionlint
+        name: Lint GitHub Actions Workflows
+        files: "^.github/workflows/"
+        types:
+          - yaml
+        args:
+          - pre-commit
+          - actionlint
+
+      - id: tools
+        alias: generate-workflows
         name: Generate Containers
         files: >
           (?x)^(
@@ -20,27 +30,8 @@ repos:
           )$
         pass_filenames: false
         args:
-          - containers.generate
-        additional_dependencies:
-          - blessings==1.7
-          - pyyaml==6.0
-          - markupsafe==2.1.1
-          - jinja2==3.1.2
-          - msgpack==1.0.3
-          - six==1.16.0
-
-  - repo: https://github.com/s0undt3ch/python-tools-scripts
-    rev: "0.18.4"
-    hooks:
-      - id: tools
-        alias: actionlint
-        name: Lint GitHub Actions Workflows
-        files: "^.github/workflows/"
-        types:
-          - yaml
-        args:
           - pre-commit
-          - actionlint
+          - generate-workflows
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0

@@ -4,15 +4,33 @@
 #
 #    pip-compile --output-file=requirements.txt requirements.in
 #
-blessings==1.7
-    # via -r requirements.in
-invoke==1.7.1
-    # via -r requirements.in
+attrs==23.1.0
+    # via python-tools-scripts
+certifi==2023.11.17
+    # via requests
+charset-normalizer==3.3.2
+    # via requests
+idna==3.4
+    # via requests
 jinja2==3.1.2
     # via -r requirements.in
+markdown-it-py==3.0.0
+    # via rich
 markupsafe==2.1.1
     # via jinja2
+mdurl==0.1.2
+    # via markdown-it-py
+pygments==2.17.2
+    # via rich
+python-tools-scripts==0.18.4
+    # via -r requirements.in
 pyyaml==6.0
     # via -r requirements.in
-six==1.16.0
-    # via blessings
+requests==2.31.0
+    # via python-tools-scripts
+rich==13.7.0
+    # via python-tools-scripts
+typing-extensions==4.8.0
+    # via python-tools-scripts
+urllib3==2.1.0
+    # via requests

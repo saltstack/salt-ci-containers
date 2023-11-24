@@ -45,23 +45,20 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.11'
 
       - name: Install Requirements
         run: |
           python -m pip install -r requirements.txt
 
-      - name: "Docker QEMU"
-        uses: docker/setup-qemu-action@v3
-
-      - name: "Docker BuildX"
-        id: buildx
-        uses: docker/setup-buildx-action@v3
+      - name: Show tools version
+        run: |
+          tools --debug --version
 
       - name: "Generate Matrix Data"
         id: set-matrix
         run: |
-          inv containers.matrix --from-workflow ${{ env.PATH_IN_REPO }}
+          tools ci matrix ${{ env.PATH_IN_REPO }}
 
   build:
     runs-on: ubuntu-latest
@@ -85,15 +82,6 @@ jobs:
     steps:
       - name: "Fetching Repository Contents"
         uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-
-      - name: Install Requirements
-        run: |
-          python -m pip install -r requirements.txt
 
       - name: "Throttle concurrent pushes"
         run: |
@@ -147,7 +135,7 @@ jobs:
         if: ${{ github.repository == 'saltstack/salt-ci-containers' && contains(fromJSON('["push", "schedule", "workflow_dispatch"]'), github.event_name) }}
         run: |
           mkdir -p /tmp/digests
-          touch /tmp/digests/$(echo ${{ steps.build.outputs.digest }} | cut -d ":" -f 2)
+          touch "/tmp/digests/$(echo ${{ steps.build.outputs.digest }} | cut -d ':' -f 2)"
           ls -lah /tmp/digests
 
       - name: Upload digest
@@ -184,6 +172,23 @@ jobs:
       statuses: read
 
     steps:
+
+      - name: "Fetching Repository Contents"
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Requirements
+        run: |
+          python -m pip install -r requirements.txt
+
+      - name: Show tools version
+        run: |
+          tools --debug --version
+
       - name: Download digests
         uses: actions/download-artifact@v3
         with:
@@ -217,10 +222,8 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create manifest list and push
-        working-directory: /tmp/digests
-        run: | # shellcheck disable=SC2046
-          docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
-            $(printf 'ghcr.io/${{ github.repository }}/${{ needs.matrix-generator.outputs.name }}@sha256:%s ' *)
+        run: |
+          tools ci create-manifest-list-and-push ghcr.io/${{ github.repository }}/${{ needs.matrix-generator.outputs.name }} /tmp/digests
 
       - name: Inspect image
         run: |
