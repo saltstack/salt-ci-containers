@@ -145,7 +145,6 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
             "repository_path": container_dir.relative_to(utils.REPO_ROOT),
             "is_mirror": is_mirror,
             "workflow_file_name": workflow_file_name,
-            "multiarch": details.get("multiarch", True),
             "cron_hour": cron_hour,
         }
         workflows_dir = utils.REPO_ROOT / ".github" / "workflows"
@@ -167,7 +166,7 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
 
 
 @task
-def matrix(ctx, image, from_workflow=False, multiarch=False, build_platforms=None):
+def matrix(ctx, image, from_workflow=False, build_platforms=None):
     """
     Generate the container mirrors.
     """
@@ -193,31 +192,33 @@ def matrix(ctx, image, from_workflow=False, multiarch=False, build_platforms=Non
         else:
             source_container = _get_source_container(fpath)
 
-        if multiarch:
-            ret = ctx.run(
-                f"docker buildx imagetools inspect --raw {source_container}", echo=False, hide=True
+        ret = ctx.run(
+            f"docker buildx imagetools inspect --raw {source_container}", echo=False, hide=True
+        )
+        data = json.loads(ret.stdout)
+        for entry in data.get("manifests", ()):
+            platform = "{os}/{architecture}".format(**entry["platform"])
+            if "variant" in entry["platform"]:
+                platform += f"/{entry['platform']['variant']}"
+            if platform not in build_platforms:
+                continue
+            output.append(
+                {
+                    "name": f"{details['name']}:{fpath.stem}",
+                    "platform": platform,
+                    "file": str(fpath.relative_to(utils.REPO_ROOT)),
+                    "source_container": source_container,
+                }
             )
-            data = json.loads(ret.stdout)
-            for entry in data.get("manifests"):
-                platform = "{os}/{architecture}".format(**entry["platform"])
-                if "variant" in entry["platform"]:
-                    platform += f"/{entry['platform']['variant']}"
-                if platform not in build_platforms:
-                    continue
-                output.append(
-                    {
-                        "name": f"{details['name']}:{fpath.stem}",
-                        "platform": platform,
-                        "file": str(fpath.relative_to(utils.REPO_ROOT)),
-                        "source_container": source_container,
-                    }
-                )
-        else:
+
+        if not output:
+            # This is because the buildx inspect did not return anything
             output.append(
                 {
                     "name": f"{details['name']}:{fpath.stem}",
                     "file": str(fpath.relative_to(utils.REPO_ROOT)),
                     "source_container": source_container,
+                    "platform": "",
                 }
             )
 
