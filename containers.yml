@@ -38,10 +38,6 @@ custom:
       - debian-11
       - debian-12
       - centosstream-9
-    exclude_platforms:
-      - linux/386
-      - linux/arm/v5
-      - linux/arm/v7
 # <---- Custom Containers ---------------------------------------------------------------------------------
 
 # ----- Mirrored Containers ------------------------------------------------------------------------------>
@@ -192,9 +188,6 @@ mirrors:
     commands:
       - apt update
       - apt upgrade -y
-    exclude_platforms:
-      - linux/ppc64le
-      - linux/arm/v5
 
   Fedora:
     container: fedora
@@ -222,9 +215,6 @@ mirrors:
       - tdnf update -y
       - tdnf upgrade -y
       - tdnf install -y rpm shadow
-    exclude_platforms:
-      - linux/ppc64le
-      - linux/arm/v5
 
   Ubuntu:
     container: ubuntu
