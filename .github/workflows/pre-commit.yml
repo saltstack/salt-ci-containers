@@ -9,7 +9,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-actionlint
+        with:
+          cache-seed: ${{ hashFiles('.github/**', 'tools/**') }}
+      - uses: ./.github/actions/setup-shellcheck
+        with:
+          cache-seed: ${{ hashFiles('.github/**', 'tools/**') }}
       - uses: actions/setup-python@v4
         with:
           python-version: '3.9'
