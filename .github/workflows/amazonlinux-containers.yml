@@ -22,11 +22,8 @@ env:
 
 
 concurrency:
-  # Concurrency is defined in a way that concurrent builds against branches do
-  # not cancel previous builds.
-  # However, for every new build against the same pull request source branch,
-  # all older builds against that same branch get canceled.
-  group: mirrors/amazonlinux-${{ github.workflow }}-${{ github.event_name }}-${{ github.head_ref || github.run_id }}
+  # New builds always cancel previous, still running, builds
+  group: mirrors/amazonlinux-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
