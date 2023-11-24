@@ -30,7 +30,7 @@ if [[ -z "${HOST_UUID}" ]]; then
 fi
 echo "host_uuid = \"$HOST_UUID\"" >> /etc/libvirt/libvirtd.conf
 
-env USE_STATIC_REQUIREMENTS=1 pip3 install -e /salt
+env USE_STATIC_REQUIREMENTS=1 python${SALT_PY_VERSION} -m pip install -e /salt
 /usr/sbin/sshd
 virtlogd -d
 
