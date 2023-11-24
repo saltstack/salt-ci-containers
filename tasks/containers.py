@@ -173,12 +173,17 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
 
 
 @task
-def matrix(ctx, image, from_workflow=False):
+def matrix(ctx, image, from_workflow=False, multiarch=False, exclude_platforms=None):
     """
     Generate the container mirrors.
     """
     ctx.cd(utils.REPO_ROOT)
     mirrors_path = utils.REPO_ROOT / image
+
+    if exclude_platforms is None:
+        excludes = []
+    else:
+        excludes = exclude_platforms.split(",")
 
     for name, details in _get_containers():
         if details["path"] == image:
@@ -193,13 +198,34 @@ def matrix(ctx, image, from_workflow=False):
             source_container = f"{details['container']}:{source_tag}"
         else:
             source_container = _get_source_container(fpath)
-        output.append(
-            {
-                "name": f"{details['name']}:{fpath.stem}",
-                "file": str(fpath.relative_to(utils.REPO_ROOT)),
-                "source_container": source_container,
-            }
-        )
+
+        if multiarch:
+            ret = ctx.run(
+                f"docker buildx imagetools inspect --raw {source_container}", echo=False, hide=True
+            )
+            data = json.loads(ret.stdout)
+            for entry in data.get("manifests"):
+                platform = "{os}/{architecture}".format(**entry["platform"])
+                if "variant" in entry["platform"]:
+                    platform += f"/{entry['platform']['variant']}"
+                if platform in excludes:
+                    continue
+                output.append(
+                    {
+                        "name": f"{details['name']}:{fpath.stem}",
+                        "platform": platform,
+                        "file": str(fpath.relative_to(utils.REPO_ROOT)),
+                        "source_container": source_container,
+                    }
+                )
+        else:
+            output.append(
+                {
+                    "name": f"{details['name']}:{fpath.stem}",
+                    "file": str(fpath.relative_to(utils.REPO_ROOT)),
+                    "source_container": source_container,
+                }
+            )
 
     utils.info("Generated Matrix:")
     utils.write_message(pprint.pformat(output))
