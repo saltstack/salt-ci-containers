@@ -18,6 +18,7 @@ on:
       - 'mirrors/consul/*'
 
 env:
+  COLUMNS: 190
   PATH_IN_REPO: mirrors/consul
 
 

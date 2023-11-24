@@ -18,6 +18,7 @@ on:
       - 'mirrors/centos-stream/*'
 
 env:
+  COLUMNS: 190
   PATH_IN_REPO: mirrors/centos-stream
 
 

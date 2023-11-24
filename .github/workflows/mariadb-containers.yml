@@ -18,6 +18,7 @@ on:
       - 'mirrors/mariadb/*'
 
 env:
+  COLUMNS: 190
   PATH_IN_REPO: mirrors/mariadb
 
 

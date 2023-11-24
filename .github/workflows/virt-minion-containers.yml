@@ -18,6 +18,7 @@ on:
       - 'custom/virt-minion/*'
 
 env:
+  COLUMNS: 190
   PATH_IN_REPO: custom/virt-minion
 
 
