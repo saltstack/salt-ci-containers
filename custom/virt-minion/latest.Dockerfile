@@ -1,9 +1,11 @@
-# Since 3006.x does not have Py3.11 linux requirements files, we need to stay on
-# Fedora 36 so that we install Salt under Py3.10
-FROM registry.fedoraproject.org/fedora:36
+# Since 3006.x does not have Py3.11 linux requirements files, we need to stay on Py3.10
+FROM registry.fedoraproject.org/fedora:38
 
+ENV SALT_PY_VERSION=3.10
 RUN dnf update -y && \
     dnf install -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
+      libvirt-devel \
+      libvirt-libs \
       libvirt-daemon-driver-qemu \
       libvirt-daemon-driver-storage-core \
       libvirt-client \
@@ -25,14 +27,20 @@ RUN dnf update -y && \
       rustc \
       cargo \
       libffi-devel \
-      python3 \
-      python3-devel \
-      python3-pip \
-      python3-psutil \
-      python3-libvirt && \
+      python${SALT_PY_VERSION} \
+      python${SALT_PY_VERSION}-libs \
+      python${SALT_PY_VERSION}-devel && \
     dnf clean all
 
-RUN env USE_STATIC_REQUIREMENTS=1 pip3 install --no-cache-dir salt
+RUN dnf update -y && \
+    dnf install -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
+      libvirt-devel libvirt-libs && \
+    dnf clean all
+
+RUN python${SALT_PY_VERSION} -m ensurepip && \
+  python${SALT_PY_VERSION} -m pip install build wheel && \
+  python${SALT_PY_VERSION} -m pip install libvirt-python && \
+  env USE_STATIC_REQUIREMENTS=1 python${SALT_PY_VERSION} -m pip install --no-cache-dir salt
 
 RUN echo 'listen_tls = 1'     >> /etc/libvirt/libvirtd.conf; \
     echo 'listen_tcp = 1'     >> /etc/libvirt/libvirtd.conf; \
