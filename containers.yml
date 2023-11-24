@@ -192,7 +192,6 @@ mirrors:
   Fedora:
     container: fedora
     versions:
-      - "36"
       - "37"
       - "38"
       - "39"
