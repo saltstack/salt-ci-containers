@@ -62,7 +62,7 @@ jobs:
       - name: "Generate Matrix Data"
         id: set-matrix
         run: |
-          inv containers.matrix --from-workflow ${{ env.PATH_IN_REPO }} --multiarch --exclude-platforms=linux/s390x,linux/mips64le,linux/ppc64le,linux/arm/v5
+          inv containers.matrix --from-workflow ${{ env.PATH_IN_REPO }} --multiarch
 
   mirror-image:
     runs-on: ubuntu-latest

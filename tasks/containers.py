@@ -136,11 +136,6 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
         )
         workflow_tpl = utils.REPO_ROOT / ".github" / "workflows" / ".container.template.j2"
         template = env.from_string(workflow_tpl.read_text())
-        exclude_platforms = [
-            "linux/s390x",
-            "linux/mips64le",
-        ]
-        exclude_platforms.extend(details.get("exclude_platforms") or [])
         cron_hour = cron_hour_range.pop()
         if not cron_hour_range:
             cron_hour_range = list(range(0, 24))
@@ -151,7 +146,6 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
             "is_mirror": is_mirror,
             "workflow_file_name": workflow_file_name,
             "multiarch": details.get("multiarch", True),
-            "exclude_platforms": ",".join(exclude_platforms),
             "cron_hour": cron_hour,
         }
         workflows_dir = utils.REPO_ROOT / ".github" / "workflows"
@@ -173,17 +167,17 @@ def generate(ctx, ghcr_org="saltstack/salt-ci-containers"):
 
 
 @task
-def matrix(ctx, image, from_workflow=False, multiarch=False, exclude_platforms=None):
+def matrix(ctx, image, from_workflow=False, multiarch=False, build_platforms=None):
     """
     Generate the container mirrors.
     """
     ctx.cd(utils.REPO_ROOT)
     mirrors_path = utils.REPO_ROOT / image
 
-    if exclude_platforms is None:
-        excludes = []
+    if build_platforms is None:
+        build_platforms = ["linux/amd64", "linux/arm64/v8"]
     else:
-        excludes = exclude_platforms.split(",")
+        build_platforms = build_platforms.split(",")
 
     for name, details in _get_containers():
         if details["path"] == image:
@@ -208,7 +202,7 @@ def matrix(ctx, image, from_workflow=False, multiarch=False, exclude_platforms=N
                 platform = "{os}/{architecture}".format(**entry["platform"])
                 if "variant" in entry["platform"]:
                     platform += f"/{entry['platform']['variant']}"
-                if platform in excludes:
+                if platform not in build_platforms:
                     continue
                 output.append(
                     {
