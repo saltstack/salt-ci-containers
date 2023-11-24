@@ -22,11 +22,8 @@ env:
 
 
 concurrency:
-  # Concurrency is defined in a way that concurrent builds against branches do
-  # not cancel previous builds.
-  # However, for every new build against the same pull request source branch,
-  # all older builds against that same branch get canceled.
-  group: mirrors/archlinux-${{ github.workflow }}-${{ github.event_name }}-${{ github.head_ref || github.run_id }}
+  # New builds always cancel previous, still running, builds
+  group: mirrors/archlinux-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -143,7 +140,7 @@ jobs:
           context: ${{ env.PATH_IN_REPO }}
           platforms: ${{ matrix.dockerinfo.platform }}
           labels: ${{ steps.meta.outputs.labels }}
-          outputs: type=image,name=ghcr.io/${{ github.repository }}/${{ matrix.dockerinfo.name }},push-by-digest=true,name-canonical=true,push=true
+          outputs: type=image,name=ghcr.io/${{ github.repository }}/${{ matrix.dockerinfo.name }}:${{ steps.meta.outputs.version }},push-by-digest=true,name-canonical=true,push=true
 
       - name: Export digest
         run: |
