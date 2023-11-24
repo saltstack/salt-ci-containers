@@ -52,18 +52,25 @@ jobs:
         run: |
           python -m pip install -r requirements.txt
 
+      - name: "Docker QEMU"
+        uses: docker/setup-qemu-action@v3
+
+      - name: "Docker BuildX"
+        id: buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: "Generate Matrix Data"
         id: set-matrix
         run: |
-          inv containers.matrix --from-workflow ${{ env.PATH_IN_REPO }}
+          inv containers.matrix --from-workflow ${{ env.PATH_IN_REPO }} --multiarch --exclude-platforms=linux/s390x,linux/mips64le
 
   mirror-image:
     runs-on: ubuntu-latest
     needs: matrix-generator
-    name: "${{ matrix.dockerinfo.name }}"
+    name: "${{ matrix.dockerinfo.name }} (${{ matrix.dockerinfo.platform }})"
     strategy:
       fail-fast: false
-      max-parallel: 4
+      max-parallel: 10
       matrix:
         dockerinfo: ${{ fromJson(needs.matrix-generator.outputs.dockerinfo) }}
 
@@ -103,11 +110,11 @@ jobs:
           cat ./${{matrix.dockerinfo.file}}
 
       - name: "Docker QEMU"
-        uses: docker/setup-qemu-action@v2
+        uses: docker/setup-qemu-action@v3
 
       - name: "Docker BuildX"
         id: buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
 
       - name: Inspect builder
         run: |
@@ -116,16 +123,6 @@ jobs:
           echo "Status:    ${{ steps.buildx.outputs.status }}"
           echo "Flags:     ${{ steps.buildx.outputs.flags }}"
           echo "Platforms: ${{ steps.buildx.outputs.platforms }}"
-
-      - name: Inspect Source Image
-        run: |
-          set -o pipefail
-          docker buildx imagetools inspect ${{ matrix.dockerinfo.source_container }} | tee -a source-container-inspect.txt
-
-      - name: Define Build Platforms
-        id: define-platforms
-        run: |
-          inv containers.platforms --exclude=linux/s390x,linux/mips64le source-container-inspect.txt
 
       - name: "Log into GitHub Container Registry"
         uses: docker/login-action@v2
@@ -139,7 +136,7 @@ jobs:
         with:
           file: ${{ matrix.dockerinfo.file }}
           context: ${{ env.PATH_IN_REPO }}
-          platforms: ${{ steps.define-platforms.outputs.platforms }}
+          platforms: ${{ matrix.dockerinfo.platform }}
           push: ${{ github.repository == 'saltstack/salt-ci-containers' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' ) }}
           tags: |
             ghcr.io/${{ github.repository }}/${{ matrix.dockerinfo.name }}
