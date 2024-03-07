@@ -3,3 +3,4 @@
 - [dockerhub/ubuntu:20.04](https://hub.docker.com/r/_/ubuntu/tags?name=20.04) - `ghcr.io/saltstack/salt-ci-containers/ubuntu:20.04`
 - [dockerhub/ubuntu:22.04](https://hub.docker.com/r/_/ubuntu/tags?name=22.04) - `ghcr.io/saltstack/salt-ci-containers/ubuntu:22.04`
 - [dockerhub/ubuntu:23.04](https://hub.docker.com/r/_/ubuntu/tags?name=23.04) - `ghcr.io/saltstack/salt-ci-containers/ubuntu:23.04`
+- [dockerhub/ubuntu:24.04](https://hub.docker.com/r/_/ubuntu/tags?name=24.04) - `ghcr.io/saltstack/salt-ci-containers/ubuntu:24.04`
