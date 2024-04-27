@@ -16,7 +16,7 @@ jobs:
       - uses: ./.github/actions/setup-shellcheck
         with:
           cache-seed: ${{ hashFiles('.github/**', 'tools/**') }}
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.9'
 
