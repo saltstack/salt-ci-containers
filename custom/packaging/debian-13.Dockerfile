@@ -1,4 +1,4 @@
-FROM debian:11
+FROM debian:trixie
 
 COPY 01_nodoc /etc/dpkg/dpkg.cfg.d/01_nodoc
 
