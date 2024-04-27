@@ -141,7 +141,7 @@ jobs:
 
       - name: Upload digest
         if: ${{ github.repository == 'saltstack/salt-ci-containers' && contains(fromJSON('["push", "schedule", "workflow_dispatch"]'), github.event_name) }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: digests-${{ matrix.dockerinfo.name }}-${{ matrix.dockerinfo.tag }}
           path: /tmp/digests/*
