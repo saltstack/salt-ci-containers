@@ -44,7 +44,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
@@ -115,7 +115,7 @@ jobs:
           echo "Platforms: ${{ steps.buildx.outputs.platforms }}"
 
       - name: "Log into GitHub Container Registry"
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
@@ -141,9 +141,9 @@ jobs:
 
       - name: Upload digest
         if: ${{ github.repository == 'saltstack/salt-ci-containers' && contains(fromJSON('["push", "schedule", "workflow_dispatch"]'), github.event_name) }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: digests-${{ matrix.dockerinfo.name }}-${{ matrix.dockerinfo.tag }}
+          name: digests-${{ matrix.dockerinfo.name }}-${{ matrix.dockerinfo.tag }}-${{ matrix.dockerinfo.platform || 'no-platform'}}"
           path: /tmp/digests/*
           if-no-files-found: error
           retention-days: 1
@@ -178,7 +178,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
@@ -191,9 +191,10 @@ jobs:
           tools --debug --version
 
       - name: Download digests
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: digests-${{ needs.matrix-generator.outputs.name }}-${{ matrix.tag }}
+          pattern: digests-${{ needs.matrix-generator.outputs.name }}-${{ matrix.tag }}-*
+          merge-multiple: true
           path: /tmp/digests
 
       - name: Show digests
