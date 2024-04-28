@@ -117,6 +117,7 @@ def matrix(ctx: Context, image: str, build_platforms: list[str] = None):
                     "file": str(fpath.relative_to(tools.utils.REPO_ROOT)),
                     "source_container": source_container,
                     "platform": "",
+                    "platform_slug": "all",
                 }
             )
         for entry in manifests:
@@ -130,6 +131,7 @@ def matrix(ctx: Context, image: str, build_platforms: list[str] = None):
                     "name": details["name"],
                     "tag": fpath.stem,
                     "platform": platform,
+                    "platform_slug": platform.replace("/", "-"),
                     "file": str(fpath.relative_to(tools.utils.REPO_ROOT)),
                     "source_container": source_container,
                 }
