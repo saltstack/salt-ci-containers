@@ -143,7 +143,7 @@ jobs:
         if: ${{ github.repository == 'saltstack/salt-ci-containers' && contains(fromJSON('["push", "schedule", "workflow_dispatch"]'), github.event_name) }}
         uses: actions/upload-artifact@v4
         with:
-          name: digests-${{ matrix.dockerinfo.name }}-${{ matrix.dockerinfo.tag }}
+          name: digests-${{ matrix.dockerinfo.name }}-${{ matrix.dockerinfo.tag }}-${{ matrix.dockerinfo.platform || 'no-platform'}}"
           path: /tmp/digests/*
           if-no-files-found: error
           retention-days: 1
@@ -191,9 +191,10 @@ jobs:
           tools --debug --version
 
       - name: Download digests
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: digests-${{ needs.matrix-generator.outputs.name }}-${{ matrix.tag }}
+          pattern: digests-${{ needs.matrix-generator.outputs.name }}-${{ matrix.tag }}-*
+          merge-multiple: true
           path: /tmp/digests
 
       - name: Show digests
