@@ -1,30 +1,30 @@
-name: "CentOS Stream 🐳 Mirror"
+name: "RockyLinux 🐳 Mirror"
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 11 * * *"
+    - cron: "0 0 * * *"
   push:
     branches:
       - '*'
     paths:
       - containers.yml
-      - '.github/workflows/centos-stream-containers.yml'
-      - 'mirrors/centos-stream/*'
+      - '.github/workflows/rockylinux-containers.yml'
+      - 'mirrors/rockylinux/*'
   pull_request:
     paths:
       - containers.yml
-      - '.github/workflows/centos-stream-containers.yml'
-      - 'mirrors/centos-stream/*'
+      - '.github/workflows/rockylinux-containers.yml'
+      - 'mirrors/rockylinux/*'
 
 env:
   COLUMNS: 190
-  PATH_IN_REPO: mirrors/centos-stream
+  PATH_IN_REPO: mirrors/rockylinux
 
 
 concurrency:
   # New builds always cancel previous, still running, builds
-  group: mirrors/centos-stream-${{ github.workflow }}-${{ github.ref }}
+  group: mirrors/rockylinux-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:

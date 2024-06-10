@@ -1,2 +1,2 @@
-FROM fedora:38
+FROM rockylinux:8
 RUN dnf update -y

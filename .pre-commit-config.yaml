@@ -2,7 +2,7 @@
 minimum_pre_commit_version: 2.4.0
 repos:
 
-  - repo: https://github.com/s0undt3ch/python-tools-scripts
+  - repo: https://github.com/saltstack/python-tools-scripts
     rev: "0.18.4"
     hooks:
       - id: tools
