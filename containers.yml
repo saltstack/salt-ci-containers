@@ -4,11 +4,9 @@ salt:
   Salt Releases:
     name: salt
     versions:
-      - "3002"
-      - "3003"
-      - "3004"
       - "3005"
       - "3006"
+      - "3007"
       - "current"
 # <---- Salt Releases -------------------------------------------------------------------------------------
 
@@ -37,7 +35,7 @@ custom:
     versions:
       - debian-12
       - debian-13
-      - centosstream-9
+      - rockylinux-9
       - ubuntu-22.04
       - ubuntu-24.04
 # <---- Custom Containers ---------------------------------------------------------------------------------
@@ -124,12 +122,11 @@ mirrors:
     container: python
     versions:
       - "3"
-      - "3.6"
-      - "3.7"
       - "3.8"
       - "3.9"
       - "3.10"
       - "3.11"
+      - "3.12"
 
   Redis:
     container: redis
@@ -142,13 +139,13 @@ mirrors:
     versions:
       - musl
 
-  AlmaLinux:
-    container: almalinux
+  RockyLinux:
+    container: rockylinux
     versions:
       - "8"
       - "9"
     commands:
-      - yum update -y
+      - dnf update -y
 
   ArchLinux:
     container: archlinux/archlinux
@@ -164,27 +161,9 @@ mirrors:
     commands:
       - yum update -y
 
-  CentOS:
-    container: centos
-    versions:
-      - "7"
-#    commands:
-#      - yum update -y
-
-  CentOS Stream:
-    container: quay.io/centos/centos
-    source_tag: stream{version}
-    versions:
-      - "8"
-      - "9"
-    commands:
-      - dnf update -y
-      - dnf install -y util-linux
-
   Debian:
     container: debian
     versions:
-      - "10"
       - "11"
       - "12"
     commands:
@@ -194,9 +173,7 @@ mirrors:
   Fedora:
     container: fedora
     versions:
-      - "37"
-      - "38"
-      - "39"
+      - "40"
     commands:
       - dnf update -y
 
@@ -209,7 +186,6 @@ mirrors:
     container: photon
     source_tag: "{version}.0"
     versions:
-      - 3
       - 4
       - 5
     commands:
@@ -222,7 +198,6 @@ mirrors:
     versions:
       - "20.04"
       - "22.04"
-      - "23.04"
       - "24.04"
     commands:
       - apt update

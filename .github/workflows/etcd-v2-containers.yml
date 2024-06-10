@@ -3,7 +3,7 @@ name: "Etcd v2 🐳 Mirror"
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 8 * * *"
+    - cron: "0 11 * * *"
   push:
     branches:
       - '*'
