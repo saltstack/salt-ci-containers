@@ -26,7 +26,7 @@ python-tools-scripts==0.18.4
     # via -r requirements.in
 pyyaml==6.0
     # via -r requirements.in
-requests==2.31.0
+requests==2.32.0
     # via python-tools-scripts
 rich==13.7.0
     # via python-tools-scripts
