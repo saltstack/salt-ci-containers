@@ -1,4 +1,4 @@
-FROM quay.io/centos/centos:stream9
+FROM rockylinux:9
 
 RUN yum update -y \
   && yum install -y python3 python3-devel python3-pip openssl git rpmdevtools rpmlint \
