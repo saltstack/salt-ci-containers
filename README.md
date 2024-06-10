@@ -67,11 +67,9 @@ will be commited.
 
 ### [![Salt Releases](https://github.com/saltstack/salt-ci-containers/actions/workflows/salt-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/salt-containers.yml)
 
-- salt:3002 - `ghcr.io/saltstack/salt-ci-containers/salt:3002`
-- salt:3003 - `ghcr.io/saltstack/salt-ci-containers/salt:3003`
-- salt:3004 - `ghcr.io/saltstack/salt-ci-containers/salt:3004`
 - salt:3005 - `ghcr.io/saltstack/salt-ci-containers/salt:3005`
 - salt:3006 - `ghcr.io/saltstack/salt-ci-containers/salt:3006`
+- salt:3007 - `ghcr.io/saltstack/salt-ci-containers/salt:3007`
 - salt:current - `ghcr.io/saltstack/salt-ci-containers/salt:current`
 
 ## Custom
@@ -94,9 +92,9 @@ will be commited.
 
 ### [![Salt Packaging](https://github.com/saltstack/salt-ci-containers/actions/workflows/packaging-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/packaging-containers.yml)
 
-- packaging:centosstream-9 - `ghcr.io/saltstack/salt-ci-containers/packaging:centosstream-9`
 - packaging:debian-12 - `ghcr.io/saltstack/salt-ci-containers/packaging:debian-12`
 - packaging:debian-13 - `ghcr.io/saltstack/salt-ci-containers/packaging:debian-13`
+- packaging:rockylinux-9 - `ghcr.io/saltstack/salt-ci-containers/packaging:rockylinux-9`
 - packaging:ubuntu-22.04 - `ghcr.io/saltstack/salt-ci-containers/packaging:ubuntu-22.04`
 - packaging:ubuntu-24.04 - `ghcr.io/saltstack/salt-ci-containers/packaging:ubuntu-24.04`
 
@@ -107,12 +105,6 @@ will be commited.
 
 
 ## Mirrors
-
-
-### [![AlmaLinux](https://github.com/saltstack/salt-ci-containers/actions/workflows/almalinux-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/almalinux-containers.yml)
-
-- [dockerhub/almalinux:8](https://hub.docker.com/r/_/almalinux/tags?name=8) - `ghcr.io/saltstack/salt-ci-containers/almalinux:8`
-- [dockerhub/almalinux:9](https://hub.docker.com/r/_/almalinux/tags?name=9) - `ghcr.io/saltstack/salt-ci-containers/almalinux:9`
 
 
 ### [![Amazon Linux](https://github.com/saltstack/salt-ci-containers/actions/workflows/amazonlinux-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/amazonlinux-containers.yml)
@@ -138,17 +130,6 @@ will be commited.
 - [dockerhub/busybox:musl](https://hub.docker.com/r/_/busybox/tags?name=musl) - `ghcr.io/saltstack/salt-ci-containers/busybox:musl`
 
 
-### [![CentOS](https://github.com/saltstack/salt-ci-containers/actions/workflows/centos-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/centos-containers.yml)
-
-- [dockerhub/centos:7](https://hub.docker.com/r/_/centos/tags?name=7) - `ghcr.io/saltstack/salt-ci-containers/centos:7`
-
-
-### [![CentOS Stream](https://github.com/saltstack/salt-ci-containers/actions/workflows/centos-stream-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/centos-stream-containers.yml)
-
-- [quay.io/centos/centos:stream8](https://quay.io/centos/centos?tab=tags&tag=stream8) - `ghcr.io/saltstack/salt-ci-containers/centos-stream:8`
-- [quay.io/centos/centos:stream9](https://quay.io/centos/centos?tab=tags&tag=stream9) - `ghcr.io/saltstack/salt-ci-containers/centos-stream:9`
-
-
 ### [![Consul](https://github.com/saltstack/salt-ci-containers/actions/workflows/consul-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/consul-containers.yml)
 
 - [hashicorp/consul:latest](https://hub.docker.com/r/hashicorp/consul/tags?name=latest) - `ghcr.io/saltstack/salt-ci-containers/consul:latest`
@@ -156,7 +137,6 @@ will be commited.
 
 ### [![Debian](https://github.com/saltstack/salt-ci-containers/actions/workflows/debian-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/debian-containers.yml)
 
-- [dockerhub/debian:10](https://hub.docker.com/r/_/debian/tags?name=10) - `ghcr.io/saltstack/salt-ci-containers/debian:10`
 - [dockerhub/debian:11](https://hub.docker.com/r/_/debian/tags?name=11) - `ghcr.io/saltstack/salt-ci-containers/debian:11`
 - [dockerhub/debian:12](https://hub.docker.com/r/_/debian/tags?name=12) - `ghcr.io/saltstack/salt-ci-containers/debian:12`
 
@@ -173,9 +153,7 @@ will be commited.
 
 ### [![Fedora](https://github.com/saltstack/salt-ci-containers/actions/workflows/fedora-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/fedora-containers.yml)
 
-- [dockerhub/fedora:37](https://hub.docker.com/r/_/fedora/tags?name=37) - `ghcr.io/saltstack/salt-ci-containers/fedora:37`
-- [dockerhub/fedora:38](https://hub.docker.com/r/_/fedora/tags?name=38) - `ghcr.io/saltstack/salt-ci-containers/fedora:38`
-- [dockerhub/fedora:39](https://hub.docker.com/r/_/fedora/tags?name=39) - `ghcr.io/saltstack/salt-ci-containers/fedora:39`
+- [dockerhub/fedora:40](https://hub.docker.com/r/_/fedora/tags?name=40) - `ghcr.io/saltstack/salt-ci-containers/fedora:40`
 
 
 ### [![MariaDB](https://github.com/saltstack/salt-ci-containers/actions/workflows/mariadb-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/mariadb-containers.yml)
@@ -212,7 +190,6 @@ will be commited.
 
 ### [![Photon](https://github.com/saltstack/salt-ci-containers/actions/workflows/photon-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/photon-containers.yml)
 
-- [dockerhub/photon:3.0](https://hub.docker.com/r/_/photon/tags?name=3.0) - `ghcr.io/saltstack/salt-ci-containers/photon:3`
 - [dockerhub/photon:4.0](https://hub.docker.com/r/_/photon/tags?name=4.0) - `ghcr.io/saltstack/salt-ci-containers/photon:4`
 - [dockerhub/photon:5.0](https://hub.docker.com/r/_/photon/tags?name=5.0) - `ghcr.io/saltstack/salt-ci-containers/photon:5`
 
@@ -222,8 +199,7 @@ will be commited.
 - [dockerhub/python:3](https://hub.docker.com/r/_/python/tags?name=3) - `ghcr.io/saltstack/salt-ci-containers/python:3`
 - [dockerhub/python:3.10](https://hub.docker.com/r/_/python/tags?name=3.10) - `ghcr.io/saltstack/salt-ci-containers/python:3.10`
 - [dockerhub/python:3.11](https://hub.docker.com/r/_/python/tags?name=3.11) - `ghcr.io/saltstack/salt-ci-containers/python:3.11`
-- [dockerhub/python:3.6](https://hub.docker.com/r/_/python/tags?name=3.6) - `ghcr.io/saltstack/salt-ci-containers/python:3.6`
-- [dockerhub/python:3.7](https://hub.docker.com/r/_/python/tags?name=3.7) - `ghcr.io/saltstack/salt-ci-containers/python:3.7`
+- [dockerhub/python:3.12](https://hub.docker.com/r/_/python/tags?name=3.12) - `ghcr.io/saltstack/salt-ci-containers/python:3.12`
 - [dockerhub/python:3.8](https://hub.docker.com/r/_/python/tags?name=3.8) - `ghcr.io/saltstack/salt-ci-containers/python:3.8`
 - [dockerhub/python:3.9](https://hub.docker.com/r/_/python/tags?name=3.9) - `ghcr.io/saltstack/salt-ci-containers/python:3.9`
 
@@ -241,6 +217,12 @@ will be commited.
 - [dockerhub/redis:alpine](https://hub.docker.com/r/_/redis/tags?name=alpine) - `ghcr.io/saltstack/salt-ci-containers/redis:alpine`
 
 
+### [![RockyLinux](https://github.com/saltstack/salt-ci-containers/actions/workflows/rockylinux-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/rockylinux-containers.yml)
+
+- [dockerhub/rockylinux:8](https://hub.docker.com/r/_/rockylinux/tags?name=8) - `ghcr.io/saltstack/salt-ci-containers/rockylinux:8`
+- [dockerhub/rockylinux:9](https://hub.docker.com/r/_/rockylinux/tags?name=9) - `ghcr.io/saltstack/salt-ci-containers/rockylinux:9`
+
+
 ### [![Tinyproxy](https://github.com/saltstack/salt-ci-containers/actions/workflows/tinyproxy-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/tinyproxy-containers.yml)
 
 - [vimagick/tinyproxy:latest](https://hub.docker.com/r/vimagick/tinyproxy/tags?name=latest) - `ghcr.io/saltstack/salt-ci-containers/tinyproxy:latest`
@@ -250,7 +232,6 @@ will be commited.
 
 - [dockerhub/ubuntu:20.04](https://hub.docker.com/r/_/ubuntu/tags?name=20.04) - `ghcr.io/saltstack/salt-ci-containers/ubuntu:20.04`
 - [dockerhub/ubuntu:22.04](https://hub.docker.com/r/_/ubuntu/tags?name=22.04) - `ghcr.io/saltstack/salt-ci-containers/ubuntu:22.04`
-- [dockerhub/ubuntu:23.04](https://hub.docker.com/r/_/ubuntu/tags?name=23.04) - `ghcr.io/saltstack/salt-ci-containers/ubuntu:23.04`
 - [dockerhub/ubuntu:24.04](https://hub.docker.com/r/_/ubuntu/tags?name=24.04) - `ghcr.io/saltstack/salt-ci-containers/ubuntu:24.04`
 
 
