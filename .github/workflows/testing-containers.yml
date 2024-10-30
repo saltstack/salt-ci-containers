@@ -1,30 +1,30 @@
-name: "Virt Minion 🐳 Container"
+name: "Salt Testing 🐳 Container"
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 17 * * *"
+    - cron: "0 18 * * *"
   push:
     branches:
       - '*'
     paths:
       - containers.yml
-      - '.github/workflows/virt-minion-containers.yml'
-      - 'custom/virt-minion/*'
+      - '.github/workflows/testing-containers.yml'
+      - 'custom/testing/*'
   pull_request:
     paths:
       - containers.yml
-      - '.github/workflows/virt-minion-containers.yml'
-      - 'custom/virt-minion/*'
+      - '.github/workflows/testing-containers.yml'
+      - 'custom/testing/*'
 
 env:
   COLUMNS: 190
-  PATH_IN_REPO: custom/virt-minion
+  PATH_IN_REPO: custom/testing
 
 
 concurrency:
   # New builds always cancel previous, still running, builds
-  group: custom/virt-minion-${{ github.workflow }}-${{ github.ref }}
+  group: custom/testing-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
