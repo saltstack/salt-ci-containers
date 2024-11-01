@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 RUN apt update -y \
   && echo 'tzdata tzdata/Areas select America' | debconf-set-selections \
