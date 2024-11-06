@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:24.04
 
 COPY 01_nodoc /etc/dpkg/dpkg.cfg.d/01_nodoc
 
