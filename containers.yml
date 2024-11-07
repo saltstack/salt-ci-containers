@@ -48,6 +48,7 @@ custom:
     versions:
       - ubuntu-20.04
       - ubuntu-22.04
+      - ubuntu-22.04-systemd
       - ubuntu-24.04
       - rockylinux-8
       - rockylinux-9
