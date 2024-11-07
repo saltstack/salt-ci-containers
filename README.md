@@ -113,7 +113,6 @@ will be commited.
 - testing:rockylinux-9 - `ghcr.io/saltstack/salt-ci-containers/testing:rockylinux-9`
 - testing:ubuntu-20.04 - `ghcr.io/saltstack/salt-ci-containers/testing:ubuntu-20.04`
 - testing:ubuntu-22.04 - `ghcr.io/saltstack/salt-ci-containers/testing:ubuntu-22.04`
-- testing:ubuntu-22.04-systemd - `ghcr.io/saltstack/salt-ci-containers/testing:ubuntu-22.04-systemd`
 - testing:ubuntu-24.04 - `ghcr.io/saltstack/salt-ci-containers/testing:ubuntu-24.04`
 
 
