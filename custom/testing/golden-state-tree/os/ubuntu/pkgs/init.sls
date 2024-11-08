@@ -16,7 +16,7 @@ include:
   - pkgs.libsodium
   - pkgs.libxml
   - pkgs.libxslt
-  - pkgs.lxc
+#  - pkgs.lxc
   - pkgs.make
   - pkgs.man
   - pkgs.nginx
@@ -41,6 +41,6 @@ include:
   - pkgs.xz
   - pkgs.tree
   - pkgs.cargo {#-
-  - pkgs.awscli
-  - pkgs.amazon-cloudwatch-agent #}
+#  - pkgs.awscli
+#  - pkgs.amazon-cloudwatch-agent #}
   - pkgs.samba

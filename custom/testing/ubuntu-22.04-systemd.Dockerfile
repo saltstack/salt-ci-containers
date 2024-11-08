@@ -21,5 +21,6 @@ RUN apt update -y \
 # RUN echo "root\nroot" | passwd -q root
 RUN echo "systemd.debug_shell=tty1" >> /etc/sysctl.conf
 COPY rescue.service /etc/systemd/system/rescue.service.d/override.conf
+RUN echo "alias exit='init 0'" >> /root/.bashrc
 
 CMD [ "/sbin/init", "1" ]

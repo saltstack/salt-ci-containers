@@ -1,4 +1,5 @@
-{%- if not grains['osmajorrelease'] in (9, 10, 18) %}
+{%- if grains.get('systemd', None) %}
+{%- if  grains['osmajorrelease'] in (9, 10, 18) %}
 install-systemd-timesyncd:
   pkg.installed:
     - name: systemd-timesyncd
@@ -21,3 +22,4 @@ remove-drift-file:
     - name: /var/lib/chrony/
     - require:
       - stop-chrony
+{%- endif %}
