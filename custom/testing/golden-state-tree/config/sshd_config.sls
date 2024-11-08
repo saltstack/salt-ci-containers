@@ -1,5 +1,7 @@
 {% set ssh_config = '/etc/ssh/sshd_config' %}
 
+{%- if salt["file.file_exists"](ssh_config) %}
+
 ClientAliveInterval:
   file.line:
     - name: {{ ssh_config }}
@@ -36,6 +38,7 @@ TCPKeepAlive:
     - location: end
   {%- endif %}
 
+{%- endif %}
 
 {%- if grains['os'] == 'VMware Photon OS' %}
 {%- for algo in ("ssh-ed25519", "ecdsa-sha2-nistp256") %}
@@ -49,6 +52,8 @@ HostKeyAlgorithms-{{ algo }}:
 
 {%- endfor %}
 {%- endif %}
+
+{%- if grains.get("systemd", None) %}
 
 stop-sshd:
   service.dead:
@@ -75,3 +80,5 @@ start-sshd:
     - reload: True
     - require:
       - stop-sshd
+
+{%- endif %}
