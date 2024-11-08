@@ -111,9 +111,9 @@ will be commited.
 - testing:photon-5 - `ghcr.io/saltstack/salt-ci-containers/testing:photon-5`
 - testing:rockylinux-8 - `ghcr.io/saltstack/salt-ci-containers/testing:rockylinux-8`
 - testing:rockylinux-9 - `ghcr.io/saltstack/salt-ci-containers/testing:rockylinux-9`
+- testing:systemd-ubuntu-22.04 - `ghcr.io/saltstack/salt-ci-containers/testing:systemd-ubuntu-22.04`
 - testing:ubuntu-20.04 - `ghcr.io/saltstack/salt-ci-containers/testing:ubuntu-20.04`
 - testing:ubuntu-22.04 - `ghcr.io/saltstack/salt-ci-containers/testing:ubuntu-22.04`
-- testing:ubuntu-22.04-systemd - `ghcr.io/saltstack/salt-ci-containers/testing:ubuntu-22.04-systemd`
 - testing:ubuntu-24.04 - `ghcr.io/saltstack/salt-ci-containers/testing:ubuntu-24.04`
 
 
