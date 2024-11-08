@@ -1,0 +1,2 @@
+cwrsync:
+  pkg.installed
