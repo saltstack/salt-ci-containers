@@ -3,6 +3,7 @@ include:
 #  - os.debian.pkgs.libdpkg-perl
 #  - os.debian.pkgs.timesync
 #  - pkgs.bower
+  - pkgs.git
   - pkgs.curl
   - pkgs.dmidecode
   - pkgs.dnsutils
