@@ -1,12 +1,12 @@
 include:
   - os.debian.pkgs.apt-utils
-  - os.debian.pkgs.libdpkg-perl
-  - os.debian.pkgs.timesync
-  - pkgs.bower
+#  - os.debian.pkgs.libdpkg-perl
+#  - os.debian.pkgs.timesync
+#  - pkgs.bower
   - pkgs.curl
   - pkgs.dmidecode
   - pkgs.dnsutils
-  - pkgs.docker
+#  - pkgs.docker
   - pkgs.gcc
   - pkgs.gpg
   - pkgs.ipset
@@ -20,7 +20,7 @@ include:
   - pkgs.make
   - pkgs.man
   - pkgs.nginx
-  - pkgs.npm
+#  - pkgs.npm
   - pkgs.openldap
   - pkgs.openssl
   - pkgs.openssl-dev
