@@ -17,7 +17,7 @@ fi
 apt update -y
 apt install -y tar wget xz-utils vim-nox apt-utils
 wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.1/salt-3007.1-onedir-linux-$ARCH.tar.xz
-tar xvf salt-3007.1-onedir-linux-$ARCH.tar.xz
+tar xf salt-3007.1-onedir-linux-$ARCH.tar.xz
 ./salt/salt-call --local --pillar-root=/golden-pillar-tree --file-root=/golden-state-tree state.apply provision
 rm -rf salt
 rm -rf salt-3007.1-onedir-linux-$ARCH.tar.xz

@@ -12,7 +12,7 @@ RUN apt update -y \
   && echo 'tzdata tzdata/Areas select America' | debconf-set-selections \
   && echo 'tzdata tzdata/Zones/America select Phoenix' | debconf-set-selections \
   && DEBIAN_FRONTEND="noninteractive" apt install -y \
-  tree tar wget xz-utils apt-utils systemd
+  tree tar wget xz-utils apt-utils systemd python3 python3-pip git
 
 COPY 01_nodoc /etc/dpkg/dpkg.cfg.d/01_nodoc
 COPY entrypoint.py entrypoint.py
