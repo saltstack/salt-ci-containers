@@ -19,11 +19,12 @@ Before=shutdown.target
 Environment=HOME=/root
 WorkingDirectory=-/root
 ExecStart=
-ExecStart=-/bin/bash
-Type=idle
+ExecStart=-/bin/sh /cmd.sh
+ExecStartPost=/usr/bin/systemctl poweroff
+Type=oneshot
 StandardInput=tty-force
 StandardOutput=inherit
 StandardError=inherit
-KillMode=process
 IgnoreSIGPIPE=no
-SendSIGHUP=yes
+RemainAfterExit=no
+#SendSIGHUP=yes
