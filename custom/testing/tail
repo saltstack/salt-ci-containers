@@ -27,7 +27,7 @@ def run_execve(cmd, args=None):
 
 
 pid = os.getpid()
-if pid != 0:
+if pid != 1:
     cmd = "/usr/bin/tail.real"
     run_execve(cmd, sys.argv[1:])
 else:
