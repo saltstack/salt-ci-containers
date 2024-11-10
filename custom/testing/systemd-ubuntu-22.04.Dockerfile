@@ -3,6 +3,8 @@ FROM ubuntu:22.04
 COPY 01_nodoc /etc/dpkg/dpkg.cfg.d/01_nodoc
 COPY entrypoint.py entrypoint.py
 
+
+
 # init and systemd are the only real requirements for systemd.
 #
 # tar wget x-utils can be used to fetch and extract a salt onedir.
@@ -23,8 +25,21 @@ RUN apt update -y \
 
 # Set the root password, this was done before single user mode worked.
 # RUN echo "root\nroot" | passwd -q root
+
+# XXX: Force shell to tty1 verify this works.
 # RUN echo "systemd.debug_shell=tty1" >> /etc/sysctl.conf
+
+# XXX: Override the rescue service. It would be better to not tamper with this
+# and instead create our own service. That requires working out wants and such
+# to make everything work correctly.
 COPY rescue.service /etc/systemd/system/rescue.service.d/override.conf
+
+
+# We've renamed /usr/bin/tail to /usr/bin/tail.real Now put our shim tail in
+# place. This is needed because github actions always set the container's
+# entrypoint to 'tail'. Our tail shim will launch systemd if it's pid is 1,
+# essentially doing the same thing as entrypoint.py. When pid is not 1 we just
+# run tail.
 COPY tail /usr/bin/tail
 
 RUN chmod +x /usr/bin/tail
