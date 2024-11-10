@@ -1,0 +1,39 @@
+#!/usr/bin/python3
+"""
+Systemd entrypoint hack.
+
+Writes /cmd.sh from the arguments passed to the script. Then execve systemd so
+systemd will be process 1. The target rescue will execute /cmd.sh using /bin/sh.
+This is needed so our ENTRYPOINT can be systemd with a target and CMD can be
+customized at runtime as expected.
+"""
+from __future__ import annotations
+
+import os
+import sys
+
+
+def run_execve(cmd, args=None):
+    if args is None:
+        args = []
+    args = [cmd] + args
+    os.environ["PYTHONPATH"] = os.pathsep.join(sys.path)
+    if os.execve in os.supports_fd:
+        with open(cmd, "rb") as fp:
+            os.execve(fp.fileno(), args, os.environ)
+    else:
+        args = [cmd] + args
+        os.execve(cmd, args, os.environ)
+
+
+pid = os.getpid()
+if pid != 0:
+    cmd = "/usr/bin/tail.real"
+    run_execve(cmd, sys.argv[1:])
+else:
+    with open("/cmd.sh", "w") as fp:
+        if sys.argv[1:]:
+            fp.write(f"tail.real", sys.argv[1:])
+        else:
+            fp.write(f"tail.real")
+    run_execve("/usr/lib/systemd/systemd", ["--systemd", "--unit=rescue.target"])
