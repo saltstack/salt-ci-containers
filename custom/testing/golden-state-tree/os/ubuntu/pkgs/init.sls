@@ -28,6 +28,7 @@ include:
   - pkgs.patch
   - pkgs.python3
   - pkgs.python3-pip
+  - pkgs.python3-venv
   - pkgs.rng-tools
   - pkgs.rsync
   - pkgs.sed
