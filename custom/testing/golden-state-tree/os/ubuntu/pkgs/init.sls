@@ -1,12 +1,15 @@
 include:
   - os.debian.pkgs.apt-utils
+# These will intall systemd
 #  - os.debian.pkgs.libdpkg-perl
 #  - os.debian.pkgs.timesync
 #  - pkgs.bower
+  - pkgs.sudo
   - pkgs.git
   - pkgs.curl
   - pkgs.dmidecode
   - pkgs.dnsutils
+# These will intall systemd
 #  - pkgs.docker
   - pkgs.gcc
   - pkgs.gpg
@@ -17,10 +20,12 @@ include:
   - pkgs.libsodium
   - pkgs.libxml
   - pkgs.libxslt
+# These will intall systemd
 #  - pkgs.lxc
   - pkgs.make
   - pkgs.man
   - pkgs.nginx
+# These will intall systemd
 #  - pkgs.npm
   - pkgs.openldap
   - pkgs.openssl
