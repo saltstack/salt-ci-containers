@@ -6,9 +6,7 @@
 {%- endif %}
 
 include:
-{%- if grains['os'] == 'Rocky' %}
-  - ./rocky_dependencies
-{%- endif %}
+  - ./{{ grains['os'].lower() }}_dependencies
 
 python_source_archive:
   file.managed:
