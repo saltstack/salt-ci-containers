@@ -21,7 +21,6 @@ RUN apt update -y \
   && echo 'tzdata tzdata/Zones/America select Phoenix' | debconf-set-selections \
   && DEBIAN_FRONTEND="noninteractive" apt install -y \
   coreutils tree tar wget xz-utils apt-utils systemd python3 python3-pip python3-venv git \
-  && chmod +x entrypoint.py \
   && mv /usr/bin/tail /usr/bin/tail.real
 
 # Set the root password, this was done before single user mode worked.
@@ -42,8 +41,9 @@ COPY rescue.service /etc/systemd/system/rescue.service.d/override.conf
 # essentially doing the same thing as entrypoint.py. When pid is not 1 we just
 # run tail.
 COPY tail /usr/bin/tail
+COPY entrypoint.py /entrypoint.py
 
-RUN chmod +x /usr/bin/tail
+RUN chmod +x /usr/bin/tail /entrypoint.py
 
 ENTRYPOINT [ "/entrypoint.py" ]
 CMD [ "/bin/bash" ]
