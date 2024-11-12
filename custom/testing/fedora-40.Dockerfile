@@ -15,7 +15,6 @@ RUN <<EOF
   fi
 
   yum update -y
-  yum install -y epel-release
   yum install -y curl wget tar xz patchelf
 
   wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.1/salt-3007.1-onedir-linux-$ARCH.tar.xz
