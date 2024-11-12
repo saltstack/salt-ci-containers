@@ -8,6 +8,8 @@
 include:
 {%- if grains['os'] == 'Rocky' %}
   - ./rocky_dependencies
+{%- elif grains['os'] == 'Ubuntu' %}
+  - ./debian_dependencies
 {%- endif %}
 
 python_source_archive:
