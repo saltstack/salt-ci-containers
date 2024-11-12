@@ -1,9 +1,10 @@
 FROM ubuntu:22.04
 
 COPY 01_nodoc /etc/dpkg/dpkg.cfg.d/01_nodoc
-COPY entrypoint.py entrypoint.py
+COPY golden-pillar-tree golden-pillar-tree
+COPY golden-state-tree golden-state-tree
 
-
+SHELL ["/bin/bash", "-c"]
 
 # init and systemd are the only real requirements for systemd.
 #
