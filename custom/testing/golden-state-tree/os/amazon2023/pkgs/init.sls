@@ -7,7 +7,7 @@ include:
   - pkgs.gpg
   - pkgs.libcurl
   - pkgs.libffi
-  - pkgs.libsodium-compile
+{#-  - pkgs.libsodium-compile #}
   - pkgs.libxml
   - pkgs.libxslt
   - pkgs.make
@@ -37,5 +37,5 @@ include:
 
   {#- OS Specific packages install #}
   {%- if grains['osarch'] not in ('amd64', 'armhf', 'arm64') %}
-  - .docker
+{#-  - .docker #}
   {%- endif %}
