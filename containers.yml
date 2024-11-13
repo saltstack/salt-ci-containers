@@ -51,12 +51,14 @@ custom:
       - systemd-ubuntu-22.04
       - ubuntu-24.04
       - rockylinux-8
+      - systemd-rockylinux-8
       - rockylinux-9
+      - systemd-rockylinux-9
       - photon-4
       - photon-5
+      - systemd-photon-5
       - debian-11
       - debian-12
-      - debian-13
       - fedora-40
       - amazonlinux-2
       - amazonlinux-2023

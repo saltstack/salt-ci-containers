@@ -6,23 +6,37 @@ COPY golden-state-tree golden-state-tree
 
 SHELL ["/bin/bash", "-c"]
 
-# init and systemd are the only real requirements for systemd.
-#
-# tar wget x-utils can be used to fetch and extract a salt onedir.
-#
-# apt-utils was required by golden states, this may/should be fixed in those
-# states.
-#
-# tree is used by workflows for debugging
-#
-# coreutils provides tail
-RUN apt update -y \
-  && echo 'tzdata tzdata/Areas select America' | debconf-set-selections \
-  && echo 'tzdata tzdata/Zones/America select Phoenix' | debconf-set-selections \
-  && DEBIAN_FRONTEND="noninteractive" apt install -y \
-  coreutils tree tar wget xz-utils apt-utils systemd python3 python3-pip python3-venv git \
-  && mv /usr/bin/tail /usr/bin/tail.real
+RUN <<EOF
+  set -e
+  # init and systemd are the only real requirements for systemd.
+  #
+  # tar wget x-utils can be used to fetch and extract a salt onedir.
+  #
+  # apt-utils was required by golden states, this may/should be fixed in those
+  # states.
+  #
+  # tree is used by workflows for debugging
+  #
+  # coreutils provides tail
+  RUN apt update -y
+  echo 'tzdata tzdata/Areas select America' | debconf-set-selections
+  echo 'tzdata tzdata/Zones/America select Phoenix' | debconf-set-selections
+  DEBIAN_FRONTEND="noninteractive" apt install -y coreutils tree tar \
+    wget xz-utils apt-utils systemd python3 python3-pip python3-venv git
 
+
+  wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.1/salt-3007.1-onedir-linux-$ARCH.tar.xz
+  tar xf salt-3007.1-onedir-linux-$ARCH.tar.xz
+
+  ./salt/salt-call --local --pillar-root=/golden-pillar-tree --file-root=/golden-state-tree state.apply python
+
+  rm -rf salt
+  rm -rf salt-3007.1-onedir-linux-$ARCH.tar.xz
+  rm -rf golden-pillar-tree
+  rm -rf golden-state-tree
+
+  mv /usr/bin/tail /usr/bin/tail.real
+EOF
 # Set the root password, this was done before single user mode worked.
 # RUN echo "root\nroot" | passwd -q root
 
@@ -42,7 +56,6 @@ COPY rescue.service /etc/systemd/system/rescue.service.d/override.conf
 # run tail.
 COPY tail /usr/bin/tail
 COPY entrypoint.py /entrypoint.py
-
 RUN chmod +x /usr/bin/tail /entrypoint.py
 
 ENTRYPOINT [ "/entrypoint.py" ]
