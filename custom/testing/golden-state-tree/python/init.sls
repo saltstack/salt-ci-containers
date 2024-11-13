@@ -6,7 +6,22 @@
 {%- endif %}
 
 include:
-  - ./{{ grains['os'].lower() }}_dependencies
+  {%- if grains['os'] == 'Rocky' %}
+  - .rocky_dependencies
+  {%- elif grains.get("oscodename") == 'Amazon Linux 2' %}
+  - .rocky_dependencies
+  {%- elif grains.get("osfinger") == 'Amazon Linux-2023' %}
+  - .rocky_dependencies
+  {%- elif grains['os'] == 'VMware Photon OS' %}
+  - .photon_dependencies
+  {%- elif grains['os'] == 'Debian' %}
+  - .debian_dependencies
+  {%- elif grains['os'] == 'Ubuntu' %}
+  - .debian_dependencies
+  {%- else %}
+  - .{{ grains['os'].lower() }}_dependencies
+  {% endif %}
+
 
 python_source_archive:
   file.managed:

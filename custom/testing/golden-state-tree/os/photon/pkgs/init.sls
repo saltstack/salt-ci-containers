@@ -1,5 +1,13 @@
+
+install_rpm:
+  cmd.run:
+    - name: tdnf install -y rpm
+    - if_missing: /usr/bin/rpm
+    - order: 0
+
 include:
   - pkgs.cron
+  {#-
   - pkgs.bower
   - pkgs.curl
   - pkgs.dmidecode
@@ -34,3 +42,4 @@ include:
   - pkgs.rust {#-
   - pkgs.awscli
   - pkgs.amazon-cloudwatch-agent #}
+  #}
