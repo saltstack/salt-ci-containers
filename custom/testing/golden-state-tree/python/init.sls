@@ -11,9 +11,9 @@ include:
   {%- elif grains['os'] == 'Fedora' %}
   - .fedora_dependencies
   {%- elif grains.get("oscodename") == 'Amazon Linux 2' %}
-  - .rocky_dependencies
+  - .amazon_dependencies
   {%- elif grains.get("osfinger") == 'Amazon Linux-2023' %}
-  - .rocky_dependencies
+  - .amazon_dependencies
   {%- elif grains['os'] == 'VMware Photon OS' %}
   - .photon_dependencies
   {%- elif grains['os'] == 'Debian' %}

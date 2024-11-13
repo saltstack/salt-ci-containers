@@ -4,7 +4,7 @@ include:
   - pkgs.curl
   - pkgs.dmidecode
   - pkgs.dnsutils
-  - pkgs.docker
+{#-  - pkgs.docker #}
   - pkgs.gcc
   - pkgs.gpg
   - pkgs.ipset
