@@ -8,6 +8,8 @@
 include:
   {%- if grains['os'] == 'Rocky' %}
   - .rocky_dependencies
+  {%- elif grains['os'] == 'Fedora' %}
+  - .fedora_dependencies
   {%- elif grains.get("oscodename") == 'Amazon Linux 2' %}
   - .rocky_dependencies
   {%- elif grains.get("osfinger") == 'Amazon Linux-2023' %}
