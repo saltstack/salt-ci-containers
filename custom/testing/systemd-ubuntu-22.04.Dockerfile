@@ -8,17 +8,14 @@ SHELL ["/bin/bash", "-c"]
 
 RUN <<EOF
   set -e
-  # init and systemd are the only real requirements for systemd.
-  #
-  # tar wget x-utils can be used to fetch and extract a salt onedir.
-  #
-  # apt-utils was required by golden states, this may/should be fixed in those
-  # states.
-  #
-  # tree is used by workflows for debugging
-  #
-  # coreutils provides tail
-  RUN apt update -y
+
+  if [ $(uname -m) = "x86_64" ]; then
+    export ARCH=x86_64
+  else
+    export ARCH=arm64
+  fi
+
+  apt update -y
   echo 'tzdata tzdata/Areas select America' | debconf-set-selections
   echo 'tzdata tzdata/Zones/America select Phoenix' | debconf-set-selections
   DEBIAN_FRONTEND="noninteractive" apt install -y coreutils tree tar \
@@ -37,6 +34,7 @@ RUN <<EOF
 
   mv /usr/bin/tail /usr/bin/tail.real
 EOF
+
 # Set the root password, this was done before single user mode worked.
 # RUN echo "root\nroot" | passwd -q root
 
