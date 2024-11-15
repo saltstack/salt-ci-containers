@@ -1,7 +1,7 @@
 {#-
 #}
 
-install_rpm:
+install_rpm_for_py:
   cmd.run:
     - name: tdnf install -y rpm
     - if_missing: /usr/bin/rpm
@@ -11,7 +11,7 @@ coreutils:
    pkg.installed:
     - name: coreutils-selinux
     - requires:
-      - install_rpm
+      - install_rpm_for_py
 
 python_dependencies:
    pkg.latest:
