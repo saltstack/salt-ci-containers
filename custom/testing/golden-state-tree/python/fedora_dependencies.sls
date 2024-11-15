@@ -4,6 +4,8 @@ python_dependencies:
        - gcc
        - make
        - findutils
+       - binutils
+       - autoconf
        - openssl-devel
        - libffi-devel
        - bzip2-devel
