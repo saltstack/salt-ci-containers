@@ -43,6 +43,10 @@ configure_python:
   cmd.run:
     - name: ./configure --enable-optimizations --prefix={{ python_prefix }}
     - cwd: /tmp/Python-{{ python_version }}
+  {%- if grains['os'] == 'VMware Photon OS' %}
+    - env:
+        ax_cv_c_float_words_bigendian: "no"
+  {%- endif %}
     - creates: /tmp/Python-{{ python_version }}/Makefile
     - require:
       - python_source

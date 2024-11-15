@@ -1,9 +1,17 @@
 {#-
 #}
 
+install_rpm:
+  cmd.run:
+    - name: tdnf install -y rpm
+    - if_missing: /usr/bin/rpm
+    - order: 0
+
 coreutils:
    pkg.installed:
     - name: coreutils-selinux
+    - requires:
+      - install_rpm
 
 python_dependencies:
    pkg.latest:
@@ -26,5 +34,8 @@ python_dependencies:
        - expat-devel
        - util-linux-devel
        - libnsl-devel
+       - iana-etc
+       - tzdata
+       - curl-devel
      - require:
        - coreutils

@@ -1,7 +1,7 @@
 FROM amazonlinux:2023
 
-COPY golden-pillar-tree golden-pillar-tree
-COPY golden-state-tree golden-state-tree
+#COPY golden-pillar-tree golden-pillar-tree
+#COPY golden-state-tree golden-state-tree
 
 SHELL ["/bin/bash", "-c"]
 
@@ -20,12 +20,12 @@ RUN <<EOF
   wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.1/salt-3007.1-onedir-linux-$ARCH.tar.xz
   tar xf salt-3007.1-onedir-linux-$ARCH.tar.xz
 
-  ./salt/salt-call --local --pillar-root=/golden-pillar-tree --file-root=/golden-state-tree state.apply provision
-
-  rm -rf salt
-  rm -rf salt-3007.1-onedir-linux-$ARCH.tar.xz
-  rm -rf golden-pillar-tree
-  rm -rf golden-state-tree
+#  ./salt/salt-call --log-level=debug --local --pillar-root=/golden-pillar-tree --file-root=/golden-state-tree state.apply provision
+#
+#  rm -rf salt
+#  rm -rf salt-3007.1-onedir-linux-$ARCH.tar.xz
+#  rm -rf golden-pillar-tree
+#  rm -rf golden-state-tree
 EOF
 
 CMD ["/bin/bash"]

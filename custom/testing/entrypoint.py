@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/bin/env /usr/local/bin/python3
 """
 Systemd entrypoint hack.
 
