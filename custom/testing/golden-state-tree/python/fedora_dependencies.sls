@@ -5,7 +5,10 @@ python_dependencies:
        - make
        - findutils
        - binutils
+       - coreutils
        - autoconf
+       - autoconf-archive
+       - pkg-config
        - openssl-devel
        - libffi-devel
        - bzip2-devel
@@ -17,3 +20,4 @@ python_dependencies:
        - sqlite-devel
        - xz-devel
        - libnsl2-devel
+       - expat-devel
