@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/rabbitmq-containers.yml'
-      - 'mirrors/rabbitmq/*'
+      - 'mirrors/rabbitmq/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/rabbitmq-containers.yml'
-      - 'mirrors/rabbitmq/*'
+      - 'mirrors/rabbitmq/**'
 
 env:
   COLUMNS: 190

@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/mariadb-containers.yml'
-      - 'mirrors/mariadb/*'
+      - 'mirrors/mariadb/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/mariadb-containers.yml'
-      - 'mirrors/mariadb/*'
+      - 'mirrors/mariadb/**'
 
 env:
   COLUMNS: 190

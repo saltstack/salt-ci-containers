@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/python-containers.yml'
-      - 'mirrors/python/*'
+      - 'mirrors/python/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/python-containers.yml'
-      - 'mirrors/python/*'
+      - 'mirrors/python/**'
 
 env:
   COLUMNS: 190

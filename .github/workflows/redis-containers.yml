@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/redis-containers.yml'
-      - 'mirrors/redis/*'
+      - 'mirrors/redis/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/redis-containers.yml'
-      - 'mirrors/redis/*'
+      - 'mirrors/redis/**'
 
 env:
   COLUMNS: 190

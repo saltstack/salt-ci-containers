@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/opensuse-containers.yml'
-      - 'mirrors/opensuse/*'
+      - 'mirrors/opensuse/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/opensuse-containers.yml'
-      - 'mirrors/opensuse/*'
+      - 'mirrors/opensuse/**'
 
 env:
   COLUMNS: 190

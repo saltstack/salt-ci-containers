@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/salt-gitfs-http-containers.yml'
-      - 'custom/salt-gitfs-http/*'
+      - 'custom/salt-gitfs-http/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/salt-gitfs-http-containers.yml'
-      - 'custom/salt-gitfs-http/*'
+      - 'custom/salt-gitfs-http/**'
 
 env:
   COLUMNS: 190

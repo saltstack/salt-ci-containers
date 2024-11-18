@@ -1,4 +1,4 @@
 include:
   - .config
   - .pkgs
-{#  - python  #}
+  - python

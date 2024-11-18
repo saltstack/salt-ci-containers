@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/etcd-v2-containers.yml'
-      - 'mirrors/etcd-v2/*'
+      - 'mirrors/etcd-v2/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/etcd-v2-containers.yml'
-      - 'mirrors/etcd-v2/*'
+      - 'mirrors/etcd-v2/**'
 
 env:
   COLUMNS: 190

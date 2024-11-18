@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/builddocs-containers.yml'
-      - 'custom/builddocs/*'
+      - 'custom/builddocs/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/builddocs-containers.yml'
-      - 'custom/builddocs/*'
+      - 'custom/builddocs/**'
 
 env:
   COLUMNS: 190

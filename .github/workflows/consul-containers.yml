@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/consul-containers.yml'
-      - 'mirrors/consul/*'
+      - 'mirrors/consul/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/consul-containers.yml'
-      - 'mirrors/consul/*'
+      - 'mirrors/consul/**'
 
 env:
   COLUMNS: 190

@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/archlinux-containers.yml'
-      - 'mirrors/archlinux/*'
+      - 'mirrors/archlinux/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/archlinux-containers.yml'
-      - 'mirrors/archlinux/*'
+      - 'mirrors/archlinux/**'
 
 env:
   COLUMNS: 190

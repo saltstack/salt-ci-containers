@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/debian-containers.yml'
-      - 'mirrors/debian/*'
+      - 'mirrors/debian/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/debian-containers.yml'
-      - 'mirrors/debian/*'
+      - 'mirrors/debian/**'
 
 env:
   COLUMNS: 190

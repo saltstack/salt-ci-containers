@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/packaging-containers.yml'
-      - 'custom/packaging/*'
+      - 'custom/packaging/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/packaging-containers.yml'
-      - 'custom/packaging/*'
+      - 'custom/packaging/**'
 
 env:
   COLUMNS: 190

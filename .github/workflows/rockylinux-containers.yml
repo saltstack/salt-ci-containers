@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/rockylinux-containers.yml'
-      - 'mirrors/rockylinux/*'
+      - 'mirrors/rockylinux/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/rockylinux-containers.yml'
-      - 'mirrors/rockylinux/*'
+      - 'mirrors/rockylinux/**'
 
 env:
   COLUMNS: 190
