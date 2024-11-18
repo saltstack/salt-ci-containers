@@ -3,6 +3,7 @@ python_dependencies:
      - pkgs:
        - gcc
        - make
+       {#-
        - findutils
        - binutils
        - coreutils
@@ -21,3 +22,4 @@ python_dependencies:
        - xz-devel
        - libnsl2-devel
        - expat-devel
+       #}
