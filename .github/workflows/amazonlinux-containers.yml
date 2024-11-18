@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/amazonlinux-containers.yml'
-      - 'mirrors/amazonlinux/*'
+      - 'mirrors/amazonlinux/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/amazonlinux-containers.yml'
-      - 'mirrors/amazonlinux/*'
+      - 'mirrors/amazonlinux/**'
 
 env:
   COLUMNS: 190

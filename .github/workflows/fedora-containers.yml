@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/fedora-containers.yml'
-      - 'mirrors/fedora/*'
+      - 'mirrors/fedora/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/fedora-containers.yml'
-      - 'mirrors/fedora/*'
+      - 'mirrors/fedora/**'
 
 env:
   COLUMNS: 190

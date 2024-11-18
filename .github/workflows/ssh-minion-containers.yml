@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/ssh-minion-containers.yml'
-      - 'custom/ssh-minion/*'
+      - 'custom/ssh-minion/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/ssh-minion-containers.yml'
-      - 'custom/ssh-minion/*'
+      - 'custom/ssh-minion/**'
 
 env:
   COLUMNS: 190

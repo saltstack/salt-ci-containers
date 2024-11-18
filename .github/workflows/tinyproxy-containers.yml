@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/tinyproxy-containers.yml'
-      - 'mirrors/tinyproxy/*'
+      - 'mirrors/tinyproxy/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/tinyproxy-containers.yml'
-      - 'mirrors/tinyproxy/*'
+      - 'mirrors/tinyproxy/**'
 
 env:
   COLUMNS: 190

@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/salt-containers.yml'
-      - 'salt/*'
+      - 'salt/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/salt-containers.yml'
-      - 'salt/*'
+      - 'salt/**'
 
 env:
   COLUMNS: 190

@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/vault-containers.yml'
-      - 'mirrors/vault/*'
+      - 'mirrors/vault/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/vault-containers.yml'
-      - 'mirrors/vault/*'
+      - 'mirrors/vault/**'
 
 env:
   COLUMNS: 190

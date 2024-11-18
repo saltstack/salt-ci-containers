@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/openldap-minion-containers.yml'
-      - 'custom/openldap-minion/*'
+      - 'custom/openldap-minion/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/openldap-minion-containers.yml'
-      - 'custom/openldap-minion/*'
+      - 'custom/openldap-minion/**'
 
 env:
   COLUMNS: 190

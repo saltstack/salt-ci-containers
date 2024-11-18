@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/percona-containers.yml'
-      - 'mirrors/percona/*'
+      - 'mirrors/percona/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/percona-containers.yml'
-      - 'mirrors/percona/*'
+      - 'mirrors/percona/**'
 
 env:
   COLUMNS: 190

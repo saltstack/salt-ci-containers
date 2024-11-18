@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/zookeeper-containers.yml'
-      - 'mirrors/zookeeper/*'
+      - 'mirrors/zookeeper/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/zookeeper-containers.yml'
-      - 'mirrors/zookeeper/*'
+      - 'mirrors/zookeeper/**'
 
 env:
   COLUMNS: 190

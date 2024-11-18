@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/<{ workflow_file_name }>'
-      - '<{ repository_path }>/*'
+      - '<{ repository_path }>/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/<{ workflow_file_name }>'
-      - '<{ repository_path }>/*'
+      - '<{ repository_path }>/**'
 
 env:
   COLUMNS: 190

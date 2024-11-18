@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/mysql-server-containers.yml'
-      - 'mirrors/mysql-server/*'
+      - 'mirrors/mysql-server/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/mysql-server-containers.yml'
-      - 'mirrors/mysql-server/*'
+      - 'mirrors/mysql-server/**'
 
 env:
   COLUMNS: 190

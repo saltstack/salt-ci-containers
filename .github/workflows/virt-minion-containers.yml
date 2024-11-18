@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/virt-minion-containers.yml'
-      - 'custom/virt-minion/*'
+      - 'custom/virt-minion/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/virt-minion-containers.yml'
-      - 'custom/virt-minion/*'
+      - 'custom/virt-minion/**'
 
 env:
   COLUMNS: 190

@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/busybox-containers.yml'
-      - 'mirrors/busybox/*'
+      - 'mirrors/busybox/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/busybox-containers.yml'
-      - 'mirrors/busybox/*'
+      - 'mirrors/busybox/**'
 
 env:
   COLUMNS: 190

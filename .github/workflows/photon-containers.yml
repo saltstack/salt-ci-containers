@@ -10,12 +10,12 @@ on:
     paths:
       - containers.yml
       - '.github/workflows/photon-containers.yml'
-      - 'mirrors/photon/*'
+      - 'mirrors/photon/**'
   pull_request:
     paths:
       - containers.yml
       - '.github/workflows/photon-containers.yml'
-      - 'mirrors/photon/*'
+      - 'mirrors/photon/**'
 
 env:
   COLUMNS: 190
