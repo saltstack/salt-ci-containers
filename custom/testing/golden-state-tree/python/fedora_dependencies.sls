@@ -8,7 +8,7 @@ python_dependencies:
        - coreutils
        - autoconf
        - autoconf-archive
-       - pkg-config
+       - pkgconf
        - openssl-devel
        - libffi-devel
        - bzip2-devel
