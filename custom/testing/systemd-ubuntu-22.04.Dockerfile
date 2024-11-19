@@ -18,9 +18,9 @@ RUN <<EOF
   apt update -y
   echo 'tzdata tzdata/Areas select America' | debconf-set-selections
   echo 'tzdata tzdata/Zones/America select Phoenix' | debconf-set-selections
-  DEBIAN_FRONTEND="noninteractive" apt install -y coreutils tree tar \
-    wget xz-utils apt-utils systemd python3 python3-pip python3-venv git
-
+  export DEBIAN_FRONTEND="noninteractive"
+  apt install -y coreutils tree tar wget xz-utils apt-utils systemd python3 \
+    python3-pip python3-venv git systemd
 
   wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.1/salt-3007.1-onedir-linux-$ARCH.tar.xz
   tar xf salt-3007.1-onedir-linux-$ARCH.tar.xz
