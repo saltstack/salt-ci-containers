@@ -15,7 +15,7 @@ RUN <<EOF
   fi
 
   yum update -y
-  yum install -y wget tree tar xz patchelf util-linux openssl openssl-pkcs11
+  yum install -y wget tree tar xz patchelf util-linux openssl openssl-pkcs11 systemd
 
   wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.1/salt-3007.1-onedir-linux-$ARCH.tar.xz
   tar xf salt-3007.1-onedir-linux-$ARCH.tar.xz

@@ -21,7 +21,7 @@ RUN <<EOF
   export DEBIAN_FRONTEND="noninteractive"
 
   apt update -y
-  apt install -y tar wget xz-utils vim-nox apt-utils
+  apt install -y tar wget xz-utils vim-nox apt-utils systemd
 
   wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.1/salt-3007.1-onedir-linux-$ARCH.tar.xz
   tar xf salt-3007.1-onedir-linux-$ARCH.tar.xz
