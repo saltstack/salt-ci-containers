@@ -15,7 +15,7 @@ RUN <<EOF
   fi
 
   tdnf update -y
-  tdnf install -y curl wget tar xz  # patchelf
+  tdnf install -y curl wget tar xz systemd # patchelf
 
   wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.1/salt-3007.1-onedir-linux-$ARCH.tar.xz
   tar xf salt-3007.1-onedir-linux-$ARCH.tar.xz
