@@ -1,4 +1,4 @@
-FROM rockylinux:8
+FROM amazonlinux:2
 
 COPY golden-pillar-tree golden-pillar-tree
 COPY golden-state-tree golden-state-tree
@@ -15,8 +15,7 @@ RUN <<EOF
   fi
 
   yum update -y
-  yum install -y epel-release
-  yum install -y wget tar xz patchelf systemd tree
+  yum install -y wget tree tar xz patchelf util-linux openssl openssl-pkcs11
 
   wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.1/salt-3007.1-onedir-linux-$ARCH.tar.xz
   tar xf salt-3007.1-onedir-linux-$ARCH.tar.xz
@@ -27,10 +26,6 @@ RUN <<EOF
   rm -rf salt-3007.1-onedir-linux-$ARCH.tar.xz
   rm -rf golden-pillar-tree
   rm -rf golden-state-tree
-
-  rm -rf /var/log/salt
-  rm -rf /var/cache/salt
-  rm -rf /etc/salt
 
   mv /usr/bin/tail /usr/bin/tail.real
 EOF
