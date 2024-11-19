@@ -1,7 +1,6 @@
 # [![Salt Testing](https://github.com/saltstack/salt-ci-containers/actions/workflows/testing-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/testing-containers.yml)
 
 - testing:amazonlinux-2 - `ghcr.io/saltstack/salt-ci-containers/testing:amazonlinux-2`
-- testing:amazonlinux-2023 - `ghcr.io/saltstack/salt-ci-containers/testing:amazonlinux-2023`
 - testing:debian-11 - `ghcr.io/saltstack/salt-ci-containers/testing:debian-11`
 - testing:debian-12 - `ghcr.io/saltstack/salt-ci-containers/testing:debian-12`
 - testing:fedora-40 - `ghcr.io/saltstack/salt-ci-containers/testing:fedora-40`
@@ -9,6 +8,10 @@
 - testing:photon-5 - `ghcr.io/saltstack/salt-ci-containers/testing:photon-5`
 - testing:rockylinux-8 - `ghcr.io/saltstack/salt-ci-containers/testing:rockylinux-8`
 - testing:rockylinux-9 - `ghcr.io/saltstack/salt-ci-containers/testing:rockylinux-9`
+- testing:systemd-amazonlinux-2 - `ghcr.io/saltstack/salt-ci-containers/testing:systemd-amazonlinux-2`
+- testing:systemd-amazonlinux-2023 - `ghcr.io/saltstack/salt-ci-containers/testing:systemd-amazonlinux-2023`
+- testing:systemd-debian-11 - `ghcr.io/saltstack/salt-ci-containers/testing:systemd-debian-11`
+- testing:systemd-debian-12 - `ghcr.io/saltstack/salt-ci-containers/testing:systemd-debian-12`
 - testing:systemd-photon-5 - `ghcr.io/saltstack/salt-ci-containers/testing:systemd-photon-5`
 - testing:systemd-rockylinux-8 - `ghcr.io/saltstack/salt-ci-containers/testing:systemd-rockylinux-8`
 - testing:systemd-rockylinux-9 - `ghcr.io/saltstack/salt-ci-containers/testing:systemd-rockylinux-9`
