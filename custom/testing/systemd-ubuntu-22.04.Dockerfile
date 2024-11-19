@@ -32,6 +32,10 @@ RUN <<EOF
   rm -rf golden-pillar-tree
   rm -rf golden-state-tree
 
+  rm -rf /var/log/salt
+  rm -rf /var/cache/salt
+  rm -rf /etc/salt
+
   mv /usr/bin/tail /usr/bin/tail.real
 EOF
 
