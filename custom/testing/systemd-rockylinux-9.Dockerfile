@@ -16,7 +16,7 @@ RUN <<EOF
 
   yum update -y
   yum install -y epel-release
-  yum install -y wget tar xz patchelf systemd
+  yum install -y wget tar xz patchelf tree systemd
 
   wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.1/salt-3007.1-onedir-linux-$ARCH.tar.xz
   tar xf salt-3007.1-onedir-linux-$ARCH.tar.xz

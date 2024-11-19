@@ -29,6 +29,7 @@ include:
   - pkgs.sed
   - pkgs.swig
   - pkgs.tar
+  - pkgs.tree
   - pkgs.zlib
   - pkgs.vault
   - pkgs.jq
