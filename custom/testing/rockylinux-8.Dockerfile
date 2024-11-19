@@ -27,6 +27,10 @@ RUN <<EOF
   rm -rf salt-3007.1-onedir-linux-$ARCH.tar.xz
   rm -rf golden-pillar-tree
   rm -rf golden-state-tree
+
+  rm -rf /var/log/salt
+  rm -rf /var/cache/salt
+  rm -rf /etc/salt
 EOF
 
 CMD ["/bin/bash"]
