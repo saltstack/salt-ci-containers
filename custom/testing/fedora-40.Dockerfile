@@ -20,7 +20,12 @@ RUN <<EOF
   wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.1/salt-3007.1-onedir-linux-$ARCH.tar.xz
   tar xf salt-3007.1-onedir-linux-$ARCH.tar.xz
 
-  ./salt/salt-call --log-level=debug --local --pillar-root=/golden-pillar-tree --file-root=/golden-state-tree state.apply provision
+  # ./salt/salt-call --log-level=debug --local --pillar-root=/golden-pillar-tree --file-root=/golden-state-tree state.apply provision
+  wget https://www.python.org/ftp/python/3.10.15/Python-3.10.15.tar.xz
+  tar xf Python-3.10.15.tar.xz
+  cd Python-3.10.15
+  ./configure --enable-optimizations --prefix=/usr/local
+  make
 
   rm -rf salt
   rm -rf salt-3007.1-onedir-linux-$ARCH.tar.xz
