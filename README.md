@@ -110,7 +110,6 @@ will be commited.
 - testing:rockylinux-8 - `ghcr.io/saltstack/salt-ci-containers/testing:rockylinux-8`
 - testing:rockylinux-9 - `ghcr.io/saltstack/salt-ci-containers/testing:rockylinux-9`
 - testing:systemd-amazonlinux-2 - `ghcr.io/saltstack/salt-ci-containers/testing:systemd-amazonlinux-2`
-- testing:systemd-amazonlinux-2023 - `ghcr.io/saltstack/salt-ci-containers/testing:systemd-amazonlinux-2023`
 - testing:systemd-debian-11 - `ghcr.io/saltstack/salt-ci-containers/testing:systemd-debian-11`
 - testing:systemd-debian-12 - `ghcr.io/saltstack/salt-ci-containers/testing:systemd-debian-12`
 - testing:systemd-photon-5 - `ghcr.io/saltstack/salt-ci-containers/testing:systemd-photon-5`
