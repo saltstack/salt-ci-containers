@@ -20,7 +20,8 @@ RUN <<EOF
   wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.1/salt-3007.1-onedir-linux-$ARCH.tar.xz
   tar xf salt-3007.1-onedir-linux-$ARCH.tar.xz
 
-  ./salt/salt-call --log-level=debug --local --pillar-root=/golden-pillar-tree --file-root=/golden-state-tree state.apply provision
+  # Python does not compile in a timely manner on amazon2023 and fedora40 arm64
+  # ./salt/salt-call --log-level=debug --local --pillar-root=/golden-pillar-tree --file-root=/golden-state-tree state.apply provision
 
   rm -rf salt
   rm -rf salt-3007.1-onedir-linux-$ARCH.tar.xz
