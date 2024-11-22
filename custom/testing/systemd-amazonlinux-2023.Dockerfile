@@ -26,6 +26,7 @@ RUN <<EOF
   rm -rf salt-3007.1-onedir-linux-$ARCH.tar.xz
   rm -rf golden-pillar-tree
   rm -rf golden-state-tree
+  rm -rf /tmp/*
 
   mv /usr/bin/tail /usr/bin/tail.real
 EOF

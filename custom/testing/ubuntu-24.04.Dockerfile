@@ -35,6 +35,7 @@ RUN <<EOF
   rm -rf /var/log/salt
   rm -rf /var/cache/salt
   rm -rf /etc/salt
+  rm -rf /tmp/*
 EOF
 
 CMD ["/bin/bash"]
