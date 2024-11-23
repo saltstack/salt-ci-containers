@@ -64,6 +64,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     needs: matrix-generator
+    timeout-minutes: 600
     name: "Build ${{ matrix.dockerinfo.name }}:${{ matrix.dockerinfo.tag }}${{ matrix.dockerinfo.platform && format(' ({0})', matrix.dockerinfo.platform) || ''}}"
     strategy:
       fail-fast: false
