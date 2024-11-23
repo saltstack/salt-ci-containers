@@ -22,18 +22,11 @@ RUN <<EOF
 
 #  ./salt/salt-call --local --pillar-root=/golden-pillar-tree --file-root=/golden-state-tree state.apply python
 
-<<<<<<< Updated upstream
-  rm -rf salt
-  rm -rf salt-3007.1-onedir-linux-$ARCH.tar.xz
-  rm -rf golden-pillar-tree
-  rm -rf golden-state-tree
-  rm -rf /tmp/*
-=======
 #  rm -rf salt
 #  rm -rf salt-3007.1-onedir-linux-$ARCH.tar.xz
 #  rm -rf golden-pillar-tree
 #  rm -rf golden-state-tree
->>>>>>> Stashed changes
+#  rm -rf /tmp/*
 
   mv /usr/bin/tail /usr/bin/tail.real
 EOF
