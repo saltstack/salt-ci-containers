@@ -64,8 +64,8 @@ custom:
       - fedora-40
       - amazonlinux-2
       - systemd-amazonlinux-2
-      # - amazonlinux-2023
-      # - systemd-amazonlinux-2023
+      - amazonlinux-2023
+      - systemd-amazonlinux-2023
 
 # <---- Custom Containers ---------------------------------------------------------------------------------
 
