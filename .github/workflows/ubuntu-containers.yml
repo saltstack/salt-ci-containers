@@ -30,7 +30,7 @@ concurrency:
 jobs:
   matrix-generator:
     name: Generate Matrix
-    runs-on: ubuntu-latest
+    runs-on: linux-x86_64
     outputs:
       tags: ${{ steps.set-matrix.outputs.tags }}
       name: ${{ steps.set-matrix.outputs.name }}
