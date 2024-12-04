@@ -22,8 +22,12 @@ def run_execve(cmd, args=None):
     args = [cmd] + args
     os.environ["PYTHONPATH"] = os.pathsep.join(sys.path)
     if os.execve in os.supports_fd:
-        with open(cmd, "rb") as fp:
-            os.execve(fp.fileno(), args, os.environ)
+        try:
+            with open(cmd, "rb") as fp:
+                os.execve(fp.fileno(), args, os.environ)
+        except FileNotFoundError:
+            print(f"Error: Command was {cmd}")
+            raise
     else:
         os.execve(cmd, args, os.environ)
 
