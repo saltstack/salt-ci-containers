@@ -30,7 +30,7 @@ concurrency:
 jobs:
   matrix-generator:
     name: Generate Matrix
-    runs-on: linux-x86_64
+    runs-on: ubuntu-22.04
     outputs:
       tags: ${{ steps.set-matrix.outputs.tags }}
       name: ${{ steps.set-matrix.outputs.name }}
@@ -62,7 +62,7 @@ jobs:
           tools ci matrix ${{ env.PATH_IN_REPO }}
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: matrix-generator
     name: "Build ${{ matrix.dockerinfo.name }}:${{ matrix.dockerinfo.tag }}${{ matrix.dockerinfo.platform && format(' ({0})', matrix.dockerinfo.platform) || ''}}"
     timeout-minutes: 600
@@ -150,7 +150,7 @@ jobs:
           retention-days: 1
 
   merge:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     name: "Merge ${{ needs.matrix-generator.outputs.name }}:${{ matrix.tag }}"
     if: ${{ github.repository == 'saltstack/salt-ci-containers' && contains(fromJSON('["push", "schedule", "workflow_dispatch"]'), github.event_name) }}
 
