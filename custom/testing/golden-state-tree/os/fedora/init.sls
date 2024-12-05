@@ -1,4 +1,3 @@
 include:
   - .config
   - .pkgs
-  - python
