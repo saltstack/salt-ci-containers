@@ -7,7 +7,6 @@ install_rpm:
 
 include:
   - pkgs.cron
-  {#-
   - pkgs.bower
   - pkgs.curl
   - pkgs.dmidecode
@@ -42,4 +41,3 @@ include:
   - pkgs.rust {#-
   - pkgs.awscli
   - pkgs.amazon-cloudwatch-agent #}
-  #}
