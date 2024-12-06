@@ -2,6 +2,8 @@ include:
   - .config
   - .pkgs
 
-  {%- if pillar.get('github_actions_runner', False) %}
-  - github-actions-runner
-  {%- endif %}
+install_nox:
+  cmd.run:
+    - name: pip3 install nox
+    - require:
+      - python3-pip
