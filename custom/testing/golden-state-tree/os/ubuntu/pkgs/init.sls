@@ -34,6 +34,7 @@ include:
   - pkgs.python3
   - pkgs.python3-pip
   - pkgs.python3-venv
+  - pkgs.python3-nox
   - pkgs.rng-tools
   - pkgs.rsync
   - pkgs.sed
