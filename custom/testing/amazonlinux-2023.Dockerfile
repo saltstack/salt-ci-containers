@@ -32,6 +32,8 @@ RUN <<EOF
   rm -rf /var/cache/salt
   rm -rf /etc/salt
   rm -rf /tmp/*
+  yum clean all
+  rm -rf /var/cache/yum
 EOF
 
 CMD ["/bin/bash"]
