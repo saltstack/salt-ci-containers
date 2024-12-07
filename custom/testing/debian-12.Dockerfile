@@ -36,6 +36,8 @@ tar xf salt-3007.1-onedir-linux-$ARCH.tar.xz
   rm -rf /var/cache/salt
   rm -rf /etc/salt
   rm -rf /tmp/*
+  apt-get clean
+  rm -rf /var/cache/apt/archives/*
 EOF
 
 CMD ["/bin/bash"]
