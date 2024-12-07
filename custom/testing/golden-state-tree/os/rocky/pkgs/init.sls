@@ -35,9 +35,11 @@ include:
   - pkgs.jq
   - pkgs.xz
   - pkgs.tree
-  - pkgs.cargo {#-
+  - pkgs.cargo
+  {#-
   - pkgs.awscli
-  - pkgs.amazon-cloudwatch-agent #}
+  - pkgs.amazon-cloudwatch-agent
+  - #}
   - pkgs.samba
 
   {#- OS Specific packages install #}
