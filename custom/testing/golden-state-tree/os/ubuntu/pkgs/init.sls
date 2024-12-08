@@ -33,6 +33,7 @@ include:
   - pkgs.rng-tools
   - pkgs.rsync
   - pkgs.sed
+  - pkgs.systemd
   - pkgs.swig
   - pkgs.tar
   - pkgs.zlib
