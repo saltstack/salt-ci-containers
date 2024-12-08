@@ -37,6 +37,9 @@ RUN <<EOF
   rm -rf /var/cache/salt
   rm -rf /etc/salt
   rm -rf /tmp/*
+  ln -s /bin/systemd /usr/lib/systemd/systemd
+  apt-get clean
+  rm -rf /var/cache/apt/archives/*
 EOF
 
 CMD ["/bin/bash"]
