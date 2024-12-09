@@ -24,6 +24,8 @@ include:
   - pkgs.rsync
   - pkgs.sed
   - pkgs.swig
+  - pkgs.ssh
+  - pkgs.sudo
   - pkgs.tar
   - pkgs.zlib
   - pkgs.vault

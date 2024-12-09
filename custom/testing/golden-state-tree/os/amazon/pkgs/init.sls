@@ -23,6 +23,8 @@ include:
   - pkgs.rpmdevtools
   - pkgs.rsync
   - pkgs.sed
+  - pkgs.sudo
+  - pkgs.ssh
   - pkgs.swig
   - pkgs.tar
   - pkgs.zlib
