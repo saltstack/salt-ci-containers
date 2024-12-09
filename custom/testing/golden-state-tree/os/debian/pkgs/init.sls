@@ -25,6 +25,8 @@ include:
   - pkgs.rng-tools
   - pkgs.rsync
   - pkgs.sed
+  - pkgs.ssh
+  - pkgs.sudo
   - pkgs.swig
   - pkgs.tar
   - pkgs.zlib

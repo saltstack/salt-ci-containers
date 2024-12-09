@@ -31,6 +31,8 @@ include:
   - pkgs.python3-venv
   - pkgs.rng-tools
   - pkgs.rsync
+  - pkgs.ssh
+  - pkgs.sudo
   - pkgs.sed
   - pkgs.systemd
   - pkgs.swig

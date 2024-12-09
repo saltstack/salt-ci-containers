@@ -27,6 +27,8 @@ include:
   - pkgs.rpmdevtools
   - pkgs.rsync
   - pkgs.sed
+  - pkgs.ssh
+  - pkgs.sudo
   - pkgs.swig
   - pkgs.tar
   - pkgs.tree
