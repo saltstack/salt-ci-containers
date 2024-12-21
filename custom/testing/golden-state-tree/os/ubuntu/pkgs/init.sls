@@ -8,6 +8,7 @@ include:
   - pkgs.curl
   - pkgs.dmidecode
   - pkgs.dnsutils
+  - pkgs.file
   - pkgs.gcc
   - pkgs.gpg
   - pkgs.ipset
