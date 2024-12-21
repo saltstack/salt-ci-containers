@@ -13,6 +13,7 @@ include:
   - pkgs.dnsutils
   - pkgs.gcc
   - pkgs.gpg
+  - pkgs.iproute2
   - pkgs.libcurl
   - pkgs.libffi
   - pkgs.libsodium
@@ -24,6 +25,7 @@ include:
   - pkgs.openssl
   - pkgs.openssl-dev
   - pkgs.patch
+  - pkgs.procps
   - pkgs.python3
   - pkgs.python3-pip
   {%- if grains['cpuarch'].lower() == 'x86_64' %}
