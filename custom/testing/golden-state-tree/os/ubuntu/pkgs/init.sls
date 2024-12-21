@@ -26,6 +26,7 @@ include:
   - pkgs.openssl
   - pkgs.openssl-dev
   - pkgs.patch
+  - pkgs.procps
   - pkgs.python3
   - pkgs.python3-pip
   - pkgs.python3-venv
