@@ -5,6 +5,7 @@ include:
   - pkgs.bower
   - pkgs.sudo
   - pkgs.git
+  - pkgs.cron
   - pkgs.curl
   - pkgs.dmidecode
   - pkgs.dnsutils

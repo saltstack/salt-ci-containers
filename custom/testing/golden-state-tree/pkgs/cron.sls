@@ -1,4 +1,4 @@
-{%- if grains['os'] == 'Debian' %}
+{%- if grains['os_family'] == 'Debian' %}
 cron:
   pkg.installed
 {%- else %}
