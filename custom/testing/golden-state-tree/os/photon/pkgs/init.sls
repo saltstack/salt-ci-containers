@@ -12,6 +12,7 @@ include:
   - pkgs.dmidecode
   - pkgs.dnsutils
   - pkgs.gcc
+  - pkgs.git
   - pkgs.gpg
   - pkgs.iproute2
   - pkgs.libcurl
