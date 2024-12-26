@@ -5,6 +5,7 @@ include:
   - pkgs.dnsutils
   - pkgs.gcc
   - pkgs.gpg
+  - pkgs.iproute2
   - pkgs.libcurl
   - pkgs.libffi
 {#-  - pkgs.libsodium-compile #}
