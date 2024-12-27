@@ -85,7 +85,7 @@ install-docker:
     {%- endif %}
   {%- endif %}
 
-  {%- if grains['os_family'] != 'Debian' or grains['os'] != 'Debian' %}
+  {%- if grains['os_family'] != 'Debian' or grains['os'] != 'Rocky' %}
     {%- if on_docker == False %}
 reload-systemd-units:
   module.run:
