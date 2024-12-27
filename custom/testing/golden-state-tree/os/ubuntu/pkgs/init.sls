@@ -9,6 +9,7 @@ include:
   - pkgs.curl
   - pkgs.dmidecode
   - pkgs.dnsutils
+  - pkgs.docker
   - pkgs.file
   - pkgs.gcc
   - pkgs.gpg
