@@ -101,4 +101,10 @@ enable-docker-service:
       - reload-systemd-units
     {%- endif %}
   {%- endif %}
+  {%- grains['os'] == 'Rocky' %}
+enable-docker-service:
+  file.symlink:
+    - name: /etc/systemd/system/multi-user.target.wants/docker.service 
+    - target: /usr/lib/systemd/system/docker.service
+  {%- endif %}
 {%- endif %}
