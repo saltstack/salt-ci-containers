@@ -3,7 +3,6 @@ include:
   - pkgs.curl
   - pkgs.dmidecode
   - pkgs.dnsutils
-  - pkgs.docker
   - pkgs.gcc
   - pkgs.gpg
   - pkgs.iproute2

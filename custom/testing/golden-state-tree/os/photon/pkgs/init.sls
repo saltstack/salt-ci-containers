@@ -11,7 +11,6 @@ include:
   - pkgs.curl
   - pkgs.dmidecode
   - pkgs.dnsutils
-  - pkgs.docker
   - pkgs.gcc
   - pkgs.git
   - pkgs.gpg
