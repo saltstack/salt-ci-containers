@@ -23,7 +23,7 @@ vault-repo:
     - name: |
         dnf -y install dnf-plugins-core
         dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
-  {%- elif grains['os'] == 'Amazon' %}
+  {%- elif grains['os'] in ('Amazon', 'Rocky') %}
   {#- Amazon must be addressed first because of the os_family logical check below #}
     - name: |
         yum install -y yum-utils
