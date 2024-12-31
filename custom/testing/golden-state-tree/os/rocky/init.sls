@@ -1,7 +1,6 @@
 include:
   - .config
   - .pkgs
-  - download.vault
 
 install_nox:
   cmd.run:
