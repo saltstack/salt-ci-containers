@@ -13,6 +13,7 @@ include:
   - pkgs.file
   - pkgs.gcc
   - pkgs.gpg
+  - pkgs.git
   - pkgs.ipset
   - pkgs.libcurl
   - pkgs.libffi

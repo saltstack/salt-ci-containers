@@ -5,6 +5,7 @@ include:
   - pkgs.dnsutils
   - pkgs.gcc
   - pkgs.gpg
+  - pkgs.git
   - pkgs.libcurl
   - pkgs.libffi
   - pkgs.libsodium
