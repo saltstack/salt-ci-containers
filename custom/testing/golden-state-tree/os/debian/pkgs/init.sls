@@ -22,6 +22,7 @@ include:
   - pkgs.openssl
   - pkgs.openssl-dev
   - pkgs.patch
+  - pkgs.ping
   - pkgs.python3
   - pkgs.python3-pip
   - pkgs.rng-tools
