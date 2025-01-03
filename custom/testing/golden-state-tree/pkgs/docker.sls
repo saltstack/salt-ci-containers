@@ -108,3 +108,9 @@ enable-docker-service:
     - target: /usr/lib/systemd/system/docker.service
   {%- endif %}
 {%- endif %}
+
+fix-for-mysql:
+  cmd.run:
+    - name: sed -i '/LimitNOFILE=infinity/c\LimitNOFILE=1048576' /lib/systemd/system/containerd.service
+    - require:
+      - install-docker
