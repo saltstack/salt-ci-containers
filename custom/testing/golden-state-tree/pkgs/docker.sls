@@ -107,10 +107,15 @@ enable-docker-service:
     - name: /etc/systemd/system/multi-user.target.wants/docker.service
     - target: /usr/lib/systemd/system/docker.service
   {%- endif %}
-{%- endif %}
 
+{#-
+ Fix for mysql container tests. Without this change some versions of mysql
+ containers will consume endless memory. Causing them to get killed by the host
+ OS oom killer.
+#}
 fix-for-mysql:
   cmd.run:
     - name: sed -i '/LimitNOFILE=infinity/c\LimitNOFILE=1048576' /lib/systemd/system/containerd.service
     - require:
       - install-docker
+{%- endif %}
