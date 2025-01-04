@@ -28,6 +28,7 @@ include:
   - pkgs.ssh
   - pkgs.swig
   - pkgs.tar
+  - pkgs.which
   - pkgs.zlib
   - pkgs.vault
   - pkgs.jq

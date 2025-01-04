@@ -30,6 +30,7 @@ include:
   - pkgs.ssh
   - pkgs.sudo
   - pkgs.tar
+  - pkgs.which
   - pkgs.zlib
   - pkgs.vault
   - pkgs.jq
