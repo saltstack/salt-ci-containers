@@ -20,6 +20,7 @@ include:
   - pkgs.openssl-dev
   - pkgs.patch
   - pkgs.procps
+  - pkgs.ping
   - pkgs.python3
   - pkgs.python3-pip
   - pkgs.rng-tools
