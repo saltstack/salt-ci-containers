@@ -1,6 +1,6 @@
-{%- if grains['os_family'] in ('Debian',)  %}
+{%- if grains['os_family'] == 'Debian'  %}
   {%- set pkg = "inetutils-ping" %}
-{%- elif grains['os_family'] in ('Redhat',)  %}
+{%- elif grains['os_family'] == 'Redhat'  %}
   {%- set pkg = "iputils" %}
 {%- else %}
   {%- set pkg = "ping" %}
