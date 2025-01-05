@@ -42,5 +42,5 @@ include:
   {#- OS Specific packages install #}
   - .epel-release
   {%- if grains['osarch'] not in ('amd64', 'armhf', 'arm64') %}
-  - .docker
+  {#- - .docker #}
   {%- endif %}

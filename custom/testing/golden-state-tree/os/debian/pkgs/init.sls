@@ -3,7 +3,9 @@ include:
   - pkgs.curl
   - pkgs.dmidecode
   - pkgs.dnsutils
+  {%- if grains['osrelease'] == '11' %}
   - pkgs.docker
+  {%- endif %}
   - pkgs.file
   - pkgs.gcc
   - pkgs.gpg
