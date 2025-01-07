@@ -43,6 +43,7 @@ include:
   - pkgs.jq
   - pkgs.xz
   - pkgs.tree
+  - pkgs.ansible
   - pkgs.cargo {#-
   - pkgs.awscli
   - pkgs.amazon-cloudwatch-agent #}
