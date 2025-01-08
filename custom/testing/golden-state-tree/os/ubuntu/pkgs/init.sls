@@ -10,7 +10,8 @@ include:
   - pkgs.dmidecode
   - pkgs.dnsutils
   # Some docker in docker tests fail on thses versions. The same tests pass on
-  # debian-11 and ubuntu-20.04.
+  # debian-11 and ubuntu-20.04. These test also pass when locally but fail in
+  # the CI/CD pipelines.
   {%- if grains['osrelease'] not in ['22.04', '24.04'] %}
   - pkgs.docker
   {%- endif %}
