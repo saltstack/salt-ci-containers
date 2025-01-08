@@ -32,6 +32,7 @@ include:
   - pkgs.openssl
   - pkgs.openssl-dev
   - pkgs.patch
+  - pkgs.ping
   - pkgs.procps
   - pkgs.python3
   - pkgs.python3-pip
