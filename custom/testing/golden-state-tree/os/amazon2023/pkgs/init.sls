@@ -18,6 +18,7 @@ include:
   - pkgs.openldap
   - pkgs.openssl
   - pkgs.openssl-dev
+  - pkgs.passwd
   - pkgs.patch
   - pkgs.procps
   - pkgs.ping

@@ -17,6 +17,7 @@ include:
   - pkgs.openldap
   - pkgs.openssl
   - pkgs.openssl-dev
+  - pkgs.passwd
   - pkgs.patch
   - pkgs.python3
   - pkgs.python3-pip
