@@ -9,7 +9,9 @@ include:
   - pkgs.curl
   - pkgs.dmidecode
   - pkgs.dnsutils
-  {%- if grains['osrelease'] != '22.04' %}
+  # Some docker in docker tests fail on thses versions. The same tests pass on
+  # debian-11 and ubuntu-20.04.
+  {%- if grains['osrelease'] not in ['22.04', '24.04'] %}
   - pkgs.docker
   {%- endif %}
   - pkgs.file
