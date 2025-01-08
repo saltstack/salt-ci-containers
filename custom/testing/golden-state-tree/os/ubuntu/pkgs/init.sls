@@ -9,7 +9,9 @@ include:
   - pkgs.curl
   - pkgs.dmidecode
   - pkgs.dnsutils
+  {%- if grains['osrelease'] != '22.04' %}
   - pkgs.docker
+  {%- endif %}
   - pkgs.file
   - pkgs.gcc
   - pkgs.gpg
