@@ -52,3 +52,6 @@ include:
   {#- OS Specific packages install #}
   - .g++
   - .python3
+
+dnf-plugins-core:
+  pkg.installed
