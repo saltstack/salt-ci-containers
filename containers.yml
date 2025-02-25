@@ -55,7 +55,7 @@ custom:
       - photon-5
       - debian-11
       - debian-12
-      - fedora-40
+      - fedora-41
       - amazonlinux-2
       - amazonlinux-2023
 
@@ -194,7 +194,7 @@ mirrors:
   Fedora:
     container: fedora
     versions:
-      - "40"
+      - "41"
     commands:
       - dnf update -y
 

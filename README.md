@@ -105,7 +105,7 @@ will be commited.
 - testing:amazonlinux-2023 - `ghcr.io/saltstack/salt-ci-containers/testing:amazonlinux-2023`
 - testing:debian-11 - `ghcr.io/saltstack/salt-ci-containers/testing:debian-11`
 - testing:debian-12 - `ghcr.io/saltstack/salt-ci-containers/testing:debian-12`
-- testing:fedora-40 - `ghcr.io/saltstack/salt-ci-containers/testing:fedora-40`
+- testing:fedora-41 - `ghcr.io/saltstack/salt-ci-containers/testing:fedora-41`
 - testing:photon-4 - `ghcr.io/saltstack/salt-ci-containers/testing:photon-4`
 - testing:photon-5 - `ghcr.io/saltstack/salt-ci-containers/testing:photon-5`
 - testing:rockylinux-8 - `ghcr.io/saltstack/salt-ci-containers/testing:rockylinux-8`
@@ -174,7 +174,7 @@ will be commited.
 
 ### [![Fedora](https://github.com/saltstack/salt-ci-containers/actions/workflows/fedora-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/fedora-containers.yml)
 
-- [dockerhub/fedora:40](https://hub.docker.com/r/_/fedora/tags?name=40) - `ghcr.io/saltstack/salt-ci-containers/fedora:40`
+- [dockerhub/fedora:41](https://hub.docker.com/r/_/fedora/tags?name=41) - `ghcr.io/saltstack/salt-ci-containers/fedora:41`
 
 
 ### [![MariaDB](https://github.com/saltstack/salt-ci-containers/actions/workflows/mariadb-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/mariadb-containers.yml)
