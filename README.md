@@ -162,11 +162,6 @@ will be commited.
 - [dockerhub/debian:12](https://hub.docker.com/r/_/debian/tags?name=12) - `ghcr.io/saltstack/salt-ci-containers/debian:12`
 
 
-### [![Etcd v2](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-v2-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-v2-containers.yml)
-
-- [elcolio/etcd:latest](https://hub.docker.com/r/elcolio/etcd/tags?name=latest) - `ghcr.io/saltstack/salt-ci-containers/etcd:2`
-
-
 ### [![Etcd v3](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-v3-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-v3-containers.yml)
 
 - [bitnami/etcd:3](https://hub.docker.com/r/bitnami/etcd/tags?name=3) - `ghcr.io/saltstack/salt-ci-containers/etcd:3`
@@ -221,7 +216,6 @@ will be commited.
 - [dockerhub/python:3.10](https://hub.docker.com/r/_/python/tags?name=3.10) - `ghcr.io/saltstack/salt-ci-containers/python:3.10`
 - [dockerhub/python:3.11](https://hub.docker.com/r/_/python/tags?name=3.11) - `ghcr.io/saltstack/salt-ci-containers/python:3.11`
 - [dockerhub/python:3.12](https://hub.docker.com/r/_/python/tags?name=3.12) - `ghcr.io/saltstack/salt-ci-containers/python:3.12`
-- [dockerhub/python:3.8](https://hub.docker.com/r/_/python/tags?name=3.8) - `ghcr.io/saltstack/salt-ci-containers/python:3.8`
 - [dockerhub/python:3.9](https://hub.docker.com/r/_/python/tags?name=3.9) - `ghcr.io/saltstack/salt-ci-containers/python:3.9`
 
 

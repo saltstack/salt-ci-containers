@@ -124,14 +124,6 @@ mirrors:
       - "1.14"
       - "latest"
 
-  Etcd v2:
-    name: etcd
-    dest: etcd-v2
-    container: elcolio/etcd
-    source_tag: latest
-    versions:
-      - "2"
-
   Etcd v3:
     name: etcd
     dest: etcd-v3
@@ -143,7 +135,6 @@ mirrors:
     container: python
     versions:
       - "3"
-      - "3.8"
       - "3.9"
       - "3.10"
       - "3.11"
