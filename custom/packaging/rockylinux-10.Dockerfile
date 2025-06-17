@@ -1,4 +1,4 @@
-FROM rockylinux/rockylinux:9
+FROM rockylinux/rockylinux:10
 
 RUN yum update -y \
   && yum install -y python3 python3-devel python3-pip openssl git rpmdevtools rpmlint \
