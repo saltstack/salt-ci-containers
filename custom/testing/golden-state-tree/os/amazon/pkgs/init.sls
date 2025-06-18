@@ -31,7 +31,6 @@ include:
   - pkgs.tar
   - pkgs.which
   - pkgs.zlib
-  - pkgs.vault
   - pkgs.jq
   - pkgs.xz
   - pkgs.tree
