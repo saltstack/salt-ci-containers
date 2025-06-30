@@ -105,7 +105,7 @@ will be commited.
 - testing:amazonlinux-2023 - `ghcr.io/saltstack/salt-ci-containers/testing:amazonlinux-2023`
 - testing:debian-11 - `ghcr.io/saltstack/salt-ci-containers/testing:debian-11`
 - testing:debian-12 - `ghcr.io/saltstack/salt-ci-containers/testing:debian-12`
-- testing:fedora-40 - `ghcr.io/saltstack/salt-ci-containers/testing:fedora-40`
+- testing:fedora-42 - `ghcr.io/saltstack/salt-ci-containers/testing:fedora-42`
 - testing:photon-4 - `ghcr.io/saltstack/salt-ci-containers/testing:photon-4`
 - testing:photon-5 - `ghcr.io/saltstack/salt-ci-containers/testing:photon-5`
 - testing:rockylinux-8 - `ghcr.io/saltstack/salt-ci-containers/testing:rockylinux-8`
@@ -162,11 +162,6 @@ will be commited.
 - [dockerhub/debian:12](https://hub.docker.com/r/_/debian/tags?name=12) - `ghcr.io/saltstack/salt-ci-containers/debian:12`
 
 
-### [![Etcd v2](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-v2-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-v2-containers.yml)
-
-- [elcolio/etcd:latest](https://hub.docker.com/r/elcolio/etcd/tags?name=latest) - `ghcr.io/saltstack/salt-ci-containers/etcd:2`
-
-
 ### [![Etcd v3](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-v3-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-v3-containers.yml)
 
 - [bitnami/etcd:3](https://hub.docker.com/r/bitnami/etcd/tags?name=3) - `ghcr.io/saltstack/salt-ci-containers/etcd:3`
@@ -174,7 +169,7 @@ will be commited.
 
 ### [![Fedora](https://github.com/saltstack/salt-ci-containers/actions/workflows/fedora-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/fedora-containers.yml)
 
-- [dockerhub/fedora:40](https://hub.docker.com/r/_/fedora/tags?name=40) - `ghcr.io/saltstack/salt-ci-containers/fedora:40`
+- [dockerhub/fedora:42](https://hub.docker.com/r/_/fedora/tags?name=42) - `ghcr.io/saltstack/salt-ci-containers/fedora:42`
 
 
 ### [![MariaDB](https://github.com/saltstack/salt-ci-containers/actions/workflows/mariadb-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/mariadb-containers.yml)
@@ -221,7 +216,6 @@ will be commited.
 - [dockerhub/python:3.10](https://hub.docker.com/r/_/python/tags?name=3.10) - `ghcr.io/saltstack/salt-ci-containers/python:3.10`
 - [dockerhub/python:3.11](https://hub.docker.com/r/_/python/tags?name=3.11) - `ghcr.io/saltstack/salt-ci-containers/python:3.11`
 - [dockerhub/python:3.12](https://hub.docker.com/r/_/python/tags?name=3.12) - `ghcr.io/saltstack/salt-ci-containers/python:3.12`
-- [dockerhub/python:3.8](https://hub.docker.com/r/_/python/tags?name=3.8) - `ghcr.io/saltstack/salt-ci-containers/python:3.8`
 - [dockerhub/python:3.9](https://hub.docker.com/r/_/python/tags?name=3.9) - `ghcr.io/saltstack/salt-ci-containers/python:3.9`
 
 
