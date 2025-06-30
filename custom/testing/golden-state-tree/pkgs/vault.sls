@@ -9,7 +9,7 @@ vault-prereqs:
       - lsb-release
 {%- endif %}
 
-{%- if grains['os_family'] in ('Debian', 'RedHat') %}
+{%- if grains['os_family'] in ('Debian', 'RedHat') and grains['osmajorrelease'] != 10 %}
 vault-repo:
   cmd.run:
   {%- if grains['os_family'] == 'Debian' %}
@@ -35,6 +35,7 @@ vault-repo:
   {%- endif %}
 {%- endif %}
 
+{%- if grains['osmajorrelease'] != 10 %}
 install-vault:
   pkg.installed:
     - name: vault
@@ -42,4 +43,5 @@ install-vault:
     - refresh: True
     - require:
       - vault-repo
+{%- endif %}
 {%- endif %}
