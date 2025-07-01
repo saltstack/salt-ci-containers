@@ -17,14 +17,14 @@ RUN <<EOF
   yum update -y
   yum install -y wget tar xz patchelf util-linux openssl openssl-pkcs11
 
-  wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.1/salt-3007.1-onedir-linux-$ARCH.tar.xz
-  tar xf salt-3007.1-onedir-linux-$ARCH.tar.xz
+  wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.5/salt-3007.5-onedir-linux-$ARCH.tar.xz
+  tar xf salt-3007.5-onedir-linux-$ARCH.tar.xz
 
   # Python does not compile in a timely manner on amazon2023 and fedora40 arm64
   ./salt/salt-call --log-level=debug --local --pillar-root=/golden-pillar-tree --file-root=/golden-state-tree state.apply provision
 
   rm -rf salt
-  rm -rf salt-3007.1-onedir-linux-$ARCH.tar.xz
+  rm -rf salt-3007.5-onedir-linux-$ARCH.tar.xz
   rm -rf golden-pillar-tree
   rm -rf golden-state-tree
 
