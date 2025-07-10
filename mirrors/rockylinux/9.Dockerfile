@@ -1,2 +1,2 @@
-FROM rockylinux:9
+FROM rockylinux/rockylinux:9
 RUN dnf update -y

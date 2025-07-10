@@ -9,7 +9,7 @@ zlib:
 {%- elif grains['os_family'] == "Suse" %}
       - libz1
       - zlib-devel
-{%- elif grains['os'] == "Fedora" %}
+{%- elif grains['os'] in ('Fedora', 'Rocky') and grains['osmajorrelease']|int >= 10 %}
       - zlib-ng-compat
       - zlib-ng-compat-devel
 {%- else %}

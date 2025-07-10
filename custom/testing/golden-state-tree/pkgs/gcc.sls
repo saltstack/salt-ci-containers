@@ -18,6 +18,10 @@ gcc-multilib:
 gcc:
   pkg.installed:
     - name: {{ gcc }}
+{# RHEL-based systems may require --allowerasing for proper installs and upgrades #}
+{%- if grains['os'] in ('Rocky',) %}
+    - setopt: 'allowerasing'
+{%- endif %}
 {# workaround on macosx - issue when install node and gcc together #}
 {%- if grains['os_family'] in ('MacOS',) %}
     - aggregate: False

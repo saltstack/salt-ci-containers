@@ -40,6 +40,7 @@ custom:
       - debian-12
       - debian-13
       - rockylinux-9
+      - rockylinux-10
       - ubuntu-22.04
       - ubuntu-24.04
 
@@ -51,6 +52,7 @@ custom:
       - ubuntu-24.04
       - rockylinux-8
       - rockylinux-9
+      - rockylinux-10
       - photon-4
       - photon-5
       - debian-11
@@ -152,10 +154,11 @@ mirrors:
       - musl
 
   RockyLinux:
-    container: rockylinux
+    container: rockylinux/rockylinux
     versions:
       - "8"
       - "9"
+      - "10"
     commands:
       - dnf update -y
 

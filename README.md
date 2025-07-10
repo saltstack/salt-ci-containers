@@ -94,6 +94,7 @@ will be commited.
 
 - packaging:debian-12 - `ghcr.io/saltstack/salt-ci-containers/packaging:debian-12`
 - packaging:debian-13 - `ghcr.io/saltstack/salt-ci-containers/packaging:debian-13`
+- packaging:rockylinux-10 - `ghcr.io/saltstack/salt-ci-containers/packaging:rockylinux-10`
 - packaging:rockylinux-9 - `ghcr.io/saltstack/salt-ci-containers/packaging:rockylinux-9`
 - packaging:ubuntu-22.04 - `ghcr.io/saltstack/salt-ci-containers/packaging:ubuntu-22.04`
 - packaging:ubuntu-24.04 - `ghcr.io/saltstack/salt-ci-containers/packaging:ubuntu-24.04`
@@ -108,6 +109,7 @@ will be commited.
 - testing:fedora-42 - `ghcr.io/saltstack/salt-ci-containers/testing:fedora-42`
 - testing:photon-4 - `ghcr.io/saltstack/salt-ci-containers/testing:photon-4`
 - testing:photon-5 - `ghcr.io/saltstack/salt-ci-containers/testing:photon-5`
+- testing:rockylinux-10 - `ghcr.io/saltstack/salt-ci-containers/testing:rockylinux-10`
 - testing:rockylinux-8 - `ghcr.io/saltstack/salt-ci-containers/testing:rockylinux-8`
 - testing:rockylinux-9 - `ghcr.io/saltstack/salt-ci-containers/testing:rockylinux-9`
 - testing:ubuntu-20.04 - `ghcr.io/saltstack/salt-ci-containers/testing:ubuntu-20.04`
@@ -234,8 +236,9 @@ will be commited.
 
 ### [![RockyLinux](https://github.com/saltstack/salt-ci-containers/actions/workflows/rockylinux-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/rockylinux-containers.yml)
 
-- [dockerhub/rockylinux:8](https://hub.docker.com/r/_/rockylinux/tags?name=8) - `ghcr.io/saltstack/salt-ci-containers/rockylinux:8`
-- [dockerhub/rockylinux:9](https://hub.docker.com/r/_/rockylinux/tags?name=9) - `ghcr.io/saltstack/salt-ci-containers/rockylinux:9`
+- [rockylinux/rockylinux:10](https://hub.docker.com/r/rockylinux/rockylinux/tags?name=10) - `ghcr.io/saltstack/salt-ci-containers/rockylinux:10`
+- [rockylinux/rockylinux:8](https://hub.docker.com/r/rockylinux/rockylinux/tags?name=8) - `ghcr.io/saltstack/salt-ci-containers/rockylinux:8`
+- [rockylinux/rockylinux:9](https://hub.docker.com/r/rockylinux/rockylinux/tags?name=9) - `ghcr.io/saltstack/salt-ci-containers/rockylinux:9`
 
 
 ### [![Tinyproxy](https://github.com/saltstack/salt-ci-containers/actions/workflows/tinyproxy-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/tinyproxy-containers.yml)
