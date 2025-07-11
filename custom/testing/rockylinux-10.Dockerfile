@@ -14,15 +14,15 @@ RUN <<EOF
 
   yum update -y
   yum install -y epel-release
-  yum install -y wget tar xz patchelf openssl
+  yum install -y wget tar xz patchelf
 
-  wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.5/salt-3007.5-onedir-linux-$ARCH.tar.xz
-  tar xf salt-3007.5-onedir-linux-$ARCH.tar.xz
+  wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.6/salt-3007.6-onedir-linux-$ARCH.tar.xz
+  tar xf salt-3007.6-onedir-linux-$ARCH.tar.xz
 
   ./salt/salt-call --local --pillar-root=/golden-pillar-tree --file-root=/golden-state-tree state.apply provision
 
   rm -rf salt
-  rm -rf salt-3007.5-onedir-linux-$ARCH.tar.xz
+  rm -rf salt-3007.6-onedir-linux-$ARCH.tar.xz
   rm -rf golden-pillar-tree
   rm -rf golden-state-tree
 
