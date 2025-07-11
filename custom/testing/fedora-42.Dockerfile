@@ -1,4 +1,4 @@
-FROM fedora:41
+FROM fedora:42
 
 COPY golden-pillar-tree golden-pillar-tree
 COPY golden-state-tree golden-state-tree
