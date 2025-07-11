@@ -15,17 +15,17 @@ RUN <<EOF
   fi
 
   yum update -y
-  yum install -y curl wget tar xz patchelf openssl-pkcs11-sign-provider
+  yum install -y curl wget tar xz patchelf
 
   yum install -y make gcc libffi-devel
 
-  wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.5/salt-3007.5-onedir-linux-$ARCH.tar.xz
-  tar xf salt-3007.5-onedir-linux-$ARCH.tar.xz
+  wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.6/salt-3007.6-onedir-linux-$ARCH.tar.xz
+  tar xf salt-3007.6-onedir-linux-$ARCH.tar.xz
 
   ./salt/salt-call --log-level=debug --local --pillar-root=/golden-pillar-tree --file-root=/golden-state-tree state.apply provision
 
   rm -rf salt
-  rm -rf salt-3007.5-onedir-linux-$ARCH.tar.xz
+  rm -rf salt-3007.6-onedir-linux-$ARCH.tar.xz
   rm -rf golden-pillar-tree
   rm -rf golden-state-tree
 
