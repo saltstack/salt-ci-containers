@@ -55,6 +55,7 @@ custom:
       - debian-12
       - debian-13
       - fedora-42
+      - opensuse-leap-15
       - amazonlinux-2
       - amazonlinux-2023
 
