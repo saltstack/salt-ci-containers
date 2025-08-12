@@ -2,7 +2,11 @@ include:
   - pkgs.cron
   - pkgs.curl
   - pkgs.dmidecode
+  {%- if grains['osrelease'] == '13`' &&  grains['osarch'] != 'arm64' %}
   - pkgs.dnsutils
+  {%- else %}
+  - pkgs.dnsutils
+  {%- endif %}
   {%- if grains['osrelease'] == '11' %}
   - pkgs.docker
   {%- endif %}
@@ -35,7 +39,11 @@ include:
   - pkgs.swig
   - pkgs.tar
   - pkgs.zlib
+  {%- if grains['osrelease'] == '13`' &&  grains['osarch'] != 'arm64' %}
   - pkgs.vault
+  {%- else %}
+  - pkgs.vault
+  {%- endif %}
   - pkgs.jq
   - pkgs.xz
   - pkgs.tree

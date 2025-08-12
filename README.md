@@ -106,6 +106,7 @@ will be commited.
 - testing:amazonlinux-2023 - `ghcr.io/saltstack/salt-ci-containers/testing:amazonlinux-2023`
 - testing:debian-11 - `ghcr.io/saltstack/salt-ci-containers/testing:debian-11`
 - testing:debian-12 - `ghcr.io/saltstack/salt-ci-containers/testing:debian-12`
+- testing:debian-13 - `ghcr.io/saltstack/salt-ci-containers/testing:debian-13`
 - testing:fedora-42 - `ghcr.io/saltstack/salt-ci-containers/testing:fedora-42`
 - testing:photon-4 - `ghcr.io/saltstack/salt-ci-containers/testing:photon-4`
 - testing:photon-5 - `ghcr.io/saltstack/salt-ci-containers/testing:photon-5`
