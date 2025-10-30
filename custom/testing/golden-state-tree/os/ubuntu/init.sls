@@ -7,6 +7,7 @@
 include:
   - .config
   - .pkgs
+  - .disable_apt_timers
 
 install_nox:
   cmd.run:
