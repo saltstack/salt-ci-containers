@@ -18,7 +18,7 @@ jobs:
           cache-seed: ${{ hashFiles('.github/**', 'tools/**') }}
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          python-version: '3.11'
 
       - name: Install Pre-Commit
         run: |
