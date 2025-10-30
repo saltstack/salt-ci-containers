@@ -4,18 +4,6 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "0 22 * * *"
-  push:
-    branches:
-      - '*'
-    paths:
-      - containers.yml
-      - '.github/workflows/openldap-minion-containers.yml'
-      - 'custom/openldap-minion/**'
-  pull_request:
-    paths:
-      - containers.yml
-      - '.github/workflows/openldap-minion-containers.yml'
-      - 'custom/openldap-minion/**'
 
 env:
   COLUMNS: 190
