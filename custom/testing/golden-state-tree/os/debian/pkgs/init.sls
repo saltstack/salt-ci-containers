@@ -39,9 +39,7 @@ include:
   - pkgs.swig
   - pkgs.tar
   - pkgs.zlib
-  {%- if grains['osrelease'] == '13`' &&  grains['osarch'] != 'arm64' %}
-  - pkgs.vault
-  {%- else %}
+  {%- if grains['osrelease'] != '13`' &&  grains['osarch'] != 'arm64' %}
   - pkgs.vault
   {%- endif %}
   - pkgs.jq
