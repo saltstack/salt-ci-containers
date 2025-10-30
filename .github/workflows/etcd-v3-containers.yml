@@ -4,18 +4,18 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "0 9 * * *"
-#   push:
-#     branches:
-#       - '*'
-#     paths:
-#       - containers.yml
-#       - '.github/workflows/etcd-v3-containers.yml'
-#       - 'mirrors/etcd-v3/**'
-#   pull_request:
-#     paths:
-#       - containers.yml
-#       - '.github/workflows/etcd-v3-containers.yml'
-#       - 'mirrors/etcd-v3/**'
+  push:
+    branches:
+      - '*'
+    paths:
+      - containers.yml
+      - '.github/workflows/etcd-v3-containers.yml'
+      - 'mirrors/etcd-v3/**'
+  pull_request:
+    paths:
+      - containers.yml
+      - '.github/workflows/etcd-v3-containers.yml'
+      - 'mirrors/etcd-v3/**'
 
 env:
   COLUMNS: 190
