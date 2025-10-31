@@ -5,6 +5,8 @@
   {%- set dnsutils = 'bind-tools' %}
 {%- elif grains['os'] == 'Arch' %}
   {%- set dnsutils = 'bind' %}
+{%- elif grains['os'] == 'Debian' %}
+  {%- set dnsutils = 'bind9-utils' %}
 {%- elif grains['os_family'] == 'FreeBSD' %}
   {%- set dnsutils = 'bind-tools' %}
 {%- elif grains['os'] == 'VMware Photon OS' %}
