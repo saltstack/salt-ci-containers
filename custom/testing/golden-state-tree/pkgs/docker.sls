@@ -23,11 +23,6 @@
     {%- set install_from_docker_repos = False %}
   {%- endif %}
 
-  {%- if on_docker == False %}
-include:
-  - download.busybox
-  {%- endif %}
-
   {%- if grains['os_family'] == 'Debian' %}
 docker-prereqs:
   pkg.installed:
