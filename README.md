@@ -80,11 +80,6 @@ will be commited.
 - openldap-minion:latest - `ghcr.io/saltstack/salt-ci-containers/openldap-minion:latest`
 
 
-### [![SSH Minion](https://github.com/saltstack/salt-ci-containers/actions/workflows/ssh-minion-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/ssh-minion-containers.yml)
-
-- ssh-minion:latest - `ghcr.io/saltstack/salt-ci-containers/ssh-minion:latest`
-
-
 ### [![Salt GitFS HTTP Server](https://github.com/saltstack/salt-ci-containers/actions/workflows/salt-gitfs-http-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/salt-gitfs-http-containers.yml)
 
 - salt-gitfs-http:latest - `ghcr.io/saltstack/salt-ci-containers/salt-gitfs-http:latest`
