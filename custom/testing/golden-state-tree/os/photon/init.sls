@@ -9,3 +9,8 @@ install_nox:
       - python3-pip
     - env:
        - PIP_ROOT_USER_ACTION: ignore
+
+/etc/systemd/system/tmp.mount:
+  file.symlink:
+    - target: /dev/null
+    - order: last
