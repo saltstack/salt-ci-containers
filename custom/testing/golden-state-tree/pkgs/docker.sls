@@ -80,7 +80,7 @@ install-docker:
     {%- endif %}
   {%- endif %}
 
-  {%- if grains['os_family'] != 'Debian' and grains['os'] != 'Rocky' %}
+  {%- if grains['os_family'] != 'Debian' and grains['os'] != 'Rocky' and grains['os'] !=  'SUSE' %}
     {%- if on_docker == False %}
 reload-systemd-units:
   module.run:
@@ -106,11 +106,13 @@ enable-docker-service:
 {#-
  Fix for mysql container tests. Without this change some versions of mysql
  containers will consume endless memory. Causing them to get killed by the host
- OS oom killer.
+ OS oom killer. Suse already has the fix.
 #}
+  {%- if  grains['os'] !=  'SUSE'  %}
 fix-for-mysql:
   cmd.run:
     - name: sed -i '/LimitNOFILE=infinity/c\LimitNOFILE=1048576' /lib/systemd/system/containerd.service
     - require:
       - install-docker
+  {%- endif %}
 {%- endif %}
