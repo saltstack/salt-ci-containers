@@ -115,9 +115,12 @@ fix-for-mysql:
     - require:
       - install-docker
   {%- endif %}
-{%- endif %}
 
 /etc/docker/daemon.json:
   file.managed:
     - contents: |
         {"storage-driver": "overlay2"}
+    - require:
+      - install-docker
+
+{%- endif %}
