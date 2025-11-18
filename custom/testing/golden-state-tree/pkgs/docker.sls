@@ -6,6 +6,12 @@
   {% set install_docker = True %}
 {%- endif %}
 
+{%- if grains['os'] == 'Debian' %}
+  {% set pkgver = '=5:28.4.0-1~debian.11~bullseye' %}
+{%- else %}
+  {% set pkgver = '' %}
+{%- endif %}
+
 {%- if install_docker == True %}
 
   {%- if grains['os_family'] in ('Debian', 'RedHat') %}
@@ -67,8 +73,8 @@ install-docker:
     - aggregate: False
     - pkgs:
   {%- if install_from_docker_repos == True %}
-      - docker-ce
-      - docker-ce-cli
+      - docker-ce{{ pkgver }}
+      - docker-ce-cli{{ pkgver }}
       - containerd.io
     - require:
       - docker-repo
