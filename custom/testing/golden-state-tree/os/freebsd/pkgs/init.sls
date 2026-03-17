@@ -1,0 +1,24 @@
+include:
+  - pkgs.bower
+  - pkgs.curl
+  - pkgs.dmidecode
+  - pkgs.dnsutils
+  - pkgs.gcc
+  - pkgs.gpg
+  - pkgs.libffi
+  - pkgs.libgit2
+  - pkgs.libsodium
+  - pkgs.libxml
+  - pkgs.libxslt
+  - pkgs.npm
+  - pkgs.openssl
+  - pkgs.patch
+  - pkgs.python3
+  - pkgs.python3-pip
+  - pkgs.rsync
+  - pkgs.sed
+  - pkgs.swig
+  - pkgs.jq
+  - pkgs.xz
+  - pkgs.tree
+  - pkgs.cargo

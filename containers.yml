@@ -13,16 +13,16 @@ salt:
 # ----- Custom Containers -------------------------------------------------------------------------------->
 # Custom images used in the CI pipeline
 custom:
+  builddocs:
+    name: builddocs
+    versions:
+      - latest
   OpenLDAP Minion:
     name: openldap-minion
     versions:
       - latest
   Virt Minion:
     name: virt-minion
-    versions:
-      - latest
-  SSH Minion:
-    name: ssh-minion
     versions:
       - latest
   Salt GitFS HTTP Server:
@@ -36,8 +36,29 @@ custom:
       - debian-12
       - debian-13
       - rockylinux-9
+      - rockylinux-10
       - ubuntu-22.04
       - ubuntu-24.04
+
+  Salt Testing:
+    name: testing
+    versions:
+      - ubuntu-20.04
+      - ubuntu-22.04
+      - ubuntu-24.04
+      - rockylinux-8
+      - rockylinux-9
+      - rockylinux-10
+      - photon-4
+      - photon-5
+      - debian-11
+      - debian-12
+      - debian-13
+      - fedora-42
+      - opensuse-leap-15
+      - amazonlinux-2
+      - amazonlinux-2023
+
 # <---- Custom Containers ---------------------------------------------------------------------------------
 
 # ----- Mirrored Containers ------------------------------------------------------------------------------>
@@ -103,14 +124,6 @@ mirrors:
       - "1.14"
       - "latest"
 
-  Etcd v2:
-    name: etcd
-    dest: etcd-v2
-    container: elcolio/etcd
-    source_tag: latest
-    versions:
-      - "2"
-
   Etcd v3:
     name: etcd
     dest: etcd-v3
@@ -122,7 +135,6 @@ mirrors:
     container: python
     versions:
       - "3"
-      - "3.8"
       - "3.9"
       - "3.10"
       - "3.11"
@@ -140,10 +152,11 @@ mirrors:
       - musl
 
   RockyLinux:
-    container: rockylinux
+    container: rockylinux/rockylinux
     versions:
       - "8"
       - "9"
+      - "10"
     commands:
       - dnf update -y
 
@@ -173,7 +186,7 @@ mirrors:
   Fedora:
     container: fedora
     versions:
-      - "40"
+      - "42"
     commands:
       - dnf update -y
 

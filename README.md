@@ -80,11 +80,6 @@ will be commited.
 - openldap-minion:latest - `ghcr.io/saltstack/salt-ci-containers/openldap-minion:latest`
 
 
-### [![SSH Minion](https://github.com/saltstack/salt-ci-containers/actions/workflows/ssh-minion-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/ssh-minion-containers.yml)
-
-- ssh-minion:latest - `ghcr.io/saltstack/salt-ci-containers/ssh-minion:latest`
-
-
 ### [![Salt GitFS HTTP Server](https://github.com/saltstack/salt-ci-containers/actions/workflows/salt-gitfs-http-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/salt-gitfs-http-containers.yml)
 
 - salt-gitfs-http:latest - `ghcr.io/saltstack/salt-ci-containers/salt-gitfs-http:latest`
@@ -94,14 +89,39 @@ will be commited.
 
 - packaging:debian-12 - `ghcr.io/saltstack/salt-ci-containers/packaging:debian-12`
 - packaging:debian-13 - `ghcr.io/saltstack/salt-ci-containers/packaging:debian-13`
+- packaging:rockylinux-10 - `ghcr.io/saltstack/salt-ci-containers/packaging:rockylinux-10`
 - packaging:rockylinux-9 - `ghcr.io/saltstack/salt-ci-containers/packaging:rockylinux-9`
 - packaging:ubuntu-22.04 - `ghcr.io/saltstack/salt-ci-containers/packaging:ubuntu-22.04`
 - packaging:ubuntu-24.04 - `ghcr.io/saltstack/salt-ci-containers/packaging:ubuntu-24.04`
 
 
+### [![Salt Testing](https://github.com/saltstack/salt-ci-containers/actions/workflows/testing-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/testing-containers.yml)
+
+- testing:amazonlinux-2 - `ghcr.io/saltstack/salt-ci-containers/testing:amazonlinux-2`
+- testing:amazonlinux-2023 - `ghcr.io/saltstack/salt-ci-containers/testing:amazonlinux-2023`
+- testing:debian-11 - `ghcr.io/saltstack/salt-ci-containers/testing:debian-11`
+- testing:debian-12 - `ghcr.io/saltstack/salt-ci-containers/testing:debian-12`
+- testing:debian-13 - `ghcr.io/saltstack/salt-ci-containers/testing:debian-13`
+- testing:fedora-42 - `ghcr.io/saltstack/salt-ci-containers/testing:fedora-42`
+- testing:opensuse-leap-15 - `ghcr.io/saltstack/salt-ci-containers/testing:opensuse-leap-15`
+- testing:photon-4 - `ghcr.io/saltstack/salt-ci-containers/testing:photon-4`
+- testing:photon-5 - `ghcr.io/saltstack/salt-ci-containers/testing:photon-5`
+- testing:rockylinux-10 - `ghcr.io/saltstack/salt-ci-containers/testing:rockylinux-10`
+- testing:rockylinux-8 - `ghcr.io/saltstack/salt-ci-containers/testing:rockylinux-8`
+- testing:rockylinux-9 - `ghcr.io/saltstack/salt-ci-containers/testing:rockylinux-9`
+- testing:ubuntu-20.04 - `ghcr.io/saltstack/salt-ci-containers/testing:ubuntu-20.04`
+- testing:ubuntu-22.04 - `ghcr.io/saltstack/salt-ci-containers/testing:ubuntu-22.04`
+- testing:ubuntu-24.04 - `ghcr.io/saltstack/salt-ci-containers/testing:ubuntu-24.04`
+
+
 ### [![Virt Minion](https://github.com/saltstack/salt-ci-containers/actions/workflows/virt-minion-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/virt-minion-containers.yml)
 
 - virt-minion:latest - `ghcr.io/saltstack/salt-ci-containers/virt-minion:latest`
+
+
+### [![builddocs](https://github.com/saltstack/salt-ci-containers/actions/workflows/builddocs-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/builddocs-containers.yml)
+
+- builddocs:latest - `ghcr.io/saltstack/salt-ci-containers/builddocs:latest`
 
 
 ## Mirrors
@@ -141,11 +161,6 @@ will be commited.
 - [dockerhub/debian:12](https://hub.docker.com/r/_/debian/tags?name=12) - `ghcr.io/saltstack/salt-ci-containers/debian:12`
 
 
-### [![Etcd v2](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-v2-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-v2-containers.yml)
-
-- [elcolio/etcd:latest](https://hub.docker.com/r/elcolio/etcd/tags?name=latest) - `ghcr.io/saltstack/salt-ci-containers/etcd:2`
-
-
 ### [![Etcd v3](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-v3-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-v3-containers.yml)
 
 - [bitnami/etcd:3](https://hub.docker.com/r/bitnami/etcd/tags?name=3) - `ghcr.io/saltstack/salt-ci-containers/etcd:3`
@@ -153,7 +168,7 @@ will be commited.
 
 ### [![Fedora](https://github.com/saltstack/salt-ci-containers/actions/workflows/fedora-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/fedora-containers.yml)
 
-- [dockerhub/fedora:40](https://hub.docker.com/r/_/fedora/tags?name=40) - `ghcr.io/saltstack/salt-ci-containers/fedora:40`
+- [dockerhub/fedora:42](https://hub.docker.com/r/_/fedora/tags?name=42) - `ghcr.io/saltstack/salt-ci-containers/fedora:42`
 
 
 ### [![MariaDB](https://github.com/saltstack/salt-ci-containers/actions/workflows/mariadb-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/mariadb-containers.yml)
@@ -200,7 +215,6 @@ will be commited.
 - [dockerhub/python:3.10](https://hub.docker.com/r/_/python/tags?name=3.10) - `ghcr.io/saltstack/salt-ci-containers/python:3.10`
 - [dockerhub/python:3.11](https://hub.docker.com/r/_/python/tags?name=3.11) - `ghcr.io/saltstack/salt-ci-containers/python:3.11`
 - [dockerhub/python:3.12](https://hub.docker.com/r/_/python/tags?name=3.12) - `ghcr.io/saltstack/salt-ci-containers/python:3.12`
-- [dockerhub/python:3.8](https://hub.docker.com/r/_/python/tags?name=3.8) - `ghcr.io/saltstack/salt-ci-containers/python:3.8`
 - [dockerhub/python:3.9](https://hub.docker.com/r/_/python/tags?name=3.9) - `ghcr.io/saltstack/salt-ci-containers/python:3.9`
 
 
@@ -219,8 +233,9 @@ will be commited.
 
 ### [![RockyLinux](https://github.com/saltstack/salt-ci-containers/actions/workflows/rockylinux-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/rockylinux-containers.yml)
 
-- [dockerhub/rockylinux:8](https://hub.docker.com/r/_/rockylinux/tags?name=8) - `ghcr.io/saltstack/salt-ci-containers/rockylinux:8`
-- [dockerhub/rockylinux:9](https://hub.docker.com/r/_/rockylinux/tags?name=9) - `ghcr.io/saltstack/salt-ci-containers/rockylinux:9`
+- [rockylinux/rockylinux:10](https://hub.docker.com/r/rockylinux/rockylinux/tags?name=10) - `ghcr.io/saltstack/salt-ci-containers/rockylinux:10`
+- [rockylinux/rockylinux:8](https://hub.docker.com/r/rockylinux/rockylinux/tags?name=8) - `ghcr.io/saltstack/salt-ci-containers/rockylinux:8`
+- [rockylinux/rockylinux:9](https://hub.docker.com/r/rockylinux/rockylinux/tags?name=9) - `ghcr.io/saltstack/salt-ci-containers/rockylinux:9`
 
 
 ### [![Tinyproxy](https://github.com/saltstack/salt-ci-containers/actions/workflows/tinyproxy-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/tinyproxy-containers.yml)
