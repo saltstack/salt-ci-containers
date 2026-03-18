@@ -14,3 +14,9 @@ install_nox:
   file.symlink:
     - target: /dev/null
     - order: last
+
+set_root_user_no_expiration:
+  user.present:
+    - name: root
+    - expire: -1
+    - maxdays: 99999
