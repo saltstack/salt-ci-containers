@@ -7,7 +7,8 @@ install_rpm:
 
 include:
   - pkgs.cron
-  - pkgs.bower
+# Bower was deprecated may 2017 and no longer cleanly installs
+#  - pkgs.bower
   - pkgs.curl
   - pkgs.dmidecode
   - pkgs.dnsutils
