@@ -1,3 +1,6 @@
+include:
+  - pkgs.python3-nox
+
 {%- if grains['os'] == 'VMware Photon OS' %}
   {#-
     The latest version of nox pulls in packaging, which is already installed
@@ -39,13 +42,10 @@
   {%- endif %}
 {%- endif %}
 
-{%- set which_nox = 'nox' | which %}
-
-{%- if not which_nox %}
 nox:
   cmd.run:
   {%- if not on_windows %}
-    {%- if (grains['os'] == 'Debian' and grains['osmajorrelease'] >= 12) or (grains['os'] == 'Ubuntu' and grains['osmajorrelease'] >= 23) or grains['os'] == 'Arch' %}
+    {%- if (grains['os'] == 'Debian' and grains['osmajorrelease'] >= 12) or (grains['os'] == 'Ubuntu' and grains['osmajorrelease'] >= 23) or grains['os'] == 'Arch' or (grains['os'] == 'Fedora' and grains['osmajorrelease'] >= 38) %}
     - name: "{{ pip }} install 'nox=={{ nox_version }}' --break-system-packages"
     {%- else %}
     - name: "{{ pip }} install 'nox=={{ nox_version }}'"
@@ -53,16 +53,24 @@ nox:
   {%- else %}
     - name: {{ pip }} install nox=={{ nox_version }}
   {%- endif %}
-
   {%- if not on_windows %}
+    - unless: which nox
+  {%- else %}
+    - unless: where nox
+  {%- endif %}
+    - require:
+      - python3-pip
+
+{%- if not on_windows %}
 symlink-nox:
   file.symlink:
     - name: /usr/bin/nox
     - target: /usr/local/bin/nox
     - onlyif: '[ -f /usr/local/bin/nox ]'
+    - unless: '[ -f /usr/bin/nox ]'
     - require:
       - nox
-  {%- endif %}
+{%- endif %}
 
 nox-version:
   cmd.run:
@@ -76,4 +84,3 @@ nox-version:
   {%- if grains['os'] == 'MacOS' %}
     - runas: vagrant
   {%- endif %}
-{%- endif %}
