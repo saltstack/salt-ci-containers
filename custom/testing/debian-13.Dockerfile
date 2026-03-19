@@ -14,6 +14,7 @@ RUN <<EOF
   else
     export ARCH=arm64
   fi
+  export SALT_VERSION=3007.13
 
   echo 'tzdata tzdata/Areas select America' | debconf-set-selections
   echo 'tzdata tzdata/Zones/America select Phoenix' | debconf-set-selections
@@ -22,8 +23,9 @@ RUN <<EOF
 
   apt update -y
   apt install -y tar wget xz-utils vim-nox apt-utils
-wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.6/salt-3007.6-onedir-linux-$ARCH.tar.xz
-tar xf salt-3007.6-onedir-linux-$ARCH.tar.xz
+
+  wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/$SALT_VERSION/salt-$SALT_VERSION-onedir-linux-$ARCH.tar.xz
+  tar xf salt-$SALT_VERSION-onedir-linux-$ARCH.tar.xz
 
 ./salt/salt-call --local --pillar-root=/golden-pillar-tree --file-root=/golden-state-tree state.apply provision
 

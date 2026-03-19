@@ -3,7 +3,7 @@ name: "builddocs 🐳 Container"
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 16 * * *"
+    - cron: "0 17 * * *"
   push:
     branches:
       - '*'

@@ -14,8 +14,9 @@ RUN <<EOF
     export ARCH=arm64
   fi
 
-  yum update -y
   yum install -y epel-release
+  yum install -y dnf-plugins-core
+  yum config-manager --set-enabled powertools
   yum install -y curl wget tar xz patchelf
 
   wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.6/salt-3007.6-onedir-linux-$ARCH.tar.xz
