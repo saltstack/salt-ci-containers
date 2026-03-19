@@ -61,6 +61,20 @@ deb_locale:
       - dbus.socket
       - systemd-localed.service
     {%- endif %}
+
+  # Ensure the locale is generated and the config file exists before locale.system runs
+  # This prevents "list index out of range" errors in Salt's locale module
+  {%- if grains['os'] != 'VMware Photon OS' %}
+generate_en_US_locale:
+  cmd.run:
+    - name: |
+        echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+        locale-gen en_US.UTF-8
+        [ -f /etc/default/locale ] || echo "LANG=en_US.UTF-8" > /etc/default/locale
+    - unless: locale -a | grep -i en_US.utf8
+    - require:
+      - pkg: deb_locale
+  {%- endif %}
   {%- endif %}
 
   {%- if on_arch %}
@@ -77,10 +91,21 @@ accept_LANG_sshd:
   {%- endif %}
 
 # Fedora and Centos 8
-  {%- if grains['os_family'] == 'RedHat' and grains['osmajorrelease'] != 7 and grains['os'] != 'VMware Photon OS' %}
+  {%- if grains['os_family'] == 'RedHat' and grains['osmajorrelease']|int != 7 and grains['os'] != 'VMware Photon OS' %}
 redhat_locale:
   pkg.installed:
     - name: glibc-langpack-en
+
+  # Ensure /etc/locale.conf exists for modern RedHat families to prevent Salt errors
+/etc/locale.conf:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: '0644'
+    - content: 'LANG=en_US.UTF-8'
+    - unless: test -f /etc/locale.conf
+    - require:
+      - pkg: redhat_locale
   {%- endif %}
 
 # Photon OS 3
@@ -93,6 +118,18 @@ photon_locale:
 us_locale:
   locale.present:
     - name: en_US.UTF-8
+    - require:
+      {%- if grains.os_family == 'Debian' %}
+      - pkg: deb_locale
+      {%- elif grains['os_family'] == 'RedHat' and grains['osmajorrelease']|int != 7 and grains['os'] != 'VMware Photon OS' %}
+      - pkg: redhat_locale
+      {%- elif grains['os'] == 'VMware Photon OS' %}
+      - pkg: photon_locale
+      {%- elif on_suse %}
+      - pkg: suse_local
+      {%- else %}
+      []
+      {%- endif %}
 
   {%- if grains['os_family'] not in ('FreeBSD',) %}
 default_locale:
@@ -100,5 +137,10 @@ default_locale:
     - name: en_US.UTF-8
     - require:
       - locale: us_locale
+      {%- if grains.os_family == 'Debian' %}
+      - cmd: generate_en_US_locale
+      {%- elif grains['os_family'] == 'RedHat' and grains['osmajorrelease']|int != 7 and grains['os'] != 'VMware Photon OS' %}
+      - file: /etc/locale.conf
+      {%- endif %}
   {%- endif %}
 {%- endif %}

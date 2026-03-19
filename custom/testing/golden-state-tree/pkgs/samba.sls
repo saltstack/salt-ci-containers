@@ -1,2 +1,2 @@
 samba:
-  pkg.latest
+  pkg.installed

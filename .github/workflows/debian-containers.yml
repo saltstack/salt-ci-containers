@@ -3,7 +3,7 @@ name: "Debian 🐳 Mirror"
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 10 * * *"
+    - cron: "0 11 * * *"
   push:
     branches:
       - '*'
