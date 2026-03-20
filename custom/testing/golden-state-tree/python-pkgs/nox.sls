@@ -1,4 +1,11 @@
-{%- if grains['os'] == 'VMware Photon OS' %}
+include:
+  - pkgs.python3-nox
+
+{%- set os = salt['grains.get']('os', '') %}
+{%- set os_family = salt['grains.get']('os_family', '') %}
+{%- set os_major_release = salt['grains.get']('osmajorrelease', 0)|int %}
+
+{%- if os == 'VMware Photon OS' %}
   {#-
     The latest version of nox pulls in packaging, which is already installed
     on PhotonOS AMIs. If we try to uninstall that the following would also
@@ -17,13 +24,13 @@
   {%- set nox_version = '2022.1.7' %}
 {%- endif %}
 
-{%- if grains['os_family'] == 'Windows' %}
+{%- if os_family == 'Windows' %}
   {%- set on_windows=True %}
 {%- else %}
   {%- set on_windows=False %}
 {%- endif %}
 
-{%- if grains['os_family'] == 'FreeBSD' %}
+{%- if os_family == 'FreeBSD' %}
   {%- set on_freebsd=True %}
 {%- else %}
   {%- set on_freebsd=False %}
@@ -39,13 +46,10 @@
   {%- endif %}
 {%- endif %}
 
-{%- set which_nox = 'nox' | which %}
-
-{%- if not which_nox %}
 nox:
   cmd.run:
   {%- if not on_windows %}
-    {%- if (grains['os'] == 'Debian' and grains['osmajorrelease'] >= 12) or (grains['os'] == 'Ubuntu' and grains['osmajorrelease'] >= 23) or grains['os'] == 'Arch' %}
+    {%- if (os == 'Debian' and os_major_release >= 12) or (os == 'Ubuntu' and os_major_release >= 23) or os == 'Arch' or (os == 'Fedora' and os_major_release >= 38) %}
     - name: "{{ pip }} install 'nox=={{ nox_version }}' --break-system-packages"
     {%- else %}
     - name: "{{ pip }} install 'nox=={{ nox_version }}'"
@@ -53,16 +57,27 @@ nox:
   {%- else %}
     - name: {{ pip }} install nox=={{ nox_version }}
   {%- endif %}
-
   {%- if not on_windows %}
+    - unless: command -v nox
+  {%- else %}
+    - unless: where nox
+  {%- endif %}
+    - require:
+      - python3-pip
+      {%- if (os_family == 'Debian') or (os == 'Fedora') or (os == 'Arch') or (os_family == 'RedHat' and os_major_release >= 8 and os != 'Amazon') %}
+      - pkg: python3-nox
+      {%- endif %}
+
+{%- if not on_windows %}
 symlink-nox:
   file.symlink:
     - name: /usr/bin/nox
     - target: /usr/local/bin/nox
     - onlyif: '[ -f /usr/local/bin/nox ]'
+    - unless: '[ -f /usr/bin/nox ]'
     - require:
       - nox
-  {%- endif %}
+{%- endif %}
 
 nox-version:
   cmd.run:
@@ -73,7 +88,6 @@ nox-version:
   {%- endif %}
     - require:
       - nox
-  {%- if grains['os'] == 'MacOS' %}
+  {%- if os == 'MacOS' %}
     - runas: vagrant
   {%- endif %}
-{%- endif %}
