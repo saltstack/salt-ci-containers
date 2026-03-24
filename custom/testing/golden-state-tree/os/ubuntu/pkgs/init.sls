@@ -29,7 +29,9 @@ include:
   - pkgs.lxc
   - pkgs.make
   - pkgs.man
+  {%- if grains['osrelease'] != '22.04' or grains['osarch'] != 'arm64' %}
   - pkgs.nginx
+  {%- endif %}
   - pkgs.npm
   - pkgs.openldap
   - pkgs.openssl
@@ -55,4 +57,6 @@ include:
   - pkgs.cargo {#-
 #  - pkgs.awscli
 #  - pkgs.amazon-cloudwatch-agent #}
+  {%- if grains['osrelease'] != '22.04' or grains['osarch'] != 'arm64' %}
   - pkgs.samba
+  {%- endif %}
