@@ -67,7 +67,7 @@ nox:
   {%- endif %}
     - require:
       - python3-pip
-      {%- if (os_family == 'Debian') or (os == 'Fedora') or (os == 'Arch') %}
+      {%- if (os_family == 'Debian' and not (os == 'Debian' and os_major_release == 11 and grains['osarch'] == 'arm64')) or (os == 'Fedora') or (os == 'Arch') %}
       - pkg: python3-nox
       {%- endif %}
 

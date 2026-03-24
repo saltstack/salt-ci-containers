@@ -24,6 +24,11 @@ RUN <<EOF
   apt update -y
   apt install -y tar wget xz-utils vim-nox apt-utils
 
+  # Workaround for QEMU segfaults on Debian 11 ARM64 during ldconfig
+  mv /sbin/ldconfig /sbin/ldconfig.real
+  echo -e '#!/bin/sh\nexit 0' > /sbin/ldconfig
+  chmod +x /sbin/ldconfig
+
   wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/$SALT_VERSION/salt-$SALT_VERSION-onedir-linux-$ARCH.tar.xz
   tar xf salt-$SALT_VERSION-onedir-linux-$ARCH.tar.xz
 
@@ -34,6 +39,10 @@ RUN <<EOF
   sed -i 's/lib = ctypes.util.find_library("crypto")/lib = (glob.glob(os.path.join(os.path.dirname(os.path.dirname(sys.executable)), "lib", "libcrypto.so*")) + [ctypes.util.find_library("crypto")])[0]/' ./salt/lib/python3.10/site-packages/salt/utils/rsax931.py
 
   ./salt/salt-call --local --pillar-root=/golden-pillar-tree --file-root=/golden-state-tree state.apply provision
+
+  # Restore real ldconfig
+  mv /sbin/ldconfig.real /sbin/ldconfig
+  /sbin/ldconfig
 
   rm -rf salt
   rm -rf salt-3007.6-onedir-linux-$ARCH.tar.xz

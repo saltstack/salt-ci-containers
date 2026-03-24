@@ -7,6 +7,9 @@
     {%- set pkg_name = 'nox' %}
   {%- elif os == 'Debian' and os_major_release >= 13 %}
     {%- set pkg_name = 'nox' %}
+  {%- elif os == 'Debian' and os_major_release == 11 and grains['osarch'] == 'arm64' %}
+    {#- Skip apt install on Debian 11 ARM64 because python3-gpg crashes QEMU #}
+    {%- set pkg_name = None %}
   {%- else %}
     {%- set pkg_name = 'python3-nox' %}
   {%- endif %}
