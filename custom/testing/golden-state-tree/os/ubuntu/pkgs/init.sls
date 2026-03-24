@@ -19,6 +19,7 @@ include:
   - pkgs.gcc
   - pkgs.gpg
   - pkgs.git
+  - pkgs.iproute2
   - pkgs.ipset
   - pkgs.libcurl
   - pkgs.libffi
