@@ -34,7 +34,7 @@ RUN <<EOF
 
   wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/$SALT_VERSION/salt-$SALT_VERSION-onedir-linux-$ARCH.tar.xz
   tar xf salt-$SALT_VERSION-onedir-linux-$ARCH.tar.xz
-  
+
   # Ensure Salt can find its bundled libcrypto on ARM64. This is a workaround for a Salt bug where
   # rsax931.py ignores bundled libraries on Linux. We use a sed patch instead of ldconfig to
   # avoid segmentation faults in QEMU/buildx environments.
