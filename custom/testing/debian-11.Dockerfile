@@ -27,6 +27,11 @@ RUN <<EOF
   wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/$SALT_VERSION/salt-$SALT_VERSION-onedir-linux-$ARCH.tar.xz
   tar xf salt-$SALT_VERSION-onedir-linux-$ARCH.tar.xz
 
+  # Ensure Salt can find its bundled libcrypto on ARM64. This is a workaround for a Salt bug where
+  # rsax931.py ignores bundled libraries on Linux. We use a sed patch to avoid lookup failures.
+  # This should go away after we have a proper fix in salt/utils/rsax931.py
+  sed -i 's/lib = ctypes.util.find_library("crypto")/lib = (glob.glob(os.path.join(os.path.dirname(os.path.dirname(sys.executable)), "lib", "libcrypto.so*")) + [ctypes.util.find_library("crypto")])[0]/' ./salt/lib/python3.10/site-packages/salt/utils/rsax931.py
+
   ./salt/salt-call --local --pillar-root=/golden-pillar-tree --file-root=/golden-state-tree state.apply provision
 
   rm -rf salt
