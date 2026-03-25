@@ -14,6 +14,7 @@ include:
   - pkgs.gcc
   - pkgs.gpg
   - pkgs.git
+  - pkgs.iproute2
   - pkgs.ipset
   - pkgs.libcurl
   - pkgs.libffi
@@ -23,9 +24,7 @@ include:
   - pkgs.libxslt
   - pkgs.make
   - pkgs.man
-  {%- if grains['osrelease'] != '11' or grains['osarch'] != 'arm64' %}
   - pkgs.nginx
-  {%- endif %}
   - pkgs.openldap
   - pkgs.openssl
   - pkgs.openssl-dev
@@ -50,9 +49,7 @@ include:
   - pkgs.cargo {#-
   - pkgs.awscli
   - pkgs.amazon-cloudwatch-agent #}
-  {%- if grains['osrelease'] != '11' or grains['osarch'] != 'arm64' %}
   - pkgs.samba
-  {%- endif %}
 
   {#- OS Specific packages install #}
   - .apt-utils
