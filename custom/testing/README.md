@@ -15,3 +15,4 @@
 - testing:ubuntu-20.04 - `ghcr.io/saltstack/salt-ci-containers/testing:ubuntu-20.04`
 - testing:ubuntu-22.04 - `ghcr.io/saltstack/salt-ci-containers/testing:ubuntu-22.04`
 - testing:ubuntu-24.04 - `ghcr.io/saltstack/salt-ci-containers/testing:ubuntu-24.04`
+- testing:ubuntu-26.04 - `ghcr.io/saltstack/salt-ci-containers/testing:ubuntu-26.04`
