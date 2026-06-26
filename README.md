@@ -112,6 +112,7 @@ will be commited.
 - testing:ubuntu-20.04 - `ghcr.io/saltstack/salt-ci-containers/testing:ubuntu-20.04`
 - testing:ubuntu-22.04 - `ghcr.io/saltstack/salt-ci-containers/testing:ubuntu-22.04`
 - testing:ubuntu-24.04 - `ghcr.io/saltstack/salt-ci-containers/testing:ubuntu-24.04`
+- testing:ubuntu-26.04 - `ghcr.io/saltstack/salt-ci-containers/testing:ubuntu-26.04`
 
 
 ### [![Virt Minion](https://github.com/saltstack/salt-ci-containers/actions/workflows/virt-minion-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/virt-minion-containers.yml)
@@ -248,6 +249,7 @@ will be commited.
 - [dockerhub/ubuntu:20.04](https://hub.docker.com/r/_/ubuntu/tags?name=20.04) - `ghcr.io/saltstack/salt-ci-containers/ubuntu:20.04`
 - [dockerhub/ubuntu:22.04](https://hub.docker.com/r/_/ubuntu/tags?name=22.04) - `ghcr.io/saltstack/salt-ci-containers/ubuntu:22.04`
 - [dockerhub/ubuntu:24.04](https://hub.docker.com/r/_/ubuntu/tags?name=24.04) - `ghcr.io/saltstack/salt-ci-containers/ubuntu:24.04`
+- [dockerhub/ubuntu:26.04](https://hub.docker.com/r/_/ubuntu/tags?name=26.04) - `ghcr.io/saltstack/salt-ci-containers/ubuntu:26.04`
 
 
 ### [![Vault](https://github.com/saltstack/salt-ci-containers/actions/workflows/vault-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/vault-containers.yml)

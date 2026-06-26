@@ -46,6 +46,7 @@ custom:
       - ubuntu-20.04
       - ubuntu-22.04
       - ubuntu-24.04
+      - ubuntu-26.04
       - rockylinux-8
       - rockylinux-9
       - rockylinux-10
@@ -212,6 +213,7 @@ mirrors:
       - "20.04"
       - "22.04"
       - "24.04"
+      - "26.04"
     commands:
       - apt update
       - apt upgrade -y
