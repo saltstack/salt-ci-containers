@@ -130,7 +130,7 @@ mirrors:
     dest: etcd-v3
     container: bitnami/etcd
     versions:
-      - "3"
+      - "3.5"
 
   Python:
     container: python
