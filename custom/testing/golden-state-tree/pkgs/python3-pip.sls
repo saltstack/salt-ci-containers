@@ -15,6 +15,8 @@
   {%- set pip_pkg_name = 'python-pip' %}
 {%- elif os_family == 'FreeBSD' %}
   {%- set pip_pkg_name = 'py39-pip' %}
+{%- elif os_family == 'Suse' and os_major_release >= 16 %}
+  {%- set pip_pkg_name = 'python313-pip' %}
 {%- else %}
   {%- set pip_pkg_name = 'python3-pip' %}
 {%- endif %}

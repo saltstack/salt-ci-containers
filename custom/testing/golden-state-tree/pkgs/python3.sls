@@ -12,6 +12,8 @@
   {%- else %}
     {%- set python3_dev = 'python3-devel' %}
   {%- endif %}
+{%- elif grains['os_family'] == 'Suse' and grains.get('osmajorrelease', 0)|int >= 16 %}
+  {%- set python3_dev = 'python313-devel' %}
 {%- elif grains['os_family'] == 'Suse' %}
   {%- set python3_dev = 'python3-devel' %}
 {%- elif grains['os_family'] == 'Debian' %}
@@ -26,6 +28,8 @@
   {%- set python3 = 'python' %}
 {%- elif grains["os_family"] == 'RedHat' and grains['osmajorrelease']|int == 8 %}
   {%- set python3 = 'python36' %}
+{%- elif grains['os_family'] == 'Suse' and grains.get('osmajorrelease', 0)|int >= 16 %}
+  {%- set python3 = 'python313' %}
 {%- else %}
   {%- set python3 = 'python3' %}
 {%- endif %}

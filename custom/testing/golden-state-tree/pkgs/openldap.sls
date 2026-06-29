@@ -10,6 +10,9 @@ openldap:
     {%- elif grains['os_family'] == 'FreeBSD' %}
       - openldap-client
       - openldap-server
+    {%- elif grains['os_family'] == 'Suse' and grains.get('osmajorrelease', 0)|int >= 16 %}
+      - openldap-devel
+      - cyrus-sasl-devel
     {%- elif grains['os_family'] == 'Suse' %}
       - openldap2-devel
       - cyrus-sasl-devel

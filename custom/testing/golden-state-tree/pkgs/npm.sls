@@ -5,7 +5,10 @@
 {%- set photon = True if grains['os'] == 'VMware Photon OS' else False %}
 
 # Suse does not package npm separately
-{%- if suse %}
+{%- if suse and grains.get('osmajorrelease', 0)|int >= 16 %}
+  {%- set npm = 'npm22' %}
+  {%- set nodejs = 'nodejs22' %}
+{%- elif suse %}
   {%- set npm = 'npm20' %}
   {%- set nodejs = 'nodejs20' %}
 {%- elif ubuntu %}

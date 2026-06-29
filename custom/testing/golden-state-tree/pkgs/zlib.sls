@@ -6,6 +6,9 @@ zlib:
 {%- elif grains['os_family'] == "Debian" %}
       - zlib1g
       - zlib1g-dev
+{%- elif grains['os_family'] == "Suse" and grains.get('osmajorrelease', 0)|int >= 16 %}
+      - libz1
+      - zlib-ng-compat-devel
 {%- elif grains['os_family'] == "Suse" %}
       - libz1
       - zlib-devel
