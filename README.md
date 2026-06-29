@@ -103,7 +103,7 @@ will be commited.
 - testing:debian-12 - `ghcr.io/saltstack/salt-ci-containers/testing:debian-12`
 - testing:debian-13 - `ghcr.io/saltstack/salt-ci-containers/testing:debian-13`
 - testing:fedora-42 - `ghcr.io/saltstack/salt-ci-containers/testing:fedora-42`
-- testing:opensuse-leap-15 - `ghcr.io/saltstack/salt-ci-containers/testing:opensuse-leap-15`
+- testing:opensuse-leap-16 - `ghcr.io/saltstack/salt-ci-containers/testing:opensuse-leap-16`
 - testing:photon-4 - `ghcr.io/saltstack/salt-ci-containers/testing:photon-4`
 - testing:photon-5 - `ghcr.io/saltstack/salt-ci-containers/testing:photon-5`
 - testing:rockylinux-10 - `ghcr.io/saltstack/salt-ci-containers/testing:rockylinux-10`
@@ -193,7 +193,7 @@ will be commited.
 
 ### [![Opensuse](https://github.com/saltstack/salt-ci-containers/actions/workflows/opensuse-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/opensuse-containers.yml)
 
-- [opensuse/leap:15](https://hub.docker.com/r/opensuse/leap/tags?name=15) - `ghcr.io/saltstack/salt-ci-containers/opensuse:15`
+- [opensuse/leap:16](https://hub.docker.com/r/opensuse/leap/tags?name=16) - `ghcr.io/saltstack/salt-ci-containers/opensuse:16`
 
 
 ### [![Percona](https://github.com/saltstack/salt-ci-containers/actions/workflows/percona-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/percona-containers.yml)
