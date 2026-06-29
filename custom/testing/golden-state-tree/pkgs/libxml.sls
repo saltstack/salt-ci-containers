@@ -9,3 +9,6 @@
 libxml2:
   pkg.installed:
     - name: {{ libxml2 }}
+    {%- if grains.get('os_family') == 'Suse' %}
+    - allow_downgrade: True
+    {%- endif %}

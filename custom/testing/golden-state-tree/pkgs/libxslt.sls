@@ -9,3 +9,6 @@
 libxslt:
   pkg.installed:
     - name: {{ libxslt }}
+    {%- if grains.get('os_family') == 'Suse' %}
+    - allow_downgrade: True
+    {%- endif %}
