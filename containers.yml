@@ -128,9 +128,10 @@ mirrors:
   Etcd v3:
     name: etcd
     dest: etcd-v3
-    container: bitnami/etcd
+    container: quay.io/coreos/etcd
+    source_tag: "v{version}"
     versions:
-      - "3.5"
+      - "3.5.31"
 
   Python:
     container: python
