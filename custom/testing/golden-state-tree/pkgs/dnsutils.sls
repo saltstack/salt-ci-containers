@@ -11,6 +11,8 @@
   {%- set dnsutils = 'bind-tools' %}
 {%- elif grains['os'] == 'VMware Photon OS' %}
   {%- set dnsutils = 'bindutils' %}
+{%- elif grains['os'] == 'Ubuntu' and grains.get('osmajorrelease', 0) | int >= 26 %}
+  {%- set dnsutils = 'bind9-dnsutils' %}
 {%- else %}
   {%- set dnsutils = 'dnsutils' %}
 {%- endif %}
