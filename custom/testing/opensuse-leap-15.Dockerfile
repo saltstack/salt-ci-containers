@@ -17,6 +17,10 @@ RUN <<EOF
   zypper ref
   zypper -n update
   zypper -n install wget tar xz systemd
+  # Pre-install packages from the update repo before salt-call, since Salt
+  # calls zypper with --no-refresh which fails (exit 4) on the EOL Leap 15
+  # update repo's expired metadata. Direct zypper install succeeds here.
+  zypper -n install --no-recommends libxml2-devel libxslt-devel
 
   wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/3007.5/salt-3007.5-onedir-linux-$ARCH.tar.xz
   tar xf salt-3007.5-onedir-linux-$ARCH.tar.xz
