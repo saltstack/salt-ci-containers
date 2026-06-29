@@ -22,7 +22,7 @@ RUN <<EOF
   export DEBIAN_FRONTEND="noninteractive"
 
   apt update -y
-  apt install -y tar wget xz-utils vim-nox apt-utils
+  apt install -y tar wget xz-utils vim-nox apt-utils libssl3
 
   wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/$SALT_VERSION/salt-$SALT_VERSION-onedir-linux-$ARCH.tar.xz
   tar xf salt-$SALT_VERSION-onedir-linux-$ARCH.tar.xz
@@ -30,7 +30,7 @@ RUN <<EOF
   ./salt/salt-call --local --pillar-root=/golden-pillar-tree --file-root=/golden-state-tree state.apply provision
 
   rm -rf salt
-  rm -rf salt-3007.6-onedir-linux-$ARCH.tar.xz
+  rm -rf salt-$SALT_VERSION-onedir-linux-$ARCH.tar.xz
   rm -rf golden-pillar-tree
   rm -rf golden-state-tree
 
