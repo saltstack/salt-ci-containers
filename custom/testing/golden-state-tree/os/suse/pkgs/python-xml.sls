@@ -7,5 +7,5 @@ python313-base-and-xml:
   pkg.installed:
     - pkgs:
       - python313-base
-      - python313-xml
+      - python3-xml
 {%- endif %}
