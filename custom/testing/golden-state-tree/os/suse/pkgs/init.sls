@@ -36,7 +36,4 @@ include:
   - pkgs.samba
   {#- OS Specific packages install #}
   - .python-xml   {#- Yes! openSuse ships xml as separate package #}
-  {%- if not grains['osrelease'].startswith('15') %}
-  - .python-zypp
-  {%- endif %}
   - .cleanup
