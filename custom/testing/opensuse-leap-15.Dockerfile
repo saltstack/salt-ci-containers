@@ -14,6 +14,7 @@ RUN <<EOF
     export ARCH=arm64
   fi
 
+  zypper ref
   zypper -n update
   zypper -n install wget tar xz systemd
 
