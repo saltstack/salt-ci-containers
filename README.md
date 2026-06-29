@@ -164,7 +164,7 @@ will be commited.
 
 ### [![Etcd v3](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-v3-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/etcd-v3-containers.yml)
 
-- [bitnami/etcd:3.5](https://hub.docker.com/r/bitnami/etcd/tags?name=3.5) - `ghcr.io/saltstack/salt-ci-containers/etcd:3.5`
+- [quay.io/coreos/etcd:v3.5.31](https://quay.io/coreos/etcd?tab=tags&tag=v3.5.31) - `ghcr.io/saltstack/salt-ci-containers/etcd:3.5.31`
 
 
 ### [![Fedora](https://github.com/saltstack/salt-ci-containers/actions/workflows/fedora-containers.yml/badge.svg)](https://github.com/saltstack/salt-ci-containers/actions/workflows/fedora-containers.yml)
