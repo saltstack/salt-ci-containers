@@ -1,4 +1,4 @@
-FROM opensuse/leap:15
+FROM opensuse/leap:16
 
 COPY golden-pillar-tree golden-pillar-tree
 COPY golden-state-tree golden-state-tree
@@ -14,11 +14,6 @@ RUN <<EOF
     export ARCH=arm64
   fi
 
-  zypper ref
-  # Disable EOL repos whose metadata expired 2026-06-17. libxml2-devel and
-  # libxslt-devel are also in the OSS repo; this avoids exit code 4 from
-  # zypper on every Salt pkg.installed call that touches these packages.
-  zypper modifyrepo --disable repo-update repo-update-non-oss
   zypper -n update
   zypper -n install wget tar xz systemd
 
@@ -37,7 +32,7 @@ RUN <<EOF
   rm -rf /etc/salt
   rm -rf /tmp/*
   zypper clean
-  rm -rf  /var/cache/zypp/
+  rm -rf /var/cache/zypp/
 EOF
 
 CMD ["/bin/bash"]
