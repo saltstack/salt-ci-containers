@@ -1,8 +1,11 @@
-# python3-xml is included in python3-base on Leap 15; not available on Leap 16+
+# openSUSE ships Python XML support as a separate package
 {%- if grains['osrelease'].startswith('15') %}
 python3-base:
   pkg.installed
-{%- else %}
-python3-xml-noop:
-  test.noop
+{%- elif grains.get('osmajorrelease', 0)|int >= 16 %}
+python313-base-and-xml:
+  pkg.installed:
+    - pkgs:
+      - python313-base
+      - python313-xml
 {%- endif %}
