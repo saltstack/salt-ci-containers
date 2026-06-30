@@ -1,6 +1,3 @@
-{%- set skip_openldap = grains['os_family'] == 'Suse' and grains.get('osmajorrelease', 0)|int >= 16 %}
-
-{%- if not skip_openldap %}
 openldap:
   pkg.installed:
     - pkgs:
@@ -13,10 +10,12 @@ openldap:
     {%- elif grains['os_family'] == 'FreeBSD' %}
       - openldap-client
       - openldap-server
+    {%- elif grains['os_family'] == 'Suse' and grains.get('osmajorrelease', 0)|int >= 16 %}
+      - openldap2_6-devel
+      - cyrus-sasl-devel
     {%- elif grains['os_family'] == 'Suse' %}
       - openldap2-devel
       - cyrus-sasl-devel
     {%- elif grains['os_family'] == 'Arch' or grains['os'] == 'VMware Photon OS' %}
       - openldap
     {%- endif %}
-{%- endif %}
