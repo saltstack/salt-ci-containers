@@ -36,4 +36,5 @@ include:
   - pkgs.samba
   {#- OS Specific packages install #}
   - .python-xml   {#- Yes! openSuse ships xml as separate package #}
+  - .python-zypp
   - .cleanup
