@@ -21,6 +21,13 @@ RUN <<EOF
 
   export DEBIAN_FRONTEND="noninteractive"
 
+  # QEMU arm64: ldconfig (libc-bin post-install) segfaults under emulation on
+  # Debian 11's glibc 2.31. Divert it to a no-op for the duration of the build.
+  if [ "$ARCH" = "arm64" ]; then
+    dpkg-divert --local --rename --add /sbin/ldconfig
+    cp /bin/true /sbin/ldconfig
+  fi
+
   apt update -y
   apt install -y tar wget xz-utils vim-nox apt-utils
 
@@ -35,9 +42,15 @@ RUN <<EOF
   ./salt/salt-call --local --pillar-root=/golden-pillar-tree --file-root=/golden-state-tree state.apply provision
 
   rm -rf salt
-  rm -rf salt-3007.6-onedir-linux-$ARCH.tar.xz
+  rm -rf salt-$SALT_VERSION-onedir-linux-$ARCH.tar.xz
   rm -rf golden-pillar-tree
   rm -rf golden-state-tree
+
+  # Restore ldconfig and rebuild the library cache
+  if [ "$ARCH" = "arm64" ]; then
+    dpkg-divert --local --rename --remove /sbin/ldconfig
+    /sbin/ldconfig
+  fi
 
   rm -rf /var/log/salt
   rm -rf /var/cache/salt
