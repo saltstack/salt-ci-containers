@@ -22,9 +22,9 @@ RUN <<EOF
   export DEBIAN_FRONTEND="noninteractive"
 
   # QEMU arm64: ldconfig (libc-bin post-install) segfaults under emulation on
-  # Debian 11's glibc 2.31. Divert it to a no-op for the duration of the build.
+  # Debian 11's glibc 2.31. Replace with a no-op for the duration of the build.
   if [ "$ARCH" = "arm64" ]; then
-    dpkg-divert --local --rename --add /sbin/ldconfig
+    mv /sbin/ldconfig /sbin/ldconfig.real
     cp /bin/true /sbin/ldconfig
   fi
 
@@ -48,7 +48,7 @@ RUN <<EOF
 
   # Restore ldconfig and rebuild the library cache
   if [ "$ARCH" = "arm64" ]; then
-    dpkg-divert --local --rename --remove /sbin/ldconfig
+    mv /sbin/ldconfig.real /sbin/ldconfig
     /sbin/ldconfig
   fi
 
