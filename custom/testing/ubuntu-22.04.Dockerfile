@@ -22,9 +22,11 @@ RUN <<EOF
   export DEBIAN_FRONTEND="noninteractive"
 
   # QEMU arm64: ldconfig (libc-bin post-install) segfaults under emulation.
-  # Replace with a no-op for the duration of the build.
+  # Replace with a no-op for the duration of the build. Ubuntu already diverts
+  # /sbin/ldconfig to a wrapper that execs /sbin/ldconfig.real, so back up to
+  # a different name to avoid clobbering that real binary.
   if [ "$ARCH" = "arm64" ]; then
-    mv /sbin/ldconfig /sbin/ldconfig.real
+    mv /sbin/ldconfig /sbin/ldconfig.orig
     cp /bin/true /sbin/ldconfig
   fi
 
@@ -48,7 +50,7 @@ RUN <<EOF
 
   # Restore ldconfig and rebuild the library cache
   if [ "$ARCH" = "arm64" ]; then
-    mv /sbin/ldconfig.real /sbin/ldconfig
+    mv /sbin/ldconfig.orig /sbin/ldconfig
     /sbin/ldconfig
   fi
 
