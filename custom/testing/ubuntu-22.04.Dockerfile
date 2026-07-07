@@ -48,10 +48,15 @@ RUN <<EOF
   rm -rf golden-pillar-tree
   rm -rf golden-state-tree
 
-  # Restore ldconfig and rebuild the library cache
+  # Restore ldconfig and rebuild the library cache. ldconfig itself can
+  # segfault intermittently under QEMU arm64 emulation, so retry a few
+  # times before giving up.
   if [ "$ARCH" = "arm64" ]; then
     mv /sbin/ldconfig.orig /sbin/ldconfig
-    /sbin/ldconfig
+    for i in 1 2 3 4 5; do
+      /sbin/ldconfig && break
+      echo "ldconfig attempt $i failed, retrying..."
+    done
   fi
 
   rm -rf /var/log/salt
