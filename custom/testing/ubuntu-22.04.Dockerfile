@@ -21,11 +21,25 @@ RUN <<EOF
 
   export DEBIAN_FRONTEND="noninteractive"
 
+  # QEMU arm64: ldconfig (libc-bin post-install) segfaults under emulation.
+  # Replace with a no-op for the duration of the build. Ubuntu already diverts
+  # /sbin/ldconfig to a wrapper that execs /sbin/ldconfig.real, so back up to
+  # a different name to avoid clobbering that real binary.
+  if [ "$ARCH" = "arm64" ]; then
+    mv /sbin/ldconfig /sbin/ldconfig.orig
+    cp /bin/true /sbin/ldconfig
+  fi
+
   apt update -y
   apt install -y tar wget xz-utils vim-nox apt-utils libssl3
 
   wget https://packages.broadcom.com/artifactory/saltproject-generic/onedir/$SALT_VERSION/salt-$SALT_VERSION-onedir-linux-$ARCH.tar.xz
   tar xf salt-$SALT_VERSION-onedir-linux-$ARCH.tar.xz
+
+  # Ensure Salt can find its bundled libcrypto on ARM64. This is a workaround for a Salt bug where
+  # rsax931.py ignores bundled libraries on Linux. We use a sed patch to avoid lookup failures.
+  # This should go away after we have a proper fix in salt/utils/rsax931.py
+  sed -i 's/lib = ctypes.util.find_library("crypto")/lib = (glob.glob(os.path.join(os.path.dirname(os.path.dirname(sys.executable)), "lib", "libcrypto.so*")) + [ctypes.util.find_library("crypto")])[0]/' ./salt/lib/python3.10/site-packages/salt/utils/rsax931.py
 
   ./salt/salt-call --local --pillar-root=/golden-pillar-tree --file-root=/golden-state-tree state.apply provision
 
@@ -33,6 +47,12 @@ RUN <<EOF
   rm -rf salt-$SALT_VERSION-onedir-linux-$ARCH.tar.xz
   rm -rf golden-pillar-tree
   rm -rf golden-state-tree
+
+  # Restore ldconfig and rebuild the library cache
+  if [ "$ARCH" = "arm64" ]; then
+    mv /sbin/ldconfig.orig /sbin/ldconfig
+    /sbin/ldconfig
+  fi
 
   rm -rf /var/log/salt
   rm -rf /var/cache/salt
