@@ -21,6 +21,13 @@ RUN <<EOF
 
   export DEBIAN_FRONTEND="noninteractive"
 
+  # QEMU arm64: ldconfig (libc-bin post-install) segfaults under emulation.
+  # Replace with a no-op for the duration of the build.
+  if [ "$ARCH" = "arm64" ]; then
+    mv /sbin/ldconfig /sbin/ldconfig.real
+    cp /bin/true /sbin/ldconfig
+  fi
+
   apt update -y
   apt install -y tar wget xz-utils vim-nox apt-utils libssl3
 
@@ -33,6 +40,12 @@ RUN <<EOF
   rm -rf salt-$SALT_VERSION-onedir-linux-$ARCH.tar.xz
   rm -rf golden-pillar-tree
   rm -rf golden-state-tree
+
+  # Restore ldconfig and rebuild the library cache
+  if [ "$ARCH" = "arm64" ]; then
+    mv /sbin/ldconfig.real /sbin/ldconfig
+    /sbin/ldconfig
+  fi
 
   rm -rf /var/log/salt
   rm -rf /var/cache/salt
