@@ -20,7 +20,7 @@ markupsafe==2.1.1
     # via jinja2
 mdurl==0.1.2
     # via markdown-it-py
-pygments==2.17.2
+pygments==2.20.0
     # via rich
 python-tools-scripts==0.18.4
     # via -r requirements.in
