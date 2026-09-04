@@ -102,8 +102,8 @@ redhat_locale:
     - user: root
     - group: root
     - mode: '0644'
-    - content: 'LANG=en_US.UTF-8'
-    - unless: test -f /etc/locale.conf
+    - content: "LANG=en_US.UTF-8\n"
+    - unless: grep -q "^LANG=en_US.UTF-8" /etc/locale.conf
     - require:
       - pkg: redhat_locale
   {%- endif %}
@@ -113,6 +113,16 @@ redhat_locale:
 photon_locale:
   pkg.installed:
     - name: glibc-lang
+
+/etc/locale.conf:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: '0644'
+    - content: "LANG=en_US.UTF-8\n"
+    - unless: grep -q "^LANG=en_US.UTF-8" /etc/locale.conf
+    - require:
+      - pkg: photon_locale
   {%- endif %}
 
 us_locale:
