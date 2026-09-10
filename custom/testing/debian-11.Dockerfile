@@ -47,6 +47,8 @@ deb http://snapshot.debian.org/archive/debian/20260824T000000Z bullseye-updates 
 SOURCES
   cat > /etc/apt/apt.conf.d/99-bullseye-eol <<'APTCONF'
 Acquire::Check-Valid-Until "false";
+Acquire::Retries "5";
+Acquire::http::Timeout "60";
 APTCONF
   apt-get update -y
   apt-get install -y tar wget xz-utils vim-nox apt-utils
