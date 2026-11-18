@@ -4,5 +4,6 @@
 - [dockerhub/python:3.10](https://hub.docker.com/r/_/python/tags?name=3.10) - `ghcr.io/saltstack/salt-ci-containers/python:3.10`
 - [dockerhub/python:3.11](https://hub.docker.com/r/_/python/tags?name=3.11) - `ghcr.io/saltstack/salt-ci-containers/python:3.11`
 - [dockerhub/python:3.12](https://hub.docker.com/r/_/python/tags?name=3.12) - `ghcr.io/saltstack/salt-ci-containers/python:3.12`
+- [dockerhub/python:3.13](https://hub.docker.com/r/_/python/tags?name=3.13) - `ghcr.io/saltstack/salt-ci-containers/python:3.13`
 - [dockerhub/python:3.14](https://hub.docker.com/r/_/python/tags?name=3.14) - `ghcr.io/saltstack/salt-ci-containers/python:3.14`
 - [dockerhub/python:3.9](https://hub.docker.com/r/_/python/tags?name=3.9) - `ghcr.io/saltstack/salt-ci-containers/python:3.9`
